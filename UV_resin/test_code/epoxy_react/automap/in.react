@@ -1,0 +1,44 @@
+# two molecules DGEBA (diepoxy) and one DETA (linker)
+# two crosslinking reactions
+
+units real
+
+boundary p p p
+
+atom_style full
+
+pair_style lj/class2 8
+
+angle_style class2
+
+bond_style class2
+
+dihedral_style class2
+
+improper_style class2
+
+read_data pre_mol.data extra/bond/per/atom 1 extra/angle/per/atom 12 extra/dihedral/per/atom 12 extra/improper/per/atom 12 extra/special/per/atom 12
+include calc.pram
+
+velocity all create 300.0 4928459 dist gaussian
+
+molecule mol1 pre-molecule.data
+molecule mol2 post-molecule.data
+
+thermo 50
+
+
+fix rxns all bond/react stabilization yes statted_grp .03 &
+  react rxn1_stp1 all 1 0.0 5 mol1 mol2 automap.data
+
+
+fix 1 statted_grp_REACT nvt temp 300 300 100
+
+thermo_style custom step temp f_rxns[1]
+
+dump 4a all custom 100 dump.myvel.lammpsbin id type x y z vx vy vz
+
+run 200000
+
+# write_restart restart_longrun
+# write_data restart_longrun.data nofix
