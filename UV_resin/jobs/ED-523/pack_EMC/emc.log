@@ -1,0 +1,261 @@
+(* EMC: Enhanced Monte Carlo simulations *)
+
+version 9.4.4, build Jul 27 2022 18:02:20, date Fri Feb 24 22:46:30 2023
+
+valid until Aug 01, 2023
+
+Info: script v1.0 started at Fri Feb 24 22:46:30 2023
+Info: variables = {seed -> -1, ntotal -> 5000, fshape -> 1, output ->
+        "pack_mol", field -> "pcff/pcff", location1 -> "../../field/", nav ->
+        0.6022141179, temperature -> 300, radius -> 5, nrelax -> 100, 
+        weight_nonbond -> 0.0001, weight_bond -> 0.0001, weight_focus -> 1, 
+        cutoff -> 9.5, charge_cutoff -> 9.5, kappa -> 4, density1 -> 0.85, 
+        lprevious -> 0, lphase -> 0, f_mol1 -> 50, f_mol2 -> 50, chem_mol1 ->
+        "CC(COC[C@H](CO)OCCCOCC(C)(COC[C@@H]1OC1)C)(C)COC[C@@H]1OC1", 
+        chem_mol2 -> "CC(COC[C@@H]1OC1)(C)COC[C@@H]1OC1"}
+Info: output = 
+      {detail -> 3, wide -> false, expand -> false, math -> true, reduced ->
+        false, info -> true, strict -> true, warning -> true, message -> true,
+        debug -> false, exit -> true, ignore -> false}
+Info: field = {id -> pcff, mode -> cff, style -> none, name ->
+        {"../../field/pcff/pcff.frc", "../../field/pcff/pcff_templates.dat"}, 
+        compress -> false, error -> true, debug -> false, check -> {atomistic
+          -> true, charge -> true}}
+Info: importing '../../field/pcff/pcff.frc'
+Warning: duplicate field.bond entry 40 [28:28] omitted.
+Warning: duplicate field.bond entry 51 [28:77] omitted.
+Warning: duplicate field.bond entry 62 [28:157] omitted.
+Warning: duplicate field.bond entry 176 [44:45] omitted.
+Warning: duplicate field.bond entry 328 [53:156] omitted.
+Warning: duplicate field.bond entry 364 [65:65] omitted.
+Warning: duplicate field.bond entry 365 [65:65] omitted.
+Warning: duplicate field.bond entry 367 [65:77] omitted.
+Warning: duplicate field.bond entry 689 [143:171] omitted.
+Info: groups = {ngroups -> 2, group -> {
+          {id -> mol1, chemistry ->
+            "CC(COC[C@H](CO)OCCCOCC(C)(COC[C@@H]1OC1)C)(C)COC[C@@H]1OC1", 
+            depth -> 8, charges -> forcefield, charge -> 0, terminator ->
+            false, bias -> none}, 
+          {id -> mol2, chemistry -> "CC(COC[C@@H]1OC1)(C)COC[C@@H]1OC1", depth
+            -> 8, charges -> forcefield, charge -> 0, terminator -> false, 
+            bias -> none}}, ndeletes -> 0, npolymers -> 0}
+Info: field = {mode -> apply, style -> none, error -> true, debug -> false, 
+        check -> {atomistic -> true, charge -> true}}
+Info: applying '../../field/pcff/pcff.frc'
+Info: variables = {lg_mol1 -> 72, lg_mol2 -> 35, l_mol1 -> 72, norm_mol1 -> 1,
+        l_mol2 -> 35, norm_mol2 -> 1, mg_mol1 -> 434.57524, mg_mol2 ->
+        216.27965, m_mol1 -> 434.57524, m_mol2 -> 216.27965, f_mol1 ->
+        0.505880031284, f_mol2 -> 0.494119968716, norm -> 16.3753271558, 
+        n_mol1 -> 35, n_mol2 -> 71, ntotal -> 0, mtotal -> 0}
+Info: simulation = {units -> {permittivity -> 1, seed -> seed}, types -> {
+          coulomb -> {pair -> {active -> true, cutoff -> charge_cutoff}}}}
+Info: clusters = {progress -> none, nbodys -> 0, nclusters -> 2, 
+        cluster -> {{id -> mol1, system -> main, n -> 35, 
+            group -> mol1}, {id -> mol2, system -> main, n -> 71, group ->
+            mol2}}, ngrafts -> 0, npolymers -> 0}
+      delta = {systems -> 1, bodies -> 0, clusters -> 106, sites -> 5005}
+Info: field = {mode -> apply, style -> none, error -> true, debug -> false, 
+        check -> {atomistic -> true, charge -> true}}
+Info: applying '../../field/pcff/pcff.frc'
+Info: variables = {nphase1 -> 5005, mphase1 -> 30565.98855, vphase1 ->
+        59712.9583325, lbox -> 39.0861471395, lphase1 -> 39.0861471395, lxx ->
+        39.0861471395, lyy -> 39.0861471395, lzz -> 39.0861471395, lzy -> 0, 
+        lzx -> 0, lyx -> 0, lphase -> 39.0861471395, ntotal -> 5005, mtotal ->
+        30565.98855, vtotal -> 59712.9583325}
+Info: types = {cff -> {pair -> {active -> true, mode -> repulsive, cutoff ->
+            cutoff}}}
+Info: build = {
+        system -> {id -> main, temperature -> 300, density -> 0.85, split ->
+          false, flag -> {charge -> true, map -> true, pbc -> true, geometry
+            -> true}, periodic -> {x -> true, y -> true, z -> true}, geometry
+          -> {xx -> 39.0861471395, yy -> 39.0861471395, zz -> 39.0861471395, 
+            zy -> 0, zx -> 0, yx -> 0}, deform -> {xx -> 1, yy -> 1, zz -> 1, 
+            zy -> 0, zx -> 0, yx -> 0}}, 
+        select -> {progress -> list, frequency -> 1, message -> nkt, center ->
+          false, origin -> {x -> 0, y -> 0, z -> 0}, order -> random, check ->
+          true, nclusters -> 2, cluster -> {mol1, mol2}, 
+          relax -> {ncycles -> 100, radius -> 5}, name -> "error", 
+          grow -> {check -> all, method -> energetic, cutoff -> 0, 
+            weight -> {nonbonded -> 0.0001, bonded -> 0.0001, focus -> 1}, 
+            theta -> 0, dphi -> 1, nbonded -> 20, ntrials -> 20, niterations
+            -> 1000}}}
+Info: building 5005 sites.
+
+   progress/%      E[0]/nkT
+---------------------------
+            0             0
+            1      0.164681
+            2     0.2620398
+            3     0.3618966
+            4     0.4586069
+            5     0.5356628
+            6      0.630638
+            7     0.6865416
+            8     0.6996172
+            9     0.9139477
+           10      1.071776
+           11       1.06055
+           12      1.099485
+           13      1.243482
+           14      1.343587
+           15      1.415696
+           16      1.468006
+           17      1.637171
+           18       1.70428
+           19      1.739985
+           20      1.877941
+           21      1.933048
+           22       1.92775
+           23      1.880436
+           24       1.95138
+           25      2.034378
+           26      2.076952
+           27      2.256289
+           28       2.34773
+           29      2.401876
+           30      2.656958
+           31      3.187508
+           32      3.649717
+           33      4.315128
+           34      4.944439
+           35      5.403419
+           36      5.918384
+           37      6.215116
+           38      6.689142
+           39      7.177286
+           40       7.32061
+           41      8.041606
+           42      8.429693
+           43      8.988065
+           44      9.269887
+           45      9.933611
+           46      10.13708
+           47      10.21705
+           48      10.46266
+           49      10.71404
+           50       11.1388
+           51      11.36435
+           52      11.61259
+           53      11.79671
+           54      12.10174
+           55       11.9823
+           56      12.10904
+           57      12.09564
+           58      12.11926
+           59      12.43386
+           60      12.45936
+           61      12.55437
+           62       12.5747
+           63      12.44042
+           64      12.53858
+           65      12.48761
+           66      12.42684
+           67        12.417
+           68      12.34602
+           69       12.2774
+           70      12.25511
+           71      12.14526
+           72      12.02302
+           73      11.93281
+           74      11.78992
+           75      11.69669
+           76      11.64281
+           77      11.53107
+           78      11.43494
+           79      11.35792
+           80      11.28589
+           81      11.17915
+           82      11.06549
+           83      11.16587
+           84      11.12199
+           85      11.09837
+           86      11.04665
+           87      10.97993
+           88      10.98508
+           89      10.98539
+           90      11.01131
+           91      11.14119
+           92      11.12811
+           93      11.41735
+           94       11.4745
+           95      11.64462
+           96      11.67291
+           97      11.62535
+           98      11.70773
+           99      11.80327
+          100      11.90129
+---------------------------
+      average      7.736479
+
+      niterations = 4264, <niterations> = 0.851948
+Info: force = {style -> none, message -> nkt}
+
+(* Energy *)
+
+                         E[0]/nkT 
+---------------------------------
+cff.angle                9.992123 
+cff.angle_angle       -0.03651059 
+cff.angle_angle_tor    -0.7414067 
+cff.angle_torsion      -0.1160019 
+cff.bond                0.7798813 
+cff.bond_angle        -0.06644798 
+cff.bond_bond       -0.0006607707 
+cff.bond_bond_13                0 
+cff.end_bond_torsio  0.0002508167 
+cff.improper                    0 
+cff.middle_bond_tor   -0.05331818 
+cff.pair                  2.61563 
+cff.torsion            -0.4722486 
+---------------------------------
+total                    11.90129 
+
+Info: force = {style -> init, message -> nkt}
+
+(* Energy *)
+
+                         E[0]/nkT 
+---------------------------------
+cff.angle                9.992123 
+cff.angle_angle       -0.03651059 
+cff.angle_angle_tor    -0.7414067 
+cff.angle_torsion      -0.1160019 
+cff.bond                0.7798813 
+cff.bond_angle        -0.06644798 
+cff.bond_bond       -0.0006607707 
+cff.bond_bond_13                0 
+cff.end_bond_torsio  0.0002508167 
+cff.improper                    0 
+cff.middle_bond_tor   -0.05331818 
+cff.pair                  2.61563 
+cff.torsion            -0.4722486 
+---------------------------------
+total                    11.90129 
+
+Info: put = {name -> "pack_mol", compress -> true, detail -> 3}
+Info: pdb = {name -> "pack_mol", compress -> true, extend -> false, mode ->
+        put, system -> main, length -> auto, forcefield -> cff, atomistic ->
+        full, depth -> auto, charges -> false, detect -> false, atom -> index,
+        residue -> index, segment -> index, rank -> false, hexadecimal ->
+        false, cut -> false, pbc -> true, map -> false, unwrap -> clusters, 
+        rigid -> true, fixed -> true, vdw -> false, connectivity -> false, 
+        crystal -> false, element -> auto, parameters -> false, flag -> {
+          charge -> true, map -> true, pbc -> true, geometry -> true}}
+Info: lammps = {name -> "pack_mol", compress -> false, system -> main, mode ->
+        put, length -> auto, units -> none, forcefield -> cff, shake -> auto, 
+        atomistic -> none, detect -> true, cutoff -> false, charges -> true, 
+        ewald -> true, ellipsoid -> false, sphere -> false, bonds -> false, 
+        types -> false, data -> true, parameters -> true, cross -> false, 
+        variables -> true, coefficients -> true, comment -> true, map -> true,
+        unwrap -> true, flag -> {charge -> true, map -> true, pbc -> true, 
+          geometry -> true}}
+Info: tsc: bonded = {159.9, 36.24, 15.15, 38.09, 39.51, 29.44} s
+Info: tsc: simulation = 205.6 s, threads = 0 s
+Info: tsc: thread = 0 s
+Info: script v1.0 finished at Fri Feb 24 22:49:55 2023
+
+Info: Thank you for using EMC v9.4.4
+Info: In any publication of scientific results based in part or
+Info: completely on the use of EMC, please include this reference:
+Info: P.J. in 't Veld and G.C. Rutledge, Macromolecules 2003, 36, 7358
+

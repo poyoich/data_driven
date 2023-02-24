@@ -18,9 +18,9 @@ variable	weight_focus	index	1
 variable	cutoff		index	9.5
 variable	charge_cutoff	index	9.5
 variable	kappa		index	4
-variable	density1	index	0.01
+variable	density1	index	0.1
 variable	lprevious	index	0
-variable	lphase		index	47.6333449346
+variable	lphase		index	22.1094401956
 variable	f_mol		index	1
 variable	chem_mol	index	CC(COC[C@H](CO)OCCCOCC(C)(COC[C@@H]1OC1)C)(C)COC[C@@H]1OC1.CC(COC[C@@H]1OC1)(C)COC[C@@H]1OC1
 variable	lg_mol		index	107
@@ -33,16 +33,16 @@ variable	n_mol		index	1
 variable	mtotal		index	650.85489
 variable	nphase1		index	107
 variable	mphase1		index	650.85489
-variable	vphase1		index	108076.989671
-variable	lbox		index	47.6333449346
-variable	lphase1		index	47.6333449346
-variable	lxx		index	47.6333449346
-variable	lyy		index	47.6333449346
-variable	lzz		index	47.6333449346
+variable	vphase1		index	10807.6989671
+variable	lbox		index	22.1094401956
+variable	lphase1		index	22.1094401956
+variable	lxx		index	22.1094401956
+variable	lyy		index	22.1094401956
+variable	lzz		index	22.1094401956
 variable	lzy		index	0
 variable	lzx		index	0
 variable	lyx		index	0
-variable	vtotal		index	108076.989671
+variable	vtotal		index	10807.6989671
 
 # Types
 

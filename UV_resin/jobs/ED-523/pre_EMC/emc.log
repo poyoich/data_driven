@@ -1,15 +1,15 @@
 (* EMC: Enhanced Monte Carlo simulations *)
 
-version 9.4.4, build Jul 27 2022 18:02:20, date Fri Feb 24 21:40:52 2023
+version 9.4.4, build Jul 27 2022 18:02:20, date Fri Feb 24 22:46:17 2023
 
 valid until Aug 01, 2023
 
-Info: script v1.0 started at Fri Feb 24 21:40:52 2023
+Info: script v1.0 started at Fri Feb 24 22:46:17 2023
 Info: variables = {seed -> -1, ntotal -> 107, fshape -> 1, output ->
         "pre_mol", field -> "pcff/pcff", location1 -> "../../field/", nav ->
         0.6022141179, temperature -> 300, radius -> 5, nrelax -> 100, 
         weight_nonbond -> 0.0001, weight_bond -> 0.0001, weight_focus -> 1, 
-        cutoff -> 9.5, charge_cutoff -> 9.5, kappa -> 4, density1 -> 0.01, 
+        cutoff -> 9.5, charge_cutoff -> 9.5, kappa -> 4, density1 -> 0.1, 
         lprevious -> 0, lphase -> 0, f_mol -> 100, chem_mol ->
         "CC(COC[C@H](CO)OCCCOCC(C)(COC[C@@H]1OC1)C)(C)COC[C@@H]1OC1.CC(COC[C@@H]1OC1)(C)COC[C@@H]1OC1"}
 Info: output = 
@@ -317,7 +317,7 @@ core/field/apply/rules.c:215 match =
 {type -> 28, comment -> "generic SP3 carbon", element -> "C", test -> {flag ->
     {sp -> sp3}}}
 
-core/field/apply/rules.c:377 match = 01c8dae8
+core/field/apply/rules.c:377 match = 01a0dae8
 core/field/apply/rules.c:443 type[0] = c
 
 core/field/apply/rules.c:352 [mol] site = 1, connect = 0
@@ -345,7 +345,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[1] = hc
 
 core/field/apply/rules.c:352 [mol] site = 2, connect = 0
@@ -373,7 +373,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[2] = hc
 
 core/field/apply/rules.c:352 [mol] site = 3, connect = 0
@@ -401,7 +401,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[3] = hc
 
 core/field/apply/rules.c:352 [mol] site = 4, connect = 0
@@ -457,7 +457,7 @@ core/field/apply/rules.c:215 match =
 {type -> 28, comment -> "generic SP3 carbon", element -> "C", test -> {flag ->
     {sp -> sp3}}}
 
-core/field/apply/rules.c:377 match = 01c8dae8
+core/field/apply/rules.c:377 match = 01a0dae8
 core/field/apply/rules.c:443 type[4] = c
 
 core/field/apply/rules.c:352 [mol] site = 5, connect = 0
@@ -515,7 +515,7 @@ core/field/apply/rules.c:215 match =
 {type -> 28, comment -> "generic SP3 carbon", element -> "C", test -> {flag ->
     {sp -> sp3}}}
 
-core/field/apply/rules.c:377 match = 01c8dae8
+core/field/apply/rules.c:377 match = 01a0dae8
 core/field/apply/rules.c:443 type[5] = c
 
 core/field/apply/rules.c:352 [mol] site = 6, connect = 0
@@ -544,7 +544,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[6] = hc
 
 core/field/apply/rules.c:352 [mol] site = 7, connect = 0
@@ -573,7 +573,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[7] = hc
 
 core/field/apply/rules.c:352 [mol] site = 8, connect = 0
@@ -617,7 +617,7 @@ core/field/apply/rules.c:215 match =
     {element -> "C", test -> {flag -> {bond -> single}}}, 
     {element -> "C", test -> {flag -> {bond -> single}}}}}
 
-core/field/apply/rules.c:377 match = 01c8f678
+core/field/apply/rules.c:377 match = 01a0f678
 core/field/apply/rules.c:443 type[8] = oc
 
 core/field/apply/rules.c:352 [mol] site = 9, connect = 0
@@ -670,7 +670,7 @@ core/field/apply/rules.c:215 match =
 {type -> 28, comment -> "generic SP3 carbon", element -> "C", test -> {flag ->
     {sp -> sp3}}}
 
-core/field/apply/rules.c:377 match = 01c8dae8
+core/field/apply/rules.c:377 match = 01a0dae8
 core/field/apply/rules.c:443 type[9] = c
 
 core/field/apply/rules.c:352 [mol] site = 10, connect = 0
@@ -699,7 +699,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[10] = hc
 
 core/field/apply/rules.c:352 [mol] site = 11, connect = 0
@@ -728,7 +728,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[11] = hc
 
 core/field/apply/rules.c:352 [mol] site = 12, connect = 0
@@ -791,7 +791,7 @@ core/field/apply/rules.c:215 match =
     {element -> "H", test -> {flag -> {bond -> single, allow -> false}}}, 
     {element -> "H", test -> {flag -> {bond -> single, allow -> false}}}}}
 
-core/field/apply/rules.c:377 match = 01c8dbd8
+core/field/apply/rules.c:377 match = 01a0dbd8
 core/field/apply/rules.c:443 type[12] = c1
 
 core/field/apply/rules.c:352 [mol] site = 13, connect = 0
@@ -823,7 +823,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[13] = hc
 
 core/field/apply/rules.c:352 [mol] site = 14, connect = 0
@@ -873,7 +873,7 @@ core/field/apply/rules.c:215 match =
 {type -> 28, comment -> "generic SP3 carbon", element -> "C", test -> {flag ->
     {sp -> sp3}}}
 
-core/field/apply/rules.c:377 match = 01c8dae8
+core/field/apply/rules.c:377 match = 01a0dae8
 core/field/apply/rules.c:443 type[14] = c
 
 core/field/apply/rules.c:352 [mol] site = 15, connect = 0
@@ -902,7 +902,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[15] = hc
 
 core/field/apply/rules.c:352 [mol] site = 16, connect = 0
@@ -931,7 +931,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[16] = hc
 
 core/field/apply/rules.c:352 [mol] site = 17, connect = 0
@@ -968,7 +968,7 @@ core/field/apply/rules.c:215 match =
     {element -> "H", test -> {flag -> {bond -> single}}}, 
     {element -> "*", test -> {flag -> {bond -> single}}}}}
 
-core/field/apply/rules.c:377 match = 01c8f708
+core/field/apply/rules.c:377 match = 01a0f708
 core/field/apply/rules.c:443 type[17] = oh
 
 core/field/apply/rules.c:352 [mol] site = 18, connect = 0
@@ -993,7 +993,7 @@ core/field/apply/rules.c:215 match =
 
 {type -> 77, comment -> "Argon atom", element -> "H"}
 
-core/field/apply/rules.c:377 match = 01c8e5f8
+core/field/apply/rules.c:377 match = 01a0e5f8
 core/field/apply/rules.c:443 type[18] = h
 
 core/field/apply/rules.c:352 [mol] site = 19, connect = 0
@@ -1040,7 +1040,7 @@ core/field/apply/rules.c:215 match =
     {element -> "C", test -> {flag -> {bond -> single}}}, 
     {element -> "C", test -> {flag -> {bond -> single}}}}}
 
-core/field/apply/rules.c:377 match = 01c8f678
+core/field/apply/rules.c:377 match = 01a0f678
 core/field/apply/rules.c:443 type[19] = oc
 
 core/field/apply/rules.c:352 [mol] site = 20, connect = 0
@@ -1092,7 +1092,7 @@ core/field/apply/rules.c:215 match =
 {type -> 28, comment -> "generic SP3 carbon", element -> "C", test -> {flag ->
     {sp -> sp3}}}
 
-core/field/apply/rules.c:377 match = 01c8dae8
+core/field/apply/rules.c:377 match = 01a0dae8
 core/field/apply/rules.c:443 type[20] = c
 
 core/field/apply/rules.c:352 [mol] site = 21, connect = 0
@@ -1121,7 +1121,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[21] = hc
 
 core/field/apply/rules.c:352 [mol] site = 22, connect = 0
@@ -1150,7 +1150,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[22] = hc
 
 core/field/apply/rules.c:352 [mol] site = 23, connect = 0
@@ -1200,7 +1200,7 @@ core/field/apply/rules.c:215 match =
 {type -> 28, comment -> "generic SP3 carbon", element -> "C", test -> {flag ->
     {sp -> sp3}}}
 
-core/field/apply/rules.c:377 match = 01c8dae8
+core/field/apply/rules.c:377 match = 01a0dae8
 core/field/apply/rules.c:443 type[23] = c
 
 core/field/apply/rules.c:352 [mol] site = 24, connect = 0
@@ -1231,7 +1231,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[24] = hc
 
 core/field/apply/rules.c:352 [mol] site = 25, connect = 0
@@ -1262,7 +1262,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[25] = hc
 
 core/field/apply/rules.c:352 [mol] site = 26, connect = 0
@@ -1314,7 +1314,7 @@ core/field/apply/rules.c:215 match =
 {type -> 28, comment -> "generic SP3 carbon", element -> "C", test -> {flag ->
     {sp -> sp3}}}
 
-core/field/apply/rules.c:377 match = 01c8dae8
+core/field/apply/rules.c:377 match = 01a0dae8
 core/field/apply/rules.c:443 type[26] = c
 
 core/field/apply/rules.c:352 [mol] site = 27, connect = 0
@@ -1343,7 +1343,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[27] = hc
 
 core/field/apply/rules.c:352 [mol] site = 28, connect = 0
@@ -1372,7 +1372,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[28] = hc
 
 core/field/apply/rules.c:352 [mol] site = 29, connect = 0
@@ -1416,7 +1416,7 @@ core/field/apply/rules.c:215 match =
     {element -> "C", test -> {flag -> {bond -> single}}}, 
     {element -> "C", test -> {flag -> {bond -> single}}}}}
 
-core/field/apply/rules.c:377 match = 01c8f678
+core/field/apply/rules.c:377 match = 01a0f678
 core/field/apply/rules.c:443 type[29] = oc
 
 core/field/apply/rules.c:352 [mol] site = 30, connect = 0
@@ -1474,7 +1474,7 @@ core/field/apply/rules.c:215 match =
 {type -> 28, comment -> "generic SP3 carbon", element -> "C", test -> {flag ->
     {sp -> sp3}}}
 
-core/field/apply/rules.c:377 match = 01c8dae8
+core/field/apply/rules.c:377 match = 01a0dae8
 core/field/apply/rules.c:443 type[30] = c
 
 core/field/apply/rules.c:352 [mol] site = 31, connect = 0
@@ -1503,7 +1503,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[31] = hc
 
 core/field/apply/rules.c:352 [mol] site = 32, connect = 0
@@ -1532,7 +1532,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[32] = hc
 
 core/field/apply/rules.c:352 [mol] site = 33, connect = 0
@@ -1588,7 +1588,7 @@ core/field/apply/rules.c:215 match =
 {type -> 28, comment -> "generic SP3 carbon", element -> "C", test -> {flag ->
     {sp -> sp3}}}
 
-core/field/apply/rules.c:377 match = 01c8dae8
+core/field/apply/rules.c:377 match = 01a0dae8
 core/field/apply/rules.c:443 type[33] = c
 
 core/field/apply/rules.c:352 [mol] site = 34, connect = 0
@@ -1642,7 +1642,7 @@ core/field/apply/rules.c:215 match =
 {type -> 28, comment -> "generic SP3 carbon", element -> "C", test -> {flag ->
     {sp -> sp3}}}
 
-core/field/apply/rules.c:377 match = 01c8dae8
+core/field/apply/rules.c:377 match = 01a0dae8
 core/field/apply/rules.c:443 type[34] = c
 
 core/field/apply/rules.c:352 [mol] site = 35, connect = 0
@@ -1670,7 +1670,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[35] = hc
 
 core/field/apply/rules.c:352 [mol] site = 36, connect = 0
@@ -1698,7 +1698,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[36] = hc
 
 core/field/apply/rules.c:352 [mol] site = 37, connect = 0
@@ -1726,7 +1726,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[37] = hc
 
 core/field/apply/rules.c:352 [mol] site = 38, connect = 0
@@ -1784,7 +1784,7 @@ core/field/apply/rules.c:215 match =
 {type -> 28, comment -> "generic SP3 carbon", element -> "C", test -> {flag ->
     {sp -> sp3}}}
 
-core/field/apply/rules.c:377 match = 01c8dae8
+core/field/apply/rules.c:377 match = 01a0dae8
 core/field/apply/rules.c:443 type[38] = c
 
 core/field/apply/rules.c:352 [mol] site = 39, connect = 0
@@ -1813,7 +1813,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[39] = hc
 
 core/field/apply/rules.c:352 [mol] site = 40, connect = 0
@@ -1842,7 +1842,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[40] = hc
 
 core/field/apply/rules.c:352 [mol] site = 41, connect = 0
@@ -1886,7 +1886,7 @@ core/field/apply/rules.c:215 match =
     {element -> "C", test -> {flag -> {bond -> single}}}, 
     {element -> "C", test -> {flag -> {bond -> single}}}}}
 
-core/field/apply/rules.c:377 match = 01c8f678
+core/field/apply/rules.c:377 match = 01a0f678
 core/field/apply/rules.c:443 type[41] = oc
 
 core/field/apply/rules.c:352 [mol] site = 42, connect = 0
@@ -1939,7 +1939,7 @@ core/field/apply/rules.c:215 match =
 {type -> 28, comment -> "generic SP3 carbon", element -> "C", test -> {flag ->
     {sp -> sp3}}}
 
-core/field/apply/rules.c:377 match = 01c8dae8
+core/field/apply/rules.c:377 match = 01a0dae8
 core/field/apply/rules.c:443 type[42] = c
 
 core/field/apply/rules.c:352 [mol] site = 43, connect = 0
@@ -1968,7 +1968,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[43] = hc
 
 core/field/apply/rules.c:352 [mol] site = 44, connect = 0
@@ -1997,7 +1997,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[44] = hc
 
 core/field/apply/rules.c:352 [mol] site = 45, connect = 0
@@ -2061,7 +2061,7 @@ core/field/apply/rules.c:215 match =
     {element -> "*", test -> {flag -> {bond -> single}}}, 
     {element -> "*", test -> {flag -> {bond -> single}}}}}
 
-core/field/apply/rules.c:377 match = 01c8dc68
+core/field/apply/rules.c:377 match = 01a0dc68
 core/field/apply/rules.c:443 type[45] = c3h
 
 core/field/apply/rules.c:352 [mol] site = 46, connect = 0
@@ -2093,7 +2093,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[46] = hc
 
 core/field/apply/rules.c:352 [mol] site = 47, connect = 0
@@ -2138,7 +2138,7 @@ core/field/apply/rules.c:215 match =
     {element -> "C", test -> {flag -> {bond -> single}}}, 
     {element -> "C", test -> {flag -> {bond -> single}}}}}
 
-core/field/apply/rules.c:377 match = 01c8f4c8
+core/field/apply/rules.c:377 match = 01a0f4c8
 core/field/apply/rules.c:443 type[47] = o3e
 
 core/field/apply/rules.c:352 [mol] site = 48, connect = 0
@@ -2191,7 +2191,7 @@ core/field/apply/rules.c:215 match =
 {type -> 28, comment -> "generic SP3 carbon", element -> "C", test -> {flag ->
     {sp -> sp3}}}
 
-core/field/apply/rules.c:377 match = 01c8dae8
+core/field/apply/rules.c:377 match = 01a0dae8
 core/field/apply/rules.c:443 type[48] = c
 
 core/field/apply/rules.c:352 [mol] site = 49, connect = 0
@@ -2220,7 +2220,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[49] = hc
 
 core/field/apply/rules.c:352 [mol] site = 50, connect = 0
@@ -2249,7 +2249,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[50] = hc
 
 core/field/apply/rules.c:352 [mol] site = 51, connect = 0
@@ -2303,7 +2303,7 @@ core/field/apply/rules.c:215 match =
 {type -> 28, comment -> "generic SP3 carbon", element -> "C", test -> {flag ->
     {sp -> sp3}}}
 
-core/field/apply/rules.c:377 match = 01c8dae8
+core/field/apply/rules.c:377 match = 01a0dae8
 core/field/apply/rules.c:443 type[51] = c
 
 core/field/apply/rules.c:352 [mol] site = 52, connect = 0
@@ -2331,7 +2331,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[52] = hc
 
 core/field/apply/rules.c:352 [mol] site = 53, connect = 0
@@ -2359,7 +2359,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[53] = hc
 
 core/field/apply/rules.c:352 [mol] site = 54, connect = 0
@@ -2387,7 +2387,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[54] = hc
 
 core/field/apply/rules.c:352 [mol] site = 55, connect = 0
@@ -2441,7 +2441,7 @@ core/field/apply/rules.c:215 match =
 {type -> 28, comment -> "generic SP3 carbon", element -> "C", test -> {flag ->
     {sp -> sp3}}}
 
-core/field/apply/rules.c:377 match = 01c8dae8
+core/field/apply/rules.c:377 match = 01a0dae8
 core/field/apply/rules.c:443 type[55] = c
 
 core/field/apply/rules.c:352 [mol] site = 56, connect = 0
@@ -2469,7 +2469,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[56] = hc
 
 core/field/apply/rules.c:352 [mol] site = 57, connect = 0
@@ -2497,7 +2497,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[57] = hc
 
 core/field/apply/rules.c:352 [mol] site = 58, connect = 0
@@ -2525,7 +2525,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[58] = hc
 
 core/field/apply/rules.c:352 [mol] site = 59, connect = 0
@@ -2583,7 +2583,7 @@ core/field/apply/rules.c:215 match =
 {type -> 28, comment -> "generic SP3 carbon", element -> "C", test -> {flag ->
     {sp -> sp3}}}
 
-core/field/apply/rules.c:377 match = 01c8dae8
+core/field/apply/rules.c:377 match = 01a0dae8
 core/field/apply/rules.c:443 type[59] = c
 
 core/field/apply/rules.c:352 [mol] site = 60, connect = 0
@@ -2612,7 +2612,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[60] = hc
 
 core/field/apply/rules.c:352 [mol] site = 61, connect = 0
@@ -2641,7 +2641,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[61] = hc
 
 core/field/apply/rules.c:352 [mol] site = 62, connect = 0
@@ -2685,7 +2685,7 @@ core/field/apply/rules.c:215 match =
     {element -> "C", test -> {flag -> {bond -> single}}}, 
     {element -> "C", test -> {flag -> {bond -> single}}}}}
 
-core/field/apply/rules.c:377 match = 01c8f678
+core/field/apply/rules.c:377 match = 01a0f678
 core/field/apply/rules.c:443 type[62] = oc
 
 core/field/apply/rules.c:352 [mol] site = 63, connect = 0
@@ -2738,7 +2738,7 @@ core/field/apply/rules.c:215 match =
 {type -> 28, comment -> "generic SP3 carbon", element -> "C", test -> {flag ->
     {sp -> sp3}}}
 
-core/field/apply/rules.c:377 match = 01c8dae8
+core/field/apply/rules.c:377 match = 01a0dae8
 core/field/apply/rules.c:443 type[63] = c
 
 core/field/apply/rules.c:352 [mol] site = 64, connect = 0
@@ -2767,7 +2767,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[64] = hc
 
 core/field/apply/rules.c:352 [mol] site = 65, connect = 0
@@ -2796,7 +2796,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[65] = hc
 
 core/field/apply/rules.c:352 [mol] site = 66, connect = 0
@@ -2860,7 +2860,7 @@ core/field/apply/rules.c:215 match =
     {element -> "*", test -> {flag -> {bond -> single}}}, 
     {element -> "*", test -> {flag -> {bond -> single}}}}}
 
-core/field/apply/rules.c:377 match = 01c8dc68
+core/field/apply/rules.c:377 match = 01a0dc68
 core/field/apply/rules.c:443 type[66] = c3h
 
 core/field/apply/rules.c:352 [mol] site = 67, connect = 0
@@ -2892,7 +2892,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[67] = hc
 
 core/field/apply/rules.c:352 [mol] site = 68, connect = 0
@@ -2937,7 +2937,7 @@ core/field/apply/rules.c:215 match =
     {element -> "C", test -> {flag -> {bond -> single}}}, 
     {element -> "C", test -> {flag -> {bond -> single}}}}}
 
-core/field/apply/rules.c:377 match = 01c8f4c8
+core/field/apply/rules.c:377 match = 01a0f4c8
 core/field/apply/rules.c:443 type[68] = o3e
 
 core/field/apply/rules.c:352 [mol] site = 69, connect = 0
@@ -2990,7 +2990,7 @@ core/field/apply/rules.c:215 match =
 {type -> 28, comment -> "generic SP3 carbon", element -> "C", test -> {flag ->
     {sp -> sp3}}}
 
-core/field/apply/rules.c:377 match = 01c8dae8
+core/field/apply/rules.c:377 match = 01a0dae8
 core/field/apply/rules.c:443 type[69] = c
 
 core/field/apply/rules.c:352 [mol] site = 70, connect = 0
@@ -3019,7 +3019,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[70] = hc
 
 core/field/apply/rules.c:352 [mol] site = 71, connect = 0
@@ -3048,7 +3048,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[71] = hc
 
 core/field/apply/rules.c:352 [mol] site = 72, connect = 0
@@ -3102,7 +3102,7 @@ core/field/apply/rules.c:215 match =
 {type -> 28, comment -> "generic SP3 carbon", element -> "C", test -> {flag ->
     {sp -> sp3}}}
 
-core/field/apply/rules.c:377 match = 01c8dae8
+core/field/apply/rules.c:377 match = 01a0dae8
 core/field/apply/rules.c:443 type[72] = c
 
 core/field/apply/rules.c:352 [mol] site = 73, connect = 0
@@ -3130,7 +3130,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[73] = hc
 
 core/field/apply/rules.c:352 [mol] site = 74, connect = 0
@@ -3158,7 +3158,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[74] = hc
 
 core/field/apply/rules.c:352 [mol] site = 75, connect = 0
@@ -3186,7 +3186,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[75] = hc
 
 core/field/apply/rules.c:352 [mol] site = 76, connect = 0
@@ -3242,7 +3242,7 @@ core/field/apply/rules.c:215 match =
 {type -> 28, comment -> "generic SP3 carbon", element -> "C", test -> {flag ->
     {sp -> sp3}}}
 
-core/field/apply/rules.c:377 match = 01c8dae8
+core/field/apply/rules.c:377 match = 01a0dae8
 core/field/apply/rules.c:443 type[76] = c
 
 core/field/apply/rules.c:352 [mol] site = 77, connect = 0
@@ -3300,7 +3300,7 @@ core/field/apply/rules.c:215 match =
 {type -> 28, comment -> "generic SP3 carbon", element -> "C", test -> {flag ->
     {sp -> sp3}}}
 
-core/field/apply/rules.c:377 match = 01c8dae8
+core/field/apply/rules.c:377 match = 01a0dae8
 core/field/apply/rules.c:443 type[77] = c
 
 core/field/apply/rules.c:352 [mol] site = 78, connect = 0
@@ -3329,7 +3329,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[78] = hc
 
 core/field/apply/rules.c:352 [mol] site = 79, connect = 0
@@ -3358,7 +3358,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[79] = hc
 
 core/field/apply/rules.c:352 [mol] site = 80, connect = 0
@@ -3402,7 +3402,7 @@ core/field/apply/rules.c:215 match =
     {element -> "C", test -> {flag -> {bond -> single}}}, 
     {element -> "C", test -> {flag -> {bond -> single}}}}}
 
-core/field/apply/rules.c:377 match = 01c8f678
+core/field/apply/rules.c:377 match = 01a0f678
 core/field/apply/rules.c:443 type[80] = oc
 
 core/field/apply/rules.c:352 [mol] site = 81, connect = 0
@@ -3455,7 +3455,7 @@ core/field/apply/rules.c:215 match =
 {type -> 28, comment -> "generic SP3 carbon", element -> "C", test -> {flag ->
     {sp -> sp3}}}
 
-core/field/apply/rules.c:377 match = 01c8dae8
+core/field/apply/rules.c:377 match = 01a0dae8
 core/field/apply/rules.c:443 type[81] = c
 
 core/field/apply/rules.c:352 [mol] site = 82, connect = 0
@@ -3484,7 +3484,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[82] = hc
 
 core/field/apply/rules.c:352 [mol] site = 83, connect = 0
@@ -3513,7 +3513,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[83] = hc
 
 core/field/apply/rules.c:352 [mol] site = 84, connect = 0
@@ -3577,7 +3577,7 @@ core/field/apply/rules.c:215 match =
     {element -> "*", test -> {flag -> {bond -> single}}}, 
     {element -> "*", test -> {flag -> {bond -> single}}}}}
 
-core/field/apply/rules.c:377 match = 01c8dc68
+core/field/apply/rules.c:377 match = 01a0dc68
 core/field/apply/rules.c:443 type[84] = c3h
 
 core/field/apply/rules.c:352 [mol] site = 85, connect = 0
@@ -3609,7 +3609,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[85] = hc
 
 core/field/apply/rules.c:352 [mol] site = 86, connect = 0
@@ -3654,7 +3654,7 @@ core/field/apply/rules.c:215 match =
     {element -> "C", test -> {flag -> {bond -> single}}}, 
     {element -> "C", test -> {flag -> {bond -> single}}}}}
 
-core/field/apply/rules.c:377 match = 01c8f4c8
+core/field/apply/rules.c:377 match = 01a0f4c8
 core/field/apply/rules.c:443 type[86] = o3e
 
 core/field/apply/rules.c:352 [mol] site = 87, connect = 0
@@ -3707,7 +3707,7 @@ core/field/apply/rules.c:215 match =
 {type -> 28, comment -> "generic SP3 carbon", element -> "C", test -> {flag ->
     {sp -> sp3}}}
 
-core/field/apply/rules.c:377 match = 01c8dae8
+core/field/apply/rules.c:377 match = 01a0dae8
 core/field/apply/rules.c:443 type[87] = c
 
 core/field/apply/rules.c:352 [mol] site = 88, connect = 0
@@ -3736,7 +3736,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[88] = hc
 
 core/field/apply/rules.c:352 [mol] site = 89, connect = 0
@@ -3765,7 +3765,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[89] = hc
 
 core/field/apply/rules.c:352 [mol] site = 90, connect = 0
@@ -3819,7 +3819,7 @@ core/field/apply/rules.c:215 match =
 {type -> 28, comment -> "generic SP3 carbon", element -> "C", test -> {flag ->
     {sp -> sp3}}}
 
-core/field/apply/rules.c:377 match = 01c8dae8
+core/field/apply/rules.c:377 match = 01a0dae8
 core/field/apply/rules.c:443 type[90] = c
 
 core/field/apply/rules.c:352 [mol] site = 91, connect = 0
@@ -3847,7 +3847,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[91] = hc
 
 core/field/apply/rules.c:352 [mol] site = 92, connect = 0
@@ -3875,7 +3875,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[92] = hc
 
 core/field/apply/rules.c:352 [mol] site = 93, connect = 0
@@ -3903,7 +3903,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[93] = hc
 
 core/field/apply/rules.c:352 [mol] site = 94, connect = 0
@@ -3961,7 +3961,7 @@ core/field/apply/rules.c:215 match =
 {type -> 28, comment -> "generic SP3 carbon", element -> "C", test -> {flag ->
     {sp -> sp3}}}
 
-core/field/apply/rules.c:377 match = 01c8dae8
+core/field/apply/rules.c:377 match = 01a0dae8
 core/field/apply/rules.c:443 type[94] = c
 
 core/field/apply/rules.c:352 [mol] site = 95, connect = 0
@@ -3990,7 +3990,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[95] = hc
 
 core/field/apply/rules.c:352 [mol] site = 96, connect = 0
@@ -4019,7 +4019,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[96] = hc
 
 core/field/apply/rules.c:352 [mol] site = 97, connect = 0
@@ -4063,7 +4063,7 @@ core/field/apply/rules.c:215 match =
     {element -> "C", test -> {flag -> {bond -> single}}}, 
     {element -> "C", test -> {flag -> {bond -> single}}}}}
 
-core/field/apply/rules.c:377 match = 01c8f678
+core/field/apply/rules.c:377 match = 01a0f678
 core/field/apply/rules.c:443 type[97] = oc
 
 core/field/apply/rules.c:352 [mol] site = 98, connect = 0
@@ -4116,7 +4116,7 @@ core/field/apply/rules.c:215 match =
 {type -> 28, comment -> "generic SP3 carbon", element -> "C", test -> {flag ->
     {sp -> sp3}}}
 
-core/field/apply/rules.c:377 match = 01c8dae8
+core/field/apply/rules.c:377 match = 01a0dae8
 core/field/apply/rules.c:443 type[98] = c
 
 core/field/apply/rules.c:352 [mol] site = 99, connect = 0
@@ -4145,7 +4145,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[99] = hc
 
 core/field/apply/rules.c:352 [mol] site = 100, connect = 0
@@ -4174,7 +4174,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[100] = hc
 
 core/field/apply/rules.c:352 [mol] site = 101, connect = 0
@@ -4238,7 +4238,7 @@ core/field/apply/rules.c:215 match =
     {element -> "*", test -> {flag -> {bond -> single}}}, 
     {element -> "*", test -> {flag -> {bond -> single}}}}}
 
-core/field/apply/rules.c:377 match = 01c8dc68
+core/field/apply/rules.c:377 match = 01a0dc68
 core/field/apply/rules.c:443 type[101] = c3h
 
 core/field/apply/rules.c:352 [mol] site = 102, connect = 0
@@ -4270,7 +4270,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[102] = hc
 
 core/field/apply/rules.c:352 [mol] site = 103, connect = 0
@@ -4315,7 +4315,7 @@ core/field/apply/rules.c:215 match =
     {element -> "C", test -> {flag -> {bond -> single}}}, 
     {element -> "C", test -> {flag -> {bond -> single}}}}}
 
-core/field/apply/rules.c:377 match = 01c8f4c8
+core/field/apply/rules.c:377 match = 01a0f4c8
 core/field/apply/rules.c:443 type[103] = o3e
 
 core/field/apply/rules.c:352 [mol] site = 104, connect = 0
@@ -4368,7 +4368,7 @@ core/field/apply/rules.c:215 match =
 {type -> 28, comment -> "generic SP3 carbon", element -> "C", test -> {flag ->
     {sp -> sp3}}}
 
-core/field/apply/rules.c:377 match = 01c8dae8
+core/field/apply/rules.c:377 match = 01a0dae8
 core/field/apply/rules.c:443 type[104] = c
 
 core/field/apply/rules.c:352 [mol] site = 105, connect = 0
@@ -4397,7 +4397,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[105] = hc
 
 core/field/apply/rules.c:352 [mol] site = 106, connect = 0
@@ -4426,7 +4426,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[106] = hc
 
 Info: put = {name -> "debug", compress -> false, detail -> 3}
@@ -4721,7 +4721,7 @@ core/field/apply/rules.c:215 match =
 {type -> 28, comment -> "generic SP3 carbon", element -> "C", test -> {flag ->
     {sp -> sp3}}}
 
-core/field/apply/rules.c:377 match = 01c8dae8
+core/field/apply/rules.c:377 match = 01a0dae8
 core/field/apply/rules.c:443 type[0] = c
 
 core/field/apply/rules.c:352 [mol] site = 1, connect = 0
@@ -4749,7 +4749,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[1] = hc
 
 core/field/apply/rules.c:352 [mol] site = 2, connect = 0
@@ -4777,7 +4777,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[2] = hc
 
 core/field/apply/rules.c:352 [mol] site = 3, connect = 0
@@ -4805,7 +4805,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[3] = hc
 
 core/field/apply/rules.c:352 [mol] site = 4, connect = 0
@@ -4861,7 +4861,7 @@ core/field/apply/rules.c:215 match =
 {type -> 28, comment -> "generic SP3 carbon", element -> "C", test -> {flag ->
     {sp -> sp3}}}
 
-core/field/apply/rules.c:377 match = 01c8dae8
+core/field/apply/rules.c:377 match = 01a0dae8
 core/field/apply/rules.c:443 type[4] = c
 
 core/field/apply/rules.c:352 [mol] site = 5, connect = 0
@@ -4919,7 +4919,7 @@ core/field/apply/rules.c:215 match =
 {type -> 28, comment -> "generic SP3 carbon", element -> "C", test -> {flag ->
     {sp -> sp3}}}
 
-core/field/apply/rules.c:377 match = 01c8dae8
+core/field/apply/rules.c:377 match = 01a0dae8
 core/field/apply/rules.c:443 type[5] = c
 
 core/field/apply/rules.c:352 [mol] site = 6, connect = 0
@@ -4948,7 +4948,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[6] = hc
 
 core/field/apply/rules.c:352 [mol] site = 7, connect = 0
@@ -4977,7 +4977,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[7] = hc
 
 core/field/apply/rules.c:352 [mol] site = 8, connect = 0
@@ -5021,7 +5021,7 @@ core/field/apply/rules.c:215 match =
     {element -> "C", test -> {flag -> {bond -> single}}}, 
     {element -> "C", test -> {flag -> {bond -> single}}}}}
 
-core/field/apply/rules.c:377 match = 01c8f678
+core/field/apply/rules.c:377 match = 01a0f678
 core/field/apply/rules.c:443 type[8] = oc
 
 core/field/apply/rules.c:352 [mol] site = 9, connect = 0
@@ -5074,7 +5074,7 @@ core/field/apply/rules.c:215 match =
 {type -> 28, comment -> "generic SP3 carbon", element -> "C", test -> {flag ->
     {sp -> sp3}}}
 
-core/field/apply/rules.c:377 match = 01c8dae8
+core/field/apply/rules.c:377 match = 01a0dae8
 core/field/apply/rules.c:443 type[9] = c
 
 core/field/apply/rules.c:352 [mol] site = 10, connect = 0
@@ -5103,7 +5103,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[10] = hc
 
 core/field/apply/rules.c:352 [mol] site = 11, connect = 0
@@ -5132,7 +5132,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[11] = hc
 
 core/field/apply/rules.c:352 [mol] site = 12, connect = 0
@@ -5195,7 +5195,7 @@ core/field/apply/rules.c:215 match =
     {element -> "H", test -> {flag -> {bond -> single, allow -> false}}}, 
     {element -> "H", test -> {flag -> {bond -> single, allow -> false}}}}}
 
-core/field/apply/rules.c:377 match = 01c8dbd8
+core/field/apply/rules.c:377 match = 01a0dbd8
 core/field/apply/rules.c:443 type[12] = c1
 
 core/field/apply/rules.c:352 [mol] site = 13, connect = 0
@@ -5227,7 +5227,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[13] = hc
 
 core/field/apply/rules.c:352 [mol] site = 14, connect = 0
@@ -5277,7 +5277,7 @@ core/field/apply/rules.c:215 match =
 {type -> 28, comment -> "generic SP3 carbon", element -> "C", test -> {flag ->
     {sp -> sp3}}}
 
-core/field/apply/rules.c:377 match = 01c8dae8
+core/field/apply/rules.c:377 match = 01a0dae8
 core/field/apply/rules.c:443 type[14] = c
 
 core/field/apply/rules.c:352 [mol] site = 15, connect = 0
@@ -5306,7 +5306,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[15] = hc
 
 core/field/apply/rules.c:352 [mol] site = 16, connect = 0
@@ -5335,7 +5335,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[16] = hc
 
 core/field/apply/rules.c:352 [mol] site = 17, connect = 0
@@ -5372,7 +5372,7 @@ core/field/apply/rules.c:215 match =
     {element -> "H", test -> {flag -> {bond -> single}}}, 
     {element -> "*", test -> {flag -> {bond -> single}}}}}
 
-core/field/apply/rules.c:377 match = 01c8f708
+core/field/apply/rules.c:377 match = 01a0f708
 core/field/apply/rules.c:443 type[17] = oh
 
 core/field/apply/rules.c:352 [mol] site = 18, connect = 0
@@ -5397,7 +5397,7 @@ core/field/apply/rules.c:215 match =
 
 {type -> 77, comment -> "Argon atom", element -> "H"}
 
-core/field/apply/rules.c:377 match = 01c8e5f8
+core/field/apply/rules.c:377 match = 01a0e5f8
 core/field/apply/rules.c:443 type[18] = h
 
 core/field/apply/rules.c:352 [mol] site = 19, connect = 0
@@ -5444,7 +5444,7 @@ core/field/apply/rules.c:215 match =
     {element -> "C", test -> {flag -> {bond -> single}}}, 
     {element -> "C", test -> {flag -> {bond -> single}}}}}
 
-core/field/apply/rules.c:377 match = 01c8f678
+core/field/apply/rules.c:377 match = 01a0f678
 core/field/apply/rules.c:443 type[19] = oc
 
 core/field/apply/rules.c:352 [mol] site = 20, connect = 0
@@ -5496,7 +5496,7 @@ core/field/apply/rules.c:215 match =
 {type -> 28, comment -> "generic SP3 carbon", element -> "C", test -> {flag ->
     {sp -> sp3}}}
 
-core/field/apply/rules.c:377 match = 01c8dae8
+core/field/apply/rules.c:377 match = 01a0dae8
 core/field/apply/rules.c:443 type[20] = c
 
 core/field/apply/rules.c:352 [mol] site = 21, connect = 0
@@ -5525,7 +5525,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[21] = hc
 
 core/field/apply/rules.c:352 [mol] site = 22, connect = 0
@@ -5554,7 +5554,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[22] = hc
 
 core/field/apply/rules.c:352 [mol] site = 23, connect = 0
@@ -5604,7 +5604,7 @@ core/field/apply/rules.c:215 match =
 {type -> 28, comment -> "generic SP3 carbon", element -> "C", test -> {flag ->
     {sp -> sp3}}}
 
-core/field/apply/rules.c:377 match = 01c8dae8
+core/field/apply/rules.c:377 match = 01a0dae8
 core/field/apply/rules.c:443 type[23] = c
 
 core/field/apply/rules.c:352 [mol] site = 24, connect = 0
@@ -5635,7 +5635,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[24] = hc
 
 core/field/apply/rules.c:352 [mol] site = 25, connect = 0
@@ -5666,7 +5666,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[25] = hc
 
 core/field/apply/rules.c:352 [mol] site = 26, connect = 0
@@ -5718,7 +5718,7 @@ core/field/apply/rules.c:215 match =
 {type -> 28, comment -> "generic SP3 carbon", element -> "C", test -> {flag ->
     {sp -> sp3}}}
 
-core/field/apply/rules.c:377 match = 01c8dae8
+core/field/apply/rules.c:377 match = 01a0dae8
 core/field/apply/rules.c:443 type[26] = c
 
 core/field/apply/rules.c:352 [mol] site = 27, connect = 0
@@ -5747,7 +5747,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[27] = hc
 
 core/field/apply/rules.c:352 [mol] site = 28, connect = 0
@@ -5776,7 +5776,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[28] = hc
 
 core/field/apply/rules.c:352 [mol] site = 29, connect = 0
@@ -5820,7 +5820,7 @@ core/field/apply/rules.c:215 match =
     {element -> "C", test -> {flag -> {bond -> single}}}, 
     {element -> "C", test -> {flag -> {bond -> single}}}}}
 
-core/field/apply/rules.c:377 match = 01c8f678
+core/field/apply/rules.c:377 match = 01a0f678
 core/field/apply/rules.c:443 type[29] = oc
 
 core/field/apply/rules.c:352 [mol] site = 30, connect = 0
@@ -5878,7 +5878,7 @@ core/field/apply/rules.c:215 match =
 {type -> 28, comment -> "generic SP3 carbon", element -> "C", test -> {flag ->
     {sp -> sp3}}}
 
-core/field/apply/rules.c:377 match = 01c8dae8
+core/field/apply/rules.c:377 match = 01a0dae8
 core/field/apply/rules.c:443 type[30] = c
 
 core/field/apply/rules.c:352 [mol] site = 31, connect = 0
@@ -5907,7 +5907,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[31] = hc
 
 core/field/apply/rules.c:352 [mol] site = 32, connect = 0
@@ -5936,7 +5936,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[32] = hc
 
 core/field/apply/rules.c:352 [mol] site = 33, connect = 0
@@ -5992,7 +5992,7 @@ core/field/apply/rules.c:215 match =
 {type -> 28, comment -> "generic SP3 carbon", element -> "C", test -> {flag ->
     {sp -> sp3}}}
 
-core/field/apply/rules.c:377 match = 01c8dae8
+core/field/apply/rules.c:377 match = 01a0dae8
 core/field/apply/rules.c:443 type[33] = c
 
 core/field/apply/rules.c:352 [mol] site = 34, connect = 0
@@ -6046,7 +6046,7 @@ core/field/apply/rules.c:215 match =
 {type -> 28, comment -> "generic SP3 carbon", element -> "C", test -> {flag ->
     {sp -> sp3}}}
 
-core/field/apply/rules.c:377 match = 01c8dae8
+core/field/apply/rules.c:377 match = 01a0dae8
 core/field/apply/rules.c:443 type[34] = c
 
 core/field/apply/rules.c:352 [mol] site = 35, connect = 0
@@ -6074,7 +6074,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[35] = hc
 
 core/field/apply/rules.c:352 [mol] site = 36, connect = 0
@@ -6102,7 +6102,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[36] = hc
 
 core/field/apply/rules.c:352 [mol] site = 37, connect = 0
@@ -6130,7 +6130,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[37] = hc
 
 core/field/apply/rules.c:352 [mol] site = 38, connect = 0
@@ -6188,7 +6188,7 @@ core/field/apply/rules.c:215 match =
 {type -> 28, comment -> "generic SP3 carbon", element -> "C", test -> {flag ->
     {sp -> sp3}}}
 
-core/field/apply/rules.c:377 match = 01c8dae8
+core/field/apply/rules.c:377 match = 01a0dae8
 core/field/apply/rules.c:443 type[38] = c
 
 core/field/apply/rules.c:352 [mol] site = 39, connect = 0
@@ -6217,7 +6217,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[39] = hc
 
 core/field/apply/rules.c:352 [mol] site = 40, connect = 0
@@ -6246,7 +6246,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[40] = hc
 
 core/field/apply/rules.c:352 [mol] site = 41, connect = 0
@@ -6290,7 +6290,7 @@ core/field/apply/rules.c:215 match =
     {element -> "C", test -> {flag -> {bond -> single}}}, 
     {element -> "C", test -> {flag -> {bond -> single}}}}}
 
-core/field/apply/rules.c:377 match = 01c8f678
+core/field/apply/rules.c:377 match = 01a0f678
 core/field/apply/rules.c:443 type[41] = oc
 
 core/field/apply/rules.c:352 [mol] site = 42, connect = 0
@@ -6343,7 +6343,7 @@ core/field/apply/rules.c:215 match =
 {type -> 28, comment -> "generic SP3 carbon", element -> "C", test -> {flag ->
     {sp -> sp3}}}
 
-core/field/apply/rules.c:377 match = 01c8dae8
+core/field/apply/rules.c:377 match = 01a0dae8
 core/field/apply/rules.c:443 type[42] = c
 
 core/field/apply/rules.c:352 [mol] site = 43, connect = 0
@@ -6372,7 +6372,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[43] = hc
 
 core/field/apply/rules.c:352 [mol] site = 44, connect = 0
@@ -6401,7 +6401,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[44] = hc
 
 core/field/apply/rules.c:352 [mol] site = 45, connect = 0
@@ -6465,7 +6465,7 @@ core/field/apply/rules.c:215 match =
     {element -> "*", test -> {flag -> {bond -> single}}}, 
     {element -> "*", test -> {flag -> {bond -> single}}}}}
 
-core/field/apply/rules.c:377 match = 01c8dc68
+core/field/apply/rules.c:377 match = 01a0dc68
 core/field/apply/rules.c:443 type[45] = c3h
 
 core/field/apply/rules.c:352 [mol] site = 46, connect = 0
@@ -6497,7 +6497,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[46] = hc
 
 core/field/apply/rules.c:352 [mol] site = 47, connect = 0
@@ -6542,7 +6542,7 @@ core/field/apply/rules.c:215 match =
     {element -> "C", test -> {flag -> {bond -> single}}}, 
     {element -> "C", test -> {flag -> {bond -> single}}}}}
 
-core/field/apply/rules.c:377 match = 01c8f4c8
+core/field/apply/rules.c:377 match = 01a0f4c8
 core/field/apply/rules.c:443 type[47] = o3e
 
 core/field/apply/rules.c:352 [mol] site = 48, connect = 0
@@ -6595,7 +6595,7 @@ core/field/apply/rules.c:215 match =
 {type -> 28, comment -> "generic SP3 carbon", element -> "C", test -> {flag ->
     {sp -> sp3}}}
 
-core/field/apply/rules.c:377 match = 01c8dae8
+core/field/apply/rules.c:377 match = 01a0dae8
 core/field/apply/rules.c:443 type[48] = c
 
 core/field/apply/rules.c:352 [mol] site = 49, connect = 0
@@ -6624,7 +6624,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[49] = hc
 
 core/field/apply/rules.c:352 [mol] site = 50, connect = 0
@@ -6653,7 +6653,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[50] = hc
 
 core/field/apply/rules.c:352 [mol] site = 51, connect = 0
@@ -6707,7 +6707,7 @@ core/field/apply/rules.c:215 match =
 {type -> 28, comment -> "generic SP3 carbon", element -> "C", test -> {flag ->
     {sp -> sp3}}}
 
-core/field/apply/rules.c:377 match = 01c8dae8
+core/field/apply/rules.c:377 match = 01a0dae8
 core/field/apply/rules.c:443 type[51] = c
 
 core/field/apply/rules.c:352 [mol] site = 52, connect = 0
@@ -6735,7 +6735,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[52] = hc
 
 core/field/apply/rules.c:352 [mol] site = 53, connect = 0
@@ -6763,7 +6763,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[53] = hc
 
 core/field/apply/rules.c:352 [mol] site = 54, connect = 0
@@ -6791,7 +6791,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[54] = hc
 
 core/field/apply/rules.c:352 [mol] site = 55, connect = 0
@@ -6845,7 +6845,7 @@ core/field/apply/rules.c:215 match =
 {type -> 28, comment -> "generic SP3 carbon", element -> "C", test -> {flag ->
     {sp -> sp3}}}
 
-core/field/apply/rules.c:377 match = 01c8dae8
+core/field/apply/rules.c:377 match = 01a0dae8
 core/field/apply/rules.c:443 type[55] = c
 
 core/field/apply/rules.c:352 [mol] site = 56, connect = 0
@@ -6873,7 +6873,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[56] = hc
 
 core/field/apply/rules.c:352 [mol] site = 57, connect = 0
@@ -6901,7 +6901,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[57] = hc
 
 core/field/apply/rules.c:352 [mol] site = 58, connect = 0
@@ -6929,7 +6929,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[58] = hc
 
 core/field/apply/rules.c:352 [mol] site = 59, connect = 0
@@ -6987,7 +6987,7 @@ core/field/apply/rules.c:215 match =
 {type -> 28, comment -> "generic SP3 carbon", element -> "C", test -> {flag ->
     {sp -> sp3}}}
 
-core/field/apply/rules.c:377 match = 01c8dae8
+core/field/apply/rules.c:377 match = 01a0dae8
 core/field/apply/rules.c:443 type[59] = c
 
 core/field/apply/rules.c:352 [mol] site = 60, connect = 0
@@ -7016,7 +7016,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[60] = hc
 
 core/field/apply/rules.c:352 [mol] site = 61, connect = 0
@@ -7045,7 +7045,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[61] = hc
 
 core/field/apply/rules.c:352 [mol] site = 62, connect = 0
@@ -7089,7 +7089,7 @@ core/field/apply/rules.c:215 match =
     {element -> "C", test -> {flag -> {bond -> single}}}, 
     {element -> "C", test -> {flag -> {bond -> single}}}}}
 
-core/field/apply/rules.c:377 match = 01c8f678
+core/field/apply/rules.c:377 match = 01a0f678
 core/field/apply/rules.c:443 type[62] = oc
 
 core/field/apply/rules.c:352 [mol] site = 63, connect = 0
@@ -7142,7 +7142,7 @@ core/field/apply/rules.c:215 match =
 {type -> 28, comment -> "generic SP3 carbon", element -> "C", test -> {flag ->
     {sp -> sp3}}}
 
-core/field/apply/rules.c:377 match = 01c8dae8
+core/field/apply/rules.c:377 match = 01a0dae8
 core/field/apply/rules.c:443 type[63] = c
 
 core/field/apply/rules.c:352 [mol] site = 64, connect = 0
@@ -7171,7 +7171,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[64] = hc
 
 core/field/apply/rules.c:352 [mol] site = 65, connect = 0
@@ -7200,7 +7200,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[65] = hc
 
 core/field/apply/rules.c:352 [mol] site = 66, connect = 0
@@ -7264,7 +7264,7 @@ core/field/apply/rules.c:215 match =
     {element -> "*", test -> {flag -> {bond -> single}}}, 
     {element -> "*", test -> {flag -> {bond -> single}}}}}
 
-core/field/apply/rules.c:377 match = 01c8dc68
+core/field/apply/rules.c:377 match = 01a0dc68
 core/field/apply/rules.c:443 type[66] = c3h
 
 core/field/apply/rules.c:352 [mol] site = 67, connect = 0
@@ -7296,7 +7296,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[67] = hc
 
 core/field/apply/rules.c:352 [mol] site = 68, connect = 0
@@ -7341,7 +7341,7 @@ core/field/apply/rules.c:215 match =
     {element -> "C", test -> {flag -> {bond -> single}}}, 
     {element -> "C", test -> {flag -> {bond -> single}}}}}
 
-core/field/apply/rules.c:377 match = 01c8f4c8
+core/field/apply/rules.c:377 match = 01a0f4c8
 core/field/apply/rules.c:443 type[68] = o3e
 
 core/field/apply/rules.c:352 [mol] site = 69, connect = 0
@@ -7394,7 +7394,7 @@ core/field/apply/rules.c:215 match =
 {type -> 28, comment -> "generic SP3 carbon", element -> "C", test -> {flag ->
     {sp -> sp3}}}
 
-core/field/apply/rules.c:377 match = 01c8dae8
+core/field/apply/rules.c:377 match = 01a0dae8
 core/field/apply/rules.c:443 type[69] = c
 
 core/field/apply/rules.c:352 [mol] site = 70, connect = 0
@@ -7423,7 +7423,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[70] = hc
 
 core/field/apply/rules.c:352 [mol] site = 71, connect = 0
@@ -7452,7 +7452,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[71] = hc
 
 core/field/apply/rules.c:352 [mol] site = 72, connect = 0
@@ -7506,7 +7506,7 @@ core/field/apply/rules.c:215 match =
 {type -> 28, comment -> "generic SP3 carbon", element -> "C", test -> {flag ->
     {sp -> sp3}}}
 
-core/field/apply/rules.c:377 match = 01c8dae8
+core/field/apply/rules.c:377 match = 01a0dae8
 core/field/apply/rules.c:443 type[72] = c
 
 core/field/apply/rules.c:352 [mol] site = 73, connect = 0
@@ -7534,7 +7534,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[73] = hc
 
 core/field/apply/rules.c:352 [mol] site = 74, connect = 0
@@ -7562,7 +7562,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[74] = hc
 
 core/field/apply/rules.c:352 [mol] site = 75, connect = 0
@@ -7590,7 +7590,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[75] = hc
 
 core/field/apply/rules.c:352 [mol] site = 76, connect = 0
@@ -7646,7 +7646,7 @@ core/field/apply/rules.c:215 match =
 {type -> 28, comment -> "generic SP3 carbon", element -> "C", test -> {flag ->
     {sp -> sp3}}}
 
-core/field/apply/rules.c:377 match = 01c8dae8
+core/field/apply/rules.c:377 match = 01a0dae8
 core/field/apply/rules.c:443 type[76] = c
 
 core/field/apply/rules.c:352 [mol] site = 77, connect = 0
@@ -7704,7 +7704,7 @@ core/field/apply/rules.c:215 match =
 {type -> 28, comment -> "generic SP3 carbon", element -> "C", test -> {flag ->
     {sp -> sp3}}}
 
-core/field/apply/rules.c:377 match = 01c8dae8
+core/field/apply/rules.c:377 match = 01a0dae8
 core/field/apply/rules.c:443 type[77] = c
 
 core/field/apply/rules.c:352 [mol] site = 78, connect = 0
@@ -7733,7 +7733,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[78] = hc
 
 core/field/apply/rules.c:352 [mol] site = 79, connect = 0
@@ -7762,7 +7762,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[79] = hc
 
 core/field/apply/rules.c:352 [mol] site = 80, connect = 0
@@ -7806,7 +7806,7 @@ core/field/apply/rules.c:215 match =
     {element -> "C", test -> {flag -> {bond -> single}}}, 
     {element -> "C", test -> {flag -> {bond -> single}}}}}
 
-core/field/apply/rules.c:377 match = 01c8f678
+core/field/apply/rules.c:377 match = 01a0f678
 core/field/apply/rules.c:443 type[80] = oc
 
 core/field/apply/rules.c:352 [mol] site = 81, connect = 0
@@ -7859,7 +7859,7 @@ core/field/apply/rules.c:215 match =
 {type -> 28, comment -> "generic SP3 carbon", element -> "C", test -> {flag ->
     {sp -> sp3}}}
 
-core/field/apply/rules.c:377 match = 01c8dae8
+core/field/apply/rules.c:377 match = 01a0dae8
 core/field/apply/rules.c:443 type[81] = c
 
 core/field/apply/rules.c:352 [mol] site = 82, connect = 0
@@ -7888,7 +7888,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[82] = hc
 
 core/field/apply/rules.c:352 [mol] site = 83, connect = 0
@@ -7917,7 +7917,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[83] = hc
 
 core/field/apply/rules.c:352 [mol] site = 84, connect = 0
@@ -7981,7 +7981,7 @@ core/field/apply/rules.c:215 match =
     {element -> "*", test -> {flag -> {bond -> single}}}, 
     {element -> "*", test -> {flag -> {bond -> single}}}}}
 
-core/field/apply/rules.c:377 match = 01c8dc68
+core/field/apply/rules.c:377 match = 01a0dc68
 core/field/apply/rules.c:443 type[84] = c3h
 
 core/field/apply/rules.c:352 [mol] site = 85, connect = 0
@@ -8013,7 +8013,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[85] = hc
 
 core/field/apply/rules.c:352 [mol] site = 86, connect = 0
@@ -8058,7 +8058,7 @@ core/field/apply/rules.c:215 match =
     {element -> "C", test -> {flag -> {bond -> single}}}, 
     {element -> "C", test -> {flag -> {bond -> single}}}}}
 
-core/field/apply/rules.c:377 match = 01c8f4c8
+core/field/apply/rules.c:377 match = 01a0f4c8
 core/field/apply/rules.c:443 type[86] = o3e
 
 core/field/apply/rules.c:352 [mol] site = 87, connect = 0
@@ -8111,7 +8111,7 @@ core/field/apply/rules.c:215 match =
 {type -> 28, comment -> "generic SP3 carbon", element -> "C", test -> {flag ->
     {sp -> sp3}}}
 
-core/field/apply/rules.c:377 match = 01c8dae8
+core/field/apply/rules.c:377 match = 01a0dae8
 core/field/apply/rules.c:443 type[87] = c
 
 core/field/apply/rules.c:352 [mol] site = 88, connect = 0
@@ -8140,7 +8140,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[88] = hc
 
 core/field/apply/rules.c:352 [mol] site = 89, connect = 0
@@ -8169,7 +8169,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[89] = hc
 
 core/field/apply/rules.c:352 [mol] site = 90, connect = 0
@@ -8223,7 +8223,7 @@ core/field/apply/rules.c:215 match =
 {type -> 28, comment -> "generic SP3 carbon", element -> "C", test -> {flag ->
     {sp -> sp3}}}
 
-core/field/apply/rules.c:377 match = 01c8dae8
+core/field/apply/rules.c:377 match = 01a0dae8
 core/field/apply/rules.c:443 type[90] = c
 
 core/field/apply/rules.c:352 [mol] site = 91, connect = 0
@@ -8251,7 +8251,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[91] = hc
 
 core/field/apply/rules.c:352 [mol] site = 92, connect = 0
@@ -8279,7 +8279,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[92] = hc
 
 core/field/apply/rules.c:352 [mol] site = 93, connect = 0
@@ -8307,7 +8307,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[93] = hc
 
 core/field/apply/rules.c:352 [mol] site = 94, connect = 0
@@ -8365,7 +8365,7 @@ core/field/apply/rules.c:215 match =
 {type -> 28, comment -> "generic SP3 carbon", element -> "C", test -> {flag ->
     {sp -> sp3}}}
 
-core/field/apply/rules.c:377 match = 01c8dae8
+core/field/apply/rules.c:377 match = 01a0dae8
 core/field/apply/rules.c:443 type[94] = c
 
 core/field/apply/rules.c:352 [mol] site = 95, connect = 0
@@ -8394,7 +8394,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[95] = hc
 
 core/field/apply/rules.c:352 [mol] site = 96, connect = 0
@@ -8423,7 +8423,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[96] = hc
 
 core/field/apply/rules.c:352 [mol] site = 97, connect = 0
@@ -8467,7 +8467,7 @@ core/field/apply/rules.c:215 match =
     {element -> "C", test -> {flag -> {bond -> single}}}, 
     {element -> "C", test -> {flag -> {bond -> single}}}}}
 
-core/field/apply/rules.c:377 match = 01c8f678
+core/field/apply/rules.c:377 match = 01a0f678
 core/field/apply/rules.c:443 type[97] = oc
 
 core/field/apply/rules.c:352 [mol] site = 98, connect = 0
@@ -8520,7 +8520,7 @@ core/field/apply/rules.c:215 match =
 {type -> 28, comment -> "generic SP3 carbon", element -> "C", test -> {flag ->
     {sp -> sp3}}}
 
-core/field/apply/rules.c:377 match = 01c8dae8
+core/field/apply/rules.c:377 match = 01a0dae8
 core/field/apply/rules.c:443 type[98] = c
 
 core/field/apply/rules.c:352 [mol] site = 99, connect = 0
@@ -8549,7 +8549,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[99] = hc
 
 core/field/apply/rules.c:352 [mol] site = 100, connect = 0
@@ -8578,7 +8578,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[100] = hc
 
 core/field/apply/rules.c:352 [mol] site = 101, connect = 0
@@ -8642,7 +8642,7 @@ core/field/apply/rules.c:215 match =
     {element -> "*", test -> {flag -> {bond -> single}}}, 
     {element -> "*", test -> {flag -> {bond -> single}}}}}
 
-core/field/apply/rules.c:377 match = 01c8dc68
+core/field/apply/rules.c:377 match = 01a0dc68
 core/field/apply/rules.c:443 type[101] = c3h
 
 core/field/apply/rules.c:352 [mol] site = 102, connect = 0
@@ -8674,7 +8674,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[102] = hc
 
 core/field/apply/rules.c:352 [mol] site = 103, connect = 0
@@ -8719,7 +8719,7 @@ core/field/apply/rules.c:215 match =
     {element -> "C", test -> {flag -> {bond -> single}}}, 
     {element -> "C", test -> {flag -> {bond -> single}}}}}
 
-core/field/apply/rules.c:377 match = 01c8f4c8
+core/field/apply/rules.c:377 match = 01a0f4c8
 core/field/apply/rules.c:443 type[103] = o3e
 
 core/field/apply/rules.c:352 [mol] site = 104, connect = 0
@@ -8772,7 +8772,7 @@ core/field/apply/rules.c:215 match =
 {type -> 28, comment -> "generic SP3 carbon", element -> "C", test -> {flag ->
     {sp -> sp3}}}
 
-core/field/apply/rules.c:377 match = 01c8dae8
+core/field/apply/rules.c:377 match = 01a0dae8
 core/field/apply/rules.c:443 type[104] = c
 
 core/field/apply/rules.c:352 [mol] site = 105, connect = 0
@@ -8801,7 +8801,7 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[105] = hc
 
 core/field/apply/rules.c:352 [mol] site = 106, connect = 0
@@ -8830,22 +8830,22 @@ core/field/apply/rules.c:215 match =
   connect -> 
   {element -> "C", test -> {flag -> {bond -> single}}}}
 
-core/field/apply/rules.c:377 match = 01c8e6b8
+core/field/apply/rules.c:377 match = 01a0e6b8
 core/field/apply/rules.c:443 type[106] = hc
 
 Info: put = {name -> "debug", compress -> false, detail -> 3}
 Info: variables = {nphase1 -> 107, mphase1 -> 650.85489, vphase1 ->
-        108076.989671, lbox -> 47.6333449346, lphase1 -> 47.6333449346, lxx ->
-        47.6333449346, lyy -> 47.6333449346, lzz -> 47.6333449346, lzy -> 0, 
-        lzx -> 0, lyx -> 0, lphase -> 47.6333449346, ntotal -> 107, mtotal ->
-        650.85489, vtotal -> 108076.989671}
+        10807.6989671, lbox -> 22.1094401956, lphase1 -> 22.1094401956, lxx ->
+        22.1094401956, lyy -> 22.1094401956, lzz -> 22.1094401956, lzy -> 0, 
+        lzx -> 0, lyx -> 0, lphase -> 22.1094401956, ntotal -> 107, mtotal ->
+        650.85489, vtotal -> 10807.6989671}
 Info: types = {cff -> {pair -> {active -> true, mode -> repulsive, cutoff ->
             cutoff}}}
 Info: build = {
-        system -> {id -> main, temperature -> 300, density -> 0.01, split ->
+        system -> {id -> main, temperature -> 300, density -> 0.1, split ->
           false, flag -> {charge -> true, map -> true, pbc -> true, geometry
             -> true}, periodic -> {x -> true, y -> true, z -> true}, geometry
-          -> {xx -> 47.6333449346, yy -> 47.6333449346, zz -> 47.6333449346, 
+          -> {xx -> 22.1094401956, yy -> 22.1094401956, zz -> 22.1094401956, 
             zy -> 0, zx -> 0, yx -> 0}, deform -> {xx -> 1, yy -> 1, zz -> 1, 
             zy -> 0, zx -> 0, yx -> 0}}, 
         select -> {progress -> list, frequency -> 1, message -> nkt, center ->
@@ -8861,82 +8861,82 @@ Info: building 107 sites.
    progress/%      E[0]/nkT
 ---------------------------
             1             0
-            3     0.0741533
-            5     0.3705435
-            7     0.3319777
-            8     0.5933748
-            9     0.6109783
-           10     0.4404966
-           11      0.773263
-           12       1.11802
-           13       1.17093
-           14      1.142252
-           16      1.256997
-           18      1.764328
-           20      1.741017
-           21       2.20796
-           22      2.218347
-           23      1.982053
-           24      2.420828
-           25      2.194935
-           26      2.251508
-           27       1.96894
-           28      2.127933
-           30      1.958941
-           32      1.777749
-           34      2.202427
-           36      6.930154
-           37      9.854976
-           38      9.900004
-           39      9.999139
-           40      9.156592
-           41      9.004778
-           42      8.778952
-           44      11.26947
-           46      10.85509
-           48      10.69663
-           50      10.69663
-           51      10.69663
-           52      10.69663
-           53      10.69663
-           54      10.69663
-           55      10.69663
-           56      10.69663
-           57      10.69663
-           59      10.62293
-           61      10.16016
-           63      9.894722
-           64       9.80818
-           65      9.614155
-           66      9.493239
-           67      9.350889
-           68      9.339232
-           69      9.242399
-           70      9.217815
-           71      9.055099
-           73       8.76442
-           75      8.760431
-           77      8.551892
-           79      8.372571
-           80      8.082663
-           81      8.205638
-           82      8.144447
-           83      8.123195
-           84      8.000089
-           85      7.990006
-           87      7.811715
-           89      7.625282
-           91      7.623343
-           93      7.523183
-           94      8.961482
-           95       8.88326
-           96       8.88326
-           97       8.88326
-           98       8.88326
-           99      8.855936
-          100      8.766699
+            3     0.1321838
+            5     0.1880124
+            7     0.4754904
+            8      1.001901
+            9     0.8075007
+           10      1.728666
+           11      1.734575
+           12      2.264306
+           13      1.639481
+           14      1.655361
+           16      2.067516
+           18      1.257941
+           20      1.665174
+           21      1.540404
+           22      1.465927
+           23      1.799634
+           24      1.900453
+           25      2.037018
+           26      1.868306
+           27      2.044122
+           28      2.035238
+           30      1.805205
+           32      1.972174
+           34      6.532144
+           36      6.423203
+           37      5.992398
+           38      5.807141
+           39      5.713617
+           40      9.146182
+           41      8.908205
+           42       8.76064
+           44      12.59419
+           46      12.06585
+           48      10.73175
+           50      10.73175
+           51      10.73175
+           52      10.73175
+           53      10.73175
+           54      10.73175
+           55      10.73175
+           56      10.73175
+           57      10.73175
+           59      10.71964
+           61      10.58261
+           63      10.43504
+           64      10.25315
+           65      10.10269
+           66       9.76759
+           67       9.52651
+           68      9.435005
+           69      9.304014
+           70      9.151805
+           71      9.048817
+           73      8.932176
+           75      8.693684
+           77      8.561076
+           79       8.41161
+           80      8.160886
+           81       8.06607
+           82        8.0661
+           83      8.107501
+           84       8.00385
+           85      8.018539
+           87        7.7789
+           89      7.581738
+           91       7.61356
+           93       7.48204
+           94       9.11484
+           95      8.939772
+           96      8.939772
+           97      8.939772
+           98      8.939772
+           99      8.815182
+          100      8.943539
 ---------------------------
-      average      6.642849
+      average      6.640708
 
       niterations = 92, <niterations> = 0.859813
 Info: force = {style -> none, message -> nkt}
@@ -8945,21 +8945,21 @@ Info: force = {style -> none, message -> nkt}
 
                          E[0]/nkT 
 ---------------------------------
-cff.angle                8.489356 
-cff.angle_angle       -0.05321518 
-cff.angle_angle_tor    -0.5241446 
-cff.angle_torsion      -0.1628407 
-cff.bond                0.7220128 
-cff.bond_angle        -0.05412594 
-cff.bond_bond        -0.000685325 
+cff.angle                 8.61247 
+cff.angle_angle       -0.04304309 
+cff.angle_angle_tor     -0.523877 
+cff.angle_torsion     -0.09301682 
+cff.bond                0.6638329 
+cff.bond_angle        -0.08070425 
+cff.bond_bond        -0.002554217 
 cff.bond_bond_13                0 
-cff.end_bond_torsio   -0.01034651 
+cff.end_bond_torsio  -0.004663336 
 cff.improper                    0 
-cff.middle_bond_tor   -0.01208406 
-cff.pair                0.9101044 
-cff.torsion             -0.537332 
+cff.middle_bond_tor   -0.05172465 
+cff.pair                 1.009252 
+cff.torsion            -0.5424313 
 ---------------------------------
-total                    8.766699 
+total                    8.943539 
 
 Info: force = {style -> init, message -> nkt}
 
@@ -8967,21 +8967,21 @@ Info: force = {style -> init, message -> nkt}
 
                          E[0]/nkT 
 ---------------------------------
-cff.angle                8.489356 
-cff.angle_angle       -0.05321518 
-cff.angle_angle_tor    -0.5241446 
-cff.angle_torsion      -0.1628407 
-cff.bond                0.7220128 
-cff.bond_angle        -0.05412594 
-cff.bond_bond        -0.000685325 
+cff.angle                 8.61247 
+cff.angle_angle       -0.04304309 
+cff.angle_angle_tor     -0.523877 
+cff.angle_torsion     -0.09301682 
+cff.bond                0.6638329 
+cff.bond_angle        -0.08070425 
+cff.bond_bond        -0.002554217 
 cff.bond_bond_13                0 
-cff.end_bond_torsio   -0.01034651 
+cff.end_bond_torsio  -0.004663336 
 cff.improper                    0 
-cff.middle_bond_tor   -0.01208406 
-cff.pair                0.9101044 
-cff.torsion             -0.537332 
+cff.middle_bond_tor   -0.05172465 
+cff.pair                 1.009252 
+cff.torsion            -0.5424313 
 ---------------------------------
-total                    8.766699 
+total                    8.943539 
 
 Info: put = {name -> "pre_mol", compress -> true, detail -> 3}
 Info: pdb = {name -> "pre_mol", compress -> true, extend -> false, mode ->
@@ -9000,10 +9000,10 @@ Info: lammps = {name -> "pre_mol", compress -> false, system -> main, mode ->
         variables -> true, coefficients -> true, comment -> true, map -> true,
         unwrap -> true, flag -> {charge -> true, map -> true, pbc -> true, 
           geometry -> true}}
-Info: tsc: bonded = {1.558, 0.3326, 0.1525, 0.3737, 0.3937, 0.2903} s
-Info: tsc: simulation = 5.6 s, threads = 0 s
+Info: tsc: bonded = {1.581, 0.3403, 0.1536, 0.3779, 0.3956, 0.2975} s
+Info: tsc: simulation = 5.58 s, threads = 0 s
 Info: tsc: thread = 0 s
-Info: script v1.0 finished at Fri Feb 24 21:40:57 2023
+Info: script v1.0 finished at Fri Feb 24 22:46:22 2023
 
 Info: Thank you for using EMC v9.4.4
 Info: In any publication of scientific results based in part or

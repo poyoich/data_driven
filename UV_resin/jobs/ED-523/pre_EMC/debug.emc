@@ -1,7 +1,7 @@
 (* EMC: Enhanced Monte Carlo simulations *)
 
 identity = {
-  name -> "debug", machine -> "", date -> "Fri Feb 24 21:40:52 2023", version
+  name -> "debug", machine -> "", date -> "Fri Feb 24 22:46:17 2023", version
   -> "9.4.4", build -> "Jul 27 2022 18:02:20"};
 
 (* Output *)
@@ -14,7 +14,7 @@ output = {
 (* Timing *)
 
 timing = {
-  total -> {wall -> 1.55, cpu -> 1.54}, 
+  total -> {wall -> 1.5, cpu -> 1.5}, 
   pairs -> {wall -> 0, cpu -> 0}, 
   bonds -> {wall -> 0, cpu -> 0}, 
   messages -> {wall -> 0, cpu -> 0}};
@@ -26,7 +26,7 @@ script = {
     field -> "pcff/pcff", location1 -> "../../field/", nav -> 0.6022141179, 
     temperature -> 300, radius -> 5, nrelax -> 100, weight_nonbond -> 0.0001, 
     weight_bond -> 0.0001, weight_focus -> 1, cutoff -> 9.5, charge_cutoff ->
-    9.5, kappa -> 4, density1 -> 0.01, lprevious -> 0, lphase -> 0, f_mol ->
+    9.5, kappa -> 4, density1 -> 0.1, lprevious -> 0, lphase -> 0, f_mol ->
     100, chem_mol ->
     "CC(COC[C@H](CO)OCCCOCC(C)(COC[C@@H]1OC1)C)(C)COC[C@@H]1OC1.CC(COC[C@@H]1OC1)(C)COC[C@@H]1OC1"},
     
@@ -82,7 +82,7 @@ variables = {
   "pcff/pcff", location1 -> "../../field/", nav -> 0.6022141179, temperature
   -> 300, radius -> 5, nrelax -> 100, weight_nonbond -> 0.0001, weight_bond ->
   0.0001, weight_focus -> 1, cutoff -> 9.5, charge_cutoff -> 9.5, kappa -> 4, 
-  density1 -> 0.01, lprevious -> 0, lphase -> 0, f_mol -> 1, chem_mol ->
+  density1 -> 0.1, lprevious -> 0, lphase -> 0, f_mol -> 1, chem_mol ->
   "CC(COC[C@H](CO)OCCCOCC(C)(COC[C@@H]1OC1)C)(C)COC[C@@H]1OC1.CC(COC[C@@H]1OC1)(C)COC[C@@H]1OC1",
   lg_mol -> 107, l_mol -> 107, norm_mol -> 1, mg_mol -> 650.85489, m_mol ->
   650.85489, norm -> 16.4399164305, n_mol -> 1, mtotal -> 0};

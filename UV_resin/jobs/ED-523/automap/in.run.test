@@ -9,7 +9,7 @@
 
 units real
 atom_style full
-pair_style lj/class2/coul/cut 15.0
+pair_style lj/class2/coul/cut 10.0
 bond_style class2
 angle_style class2
 dihedral_style class2
@@ -18,7 +18,7 @@ improper_style class2
 
 # ------------------------------- Atom Definition Section -------------------
 
-read_data       "pre_mol.data" extra/bond/per/atom 1 extra/angle/per/atom 12 extra/dihedral/per/atom 12 extra/improper/per/atom 12 extra/special/per/atom 12
+read_data       "pack_mol.data" extra/bond/per/atom 1 extra/angle/per/atom 12 extra/dihedral/per/atom 12 extra/improper/per/atom 12 extra/special/per/atom 12
 
 include calc.pram
 
@@ -26,21 +26,30 @@ include calc.pram
 minimize 1.0e-5 1.0e-7 100000 400000
 # ------------------------------- Run Section -------------------------------
 
-molecule 	pre pre-mol.data
-molecule	post post-mol.data
+molecule 	pre cleaned_pre-mol
+molecule	post cleaned_post-mol
 
 fix		fxrct all bond/react stabilization yes statted_grp .03 &
-		 react rxn1 all 100 0.0 10.0 pre post semi.map stabilize_steps 100 &
+		 react rxn1 all 100 0.0 3.5 pre post cleaned_semi.map stabilize_steps 100 &
 
-fix 		1 statted_grp_REACT nvt temp 300.0 300.0 100
+fix 		1 statted_grp_REACT npt temp 300.0 300.0 100 iso 1.0 1.0 1000
 
 fix 		4 bond_react_MASTER_group temp/rescale 1 300.0 300.0 1 1
 
 
 
-thermo_style custom step temp f_fxrct[1]
+thermo_style custom step temp pe evdwl ecoul ebond eangle edihed eimp density vol f_fxrct[1] spcpu
 thermo          100
-dump myDump all custom 1000 dump.pos id type x y z mol element
+
+
+compute 1 all property/local btype batom1 batom2
+
+compute 2 all stress/atom NULL
+fix 5 all ave/atom 1 500 1000 c_2[*]
+
+
+dump DumpPos all custom 1000 dump.pos id type x y z mol  f_5[*]
+dump DumpBond all local 1000 bonds.dump index c_1[*]
 
 
 run 200000

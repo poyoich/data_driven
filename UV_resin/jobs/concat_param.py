@@ -4,6 +4,7 @@ import datetime
 
 pre_dir = "./pre_EMC/"
 post_dir = "./post_EMC/"
+pack_dir = "./pack_EMC/"
 out_dir = "./automap/"
 
 class parameter:
@@ -271,13 +272,8 @@ class Lammps_data:
             ofn.write("\n".join(body))
             
 
-# %%
-def main():
-    param1 = parameter()
-    param1.read_param(pre_dir+"pre_mol.params")
-    param2 = parameter()
-    param2.read_param(post_dir+"post_mol.params")
-    
+def concat_params(param1, param2):
+
     concat_param = parameter()
     for var_name in dir(param1):
         if not var_name.startswith("__") and not callable(getattr(param1, var_name)):
@@ -286,7 +282,22 @@ def main():
             update_para = concat_dict(getattr(param1, var_name),getattr(param2, var_name))
             renumber(update_para, var_name)
             setattr(concat_param, var_name, update_para)
+    return concat_param
+
+
+def main():
+    param1 = parameter()
+    param1.read_param(pre_dir+"pre_mol.params")
+    param2 = parameter()
+    param2.read_param(post_dir+"post_mol.params")
     
+    concat_param = concat_params(param1, param2)
+
+    param3 = parameter()
+    param3.read_param(pack_dir+"pack_mol.params")
+
+    concat_param = concat_params(concat_param, param3)
+
     
     for key, val in concat_param.mass.items():
         index = val.split()[1]
@@ -318,11 +329,14 @@ def main():
     lmp_data1.import_file(pre_dir+"pre_mol.data", concat_param)
     lmp_data1.export_file(out_dir+"pre_mol.data", concat_param)
     
-    
-
     lmp_data2 = Lammps_data()
     lmp_data2.import_file(post_dir+"post_mol.data", concat_param)
     lmp_data2.export_file(out_dir+"post_mol.data", concat_param)
+
+    lmp_data3 = Lammps_data()
+    lmp_data3.import_file(pack_dir+"pack_mol.data", concat_param)
+    lmp_data3.export_file(out_dir+"pack_mol.data", concat_param)
+
     
     concat_param.write_param(out_dir+"calc.pram")
 
