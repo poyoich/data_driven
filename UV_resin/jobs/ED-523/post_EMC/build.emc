@@ -1,13 +1,13 @@
 (* EMC: Script *)
 
 (* Created by emc_setup.pl v4.1, August 1, 2021
-   on Thu Feb 23 22:38:27 JST 2023 *)
+   on Fri Feb 24 21:40:58 JST 2023 *)
 
 (* define variables *)
 
 variables	= {
   seed		-> -1,
-  ntotal	-> 72,
+  ntotal	-> 107,
   fshape	-> 1,
   output	-> "post_mol",
   field		-> "pcff/pcff",
@@ -30,7 +30,7 @@ variables	= {
 
   f_mol		-> 100,
 
-  chem_mol	-> "CC(COC[C@H](CO)OCCCOCC(C)(COC[C@@H]1OC1)C)(C)COC[C@@H]1OC1"
+  chem_mol	-> "CC(COC[C@H](CO)OC[C@@H](COCC(C)(COC[C@@H]1OC1)C)OCCCOCC(C)(COC[C@@H]1OC1)C)(C)COC[C@@H]1OC1"
 };
 
 output		= {

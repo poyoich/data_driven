@@ -1,7 +1,7 @@
 (* EMC: Enhanced Monte Carlo simulations *)
 
 identity = {
-  name -> "debug", machine -> "", date -> "Thu Feb 23 22:38:27 2023", version
+  name -> "debug", machine -> "", date -> "Fri Feb 24 21:40:58 2023", version
   -> "9.4.4", build -> "Jul 27 2022 18:02:20"};
 
 (* Output *)
@@ -14,7 +14,7 @@ output = {
 (* Timing *)
 
 timing = {
-  total -> {wall -> 1.44, cpu -> 1.44}, 
+  total -> {wall -> 1.54, cpu -> 1.54}, 
   pairs -> {wall -> 0, cpu -> 0}, 
   bonds -> {wall -> 0, cpu -> 0}, 
   messages -> {wall -> 0, cpu -> 0}};
@@ -22,13 +22,14 @@ timing = {
 (* Script *)
 
 script = {
-  variables -> {seed -> -1, ntotal -> 72, fshape -> 1, output -> "post_mol", 
+  variables -> {seed -> -1, ntotal -> 107, fshape -> 1, output -> "post_mol", 
     field -> "pcff/pcff", location1 -> "../../field/", nav -> 0.6022141179, 
     temperature -> 300, radius -> 5, nrelax -> 100, weight_nonbond -> 0.0001, 
     weight_bond -> 0.0001, weight_focus -> 1, cutoff -> 9.5, charge_cutoff ->
     9.5, kappa -> 4, density1 -> 0.01, lprevious -> 0, lphase -> 0, f_mol ->
     100, chem_mol ->
-    "CC(COC[C@H](CO)OCCCOCC(C)(COC[C@@H]1OC1)C)(C)COC[C@@H]1OC1"}, 
+    "CC(COC[C@H](CO)OC[C@@H](COCC(C)(COC[C@@H]1OC1)C)OCCCOCC(C)(COC[C@@H]1OC1)C)(C)COC[C@@H]1OC1"},
+    
   output -> {debug -> false, exit -> true, info -> true, warning -> true}, 
   field -> {id -> pcff, mode -> cff, name -> {location1+field+".frc", 
       location1+field+"_templates.dat"}, compress -> false}, 
@@ -82,9 +83,9 @@ variables = {
   -> 300, radius -> 5, nrelax -> 100, weight_nonbond -> 0.0001, weight_bond ->
   0.0001, weight_focus -> 1, cutoff -> 9.5, charge_cutoff -> 9.5, kappa -> 4, 
   density1 -> 0.01, lprevious -> 0, lphase -> 0, f_mol -> 1, chem_mol ->
-  "CC(COC[C@H](CO)OCCCOCC(C)(COC[C@@H]1OC1)C)(C)COC[C@@H]1OC1", lg_mol -> 72, 
-  l_mol -> 72, norm_mol -> 1, mg_mol -> 434.57524, m_mol -> 434.57524, norm ->
-  16.5679020277, n_mol -> 1, mtotal -> 0};
+  "CC(COC[C@H](CO)OC[C@@H](COCC(C)(COC[C@@H]1OC1)C)OCCCOCC(C)(COC[C@@H]1OC1)C)(C)COC[C@@H]1OC1",
+  lg_mol -> 107, l_mol -> 107, norm_mol -> 1, mg_mol -> 650.85489, m_mol ->
+  650.85489, norm -> 16.4399164305, n_mol -> 1, mtotal -> 0};
 
 (* Constants *)
 
@@ -226,7 +227,7 @@ types = {
         {i0 -> c3h, i1 -> c, i2 -> o3e, i3 -> c, k -> -3.5744}, 
         {i0 -> c3h, i1 -> c, i2 -> o3e, i3 -> hc, k -> 0.1689}, 
         {i0 -> c3h, i1 -> hc, i2 -> c, i3 -> o3e, k -> 2.5926}}}, 
-    angle_angle_torsion -> {active -> true, n -> 34, data -> {
+    angle_angle_torsion -> {active -> true, n -> 35, data -> {
         {i0 -> c, i1 -> c, i2 -> c, i3 -> hc, k -> -16.164}, 
         {i0 -> c, i1 -> c, i2 -> c, i3 -> oc, k -> -29.042}, 
         {i0 -> c, i1 -> c, i2 -> oc, i3 -> c, k -> -19.0059}, 
@@ -244,6 +245,7 @@ types = {
         {i0 -> c, i1 -> oc, i2 -> c, i3 -> c3h, k -> -19.0059}, 
         {i0 -> c, i1 -> oc, i2 -> c, i3 -> hc, k -> -16.4438}, 
         {i0 -> c, i1 -> oc, i2 -> c1, i3 -> hc, k -> -16.4438}, 
+        {i0 -> c1, i1 -> c, i2 -> oc, i3 -> c1, k -> -19.0059}, 
         {i0 -> c1, i1 -> c, i2 -> oh, i3 -> h, k -> 0}, 
         {i0 -> c1, i1 -> oc, i2 -> c, i3 -> hc, k -> -16.4438}, 
         {i0 -> c3h, i1 -> o3e, i2 -> c, i3 -> hc, k -> -16.4438}, 
@@ -261,7 +263,7 @@ types = {
         {i0 -> o3e, i1 -> c3h, i2 -> c, i3 -> oc, k -> -14.0484}, 
         {i0 -> oc, i1 -> c, i2 -> c1, i3 -> oc, k -> -14.0484}, 
         {i0 -> oc, i1 -> c1, i2 -> c, i3 -> oh, k -> -14.0484}}}, 
-    angle_torsion -> {active -> true, n -> 34, data -> {
+    angle_torsion -> {active -> true, n -> 35, data -> {
         {i0 -> c, i1 -> c, i2 -> c, i3 -> hc, k -> {-0.2454, 0, -0.1136,
           0.3113, 0.4516, -0.1988}}, 
         {i0 -> c, i1 -> c, i2 -> c, i3 -> oc, k -> {0.5623, -0.3041, -0.4015,
@@ -296,6 +298,8 @@ types = {
           -1.8234, 1.6393, 0.5144}}, 
         {i0 -> c, i1 -> oc, i2 -> c1, i3 -> hc, k -> {-0.7777, 0.434, -0.6653,
           -1.8234, 1.6393, 0.5144}}, 
+        {i0 -> c1, i1 -> c, i2 -> oc, i3 -> c1, k -> {-2.7466, 1.4877,
+          -0.8955, 0.5676, 0.945, 0.0703}}, 
         {i0 -> c1, i1 -> c, i2 -> oh, i3 -> h, k -> {0, 0, 0, 0, 0, 0}}, 
         {i0 -> c1, i1 -> oc, i2 -> c, i3 -> hc, k -> {-1.8234, 1.6393, 0.5144,
           -0.7777, 0.434, -0.6653}}, 
@@ -396,7 +400,7 @@ types = {
         {i0 -> hc, i1 -> c, i2 -> oh, k -> 23.1979}, 
         {i0 -> hc, i1 -> c1, i2 -> oc, k -> 23.1979}, 
         {i0 -> hc, i1 -> c3h, i2 -> o3e, k -> 23.1979}}}, 
-    bond_bond_13 -> {active -> true, n -> 34, data -> {
+    bond_bond_13 -> {active -> true, n -> 35, data -> {
         {i0 -> c, i1 -> c, i2 -> c, i3 -> hc, k -> 0}, 
         {i0 -> c, i1 -> c, i2 -> c, i3 -> oc, k -> 0}, 
         {i0 -> c, i1 -> c, i2 -> oc, i3 -> c, k -> 0}, 
@@ -414,6 +418,7 @@ types = {
         {i0 -> c, i1 -> oc, i2 -> c, i3 -> c3h, k -> 0}, 
         {i0 -> c, i1 -> oc, i2 -> c, i3 -> hc, k -> 0}, 
         {i0 -> c, i1 -> oc, i2 -> c1, i3 -> hc, k -> 0}, 
+        {i0 -> c1, i1 -> c, i2 -> oc, i3 -> c1, k -> 0}, 
         {i0 -> c1, i1 -> c, i2 -> oh, i3 -> h, k -> 0}, 
         {i0 -> c1, i1 -> oc, i2 -> c, i3 -> hc, k -> 0}, 
         {i0 -> c3h, i1 -> o3e, i2 -> c, i3 -> hc, k -> 0}, 
@@ -431,7 +436,7 @@ types = {
         {i0 -> o3e, i1 -> c3h, i2 -> c, i3 -> oc, k -> 0}, 
         {i0 -> oc, i1 -> c, i2 -> c1, i3 -> oc, k -> 0}, 
         {i0 -> oc, i1 -> c1, i2 -> c, i3 -> oh, k -> 0}}}, 
-    end_bond_torsion -> {active -> true, n -> 34, data -> {
+    end_bond_torsion -> {active -> true, n -> 35, data -> {
         {i0 -> c, i1 -> c, i2 -> c, i3 -> hc, k -> {0.2486, 0.2422, -0.0925,
           0.0814, 0.0591, 0.2219}}, 
         {i0 -> c, i1 -> c, i2 -> c, i3 -> oc, k -> {-0.319, 0.4411, -0.7174,
@@ -466,6 +471,8 @@ types = {
           -0.6054, 1.3339, 0.9648}}, 
         {i0 -> c, i1 -> oc, i2 -> c1, i3 -> hc, k -> {-0.162, 0.1564, -1.1408,
           -0.6054, 1.3339, 0.9648}}, 
+        {i0 -> c1, i1 -> c, i2 -> oc, i3 -> c1, k -> {-0.2456, 1.0517,
+          -0.7795, 0.4741, 1.2635, 0.5576}}, 
         {i0 -> c1, i1 -> c, i2 -> oh, i3 -> h, k -> {0, 0, 0, 0, 0, 0}}, 
         {i0 -> c1, i1 -> oc, i2 -> c, i3 -> hc, k -> {-0.6054, 1.3339, 0.9648,
           -0.162, 0.1564, -1.1408}}, 
@@ -498,7 +505,7 @@ types = {
           1.0165, 0.7553, -0.4609}}, 
         {i0 -> oc, i1 -> c1, i2 -> c, i3 -> oh, k -> {1.0165, 0.7553, -0.4609,
           1.0165, 0.7553, -0.4609}}}}, 
-    improper -> {active -> true, n -> 21, data -> {
+    improper -> {active -> true, n -> 22, data -> {
         {i0 -> c, i1 -> c, i2 -> c, i3 -> c, psi -> 0, k -> 0}, 
         {i0 -> c, i1 -> c, i2 -> c, i3 -> hc, psi -> 0, k -> 0}, 
         {i0 -> c, i1 -> c, i2 -> hc, i3 -> hc, psi -> 0, k -> 0}, 
@@ -506,6 +513,7 @@ types = {
         {i0 -> c, i1 -> c, i2 -> oc, i3 -> hc, psi -> 0, k -> 0}, 
         {i0 -> c, i1 -> c1, i2 -> hc, i3 -> hc, psi -> 0, k -> 0}, 
         {i0 -> c, i1 -> c1, i2 -> hc, i3 -> oc, psi -> 0, k -> 0}, 
+        {i0 -> c, i1 -> c1, i2 -> oc, i3 -> hc, psi -> 0, k -> 0}, 
         {i0 -> c, i1 -> c1, i2 -> oh, i3 -> hc, psi -> 0, k -> 0}, 
         {i0 -> c, i1 -> c3h, i2 -> hc, i3 -> hc, psi -> 0, k -> 0}, 
         {i0 -> c, i1 -> c3h, i2 -> hc, i3 -> o3e, psi -> 0, k -> 0}, 
@@ -520,7 +528,7 @@ types = {
         {i0 -> c3h, i1 -> c, i2 -> c, i3 -> hc, psi -> 0, k -> 0}, 
         {i0 -> c3h, i1 -> c, i2 -> c, i3 -> o3e, psi -> 0, k -> 0}, 
         {i0 -> c3h, i1 -> c, i2 -> o3e, i3 -> hc, psi -> 0, k -> 0}}}, 
-    middle_bond_torsion -> {active -> true, n -> 34, data -> {
+    middle_bond_torsion -> {active -> true, n -> 35, data -> {
         {i0 -> c, i1 -> c, i2 -> c, i3 -> hc, k -> {-14.879, -3.6581,
           -0.3138}}, 
         {i0 -> c, i1 -> c, i2 -> c, i3 -> oc, k -> {-21.8842, -7.6764,
@@ -555,6 +563,8 @@ types = {
           -1.4101}}, 
         {i0 -> c, i1 -> oc, i2 -> c1, i3 -> hc, k -> {-6.8007, -4.6546,
           -1.4101}}, 
+        {i0 -> c1, i1 -> c, i2 -> oc, i3 -> c1, k -> {-5.9288, -2.7007,
+          -0.3175}}, 
         {i0 -> c1, i1 -> c, i2 -> oh, i3 -> h, k -> {0, 0, 0}}, 
         {i0 -> c1, i1 -> oc, i2 -> c, i3 -> hc, k -> {-6.8007, -4.6546,
           -1.4101}}, 
@@ -646,7 +656,7 @@ types = {
         {i0 -> oc, i1 -> oc, epsilon -> 0.24, sigma -> 3.535}, 
         {i0 -> oc, i1 -> oh, epsilon -> 0.24, sigma -> 3.535}, 
         {i0 -> oh, i1 -> oh, epsilon -> 0.24, sigma -> 3.535}}}, 
-    torsion -> {active -> true, n -> 34, data -> {
+    torsion -> {active -> true, n -> 35, data -> {
         {i0 -> c, i1 -> c, i2 -> c, i3 -> hc, coefficients -> {
             {k -> 0, n -> 1, delta -> 0}, 
             {k -> 0.0316, n -> 2, delta -> 0}, 
@@ -715,6 +725,10 @@ types = {
             {k -> 0.5302, n -> 1, delta -> 0}, 
             {k -> 0, n -> 2, delta -> 0}, 
             {k -> -0.3966, n -> 3, delta -> 0}}}, 
+        {i0 -> c1, i1 -> c, i2 -> oc, i3 -> c1, coefficients -> {
+            {k -> -0.5203, n -> 1, delta -> 0}, 
+            {k -> -0.3028, n -> 2, delta -> 0}, 
+            {k -> -0.345, n -> 3, delta -> 0}}}, 
         {i0 -> c1, i1 -> c, i2 -> oh, i3 -> h, coefficients -> {
             {k -> 0, n -> 0, delta -> 0}, 
             {k -> 0, n -> 0, delta -> 0}, 
@@ -792,9 +806,9 @@ types = {
 groups = {
   n -> 1, data -> 
   {group -> mol, name -> "mol", chemistry ->
-    "CC(COC[C@H](CO)OCCCOCC(C)(COC[C@@H]1OC1)C)(C)COC[C@@H]1OC1", depth -> 8, 
-    connectivity -> 0, terminator -> false, charges -> forcefield, charge ->
-    0, sum -> 0, mass -> 434.57524, nsites -> 72, sites -> {
+    "CC(COC[C@H](CO)OC[C@@H](COCC(C)(COC[C@@H]1OC1)C)OCCCOCC(C)(COC[C@@H]1OC1)C)(C)COC[C@@H]1OC1",
+    depth -> 8, connectivity -> 0, terminator -> false, charges -> forcefield,
+    charge -> 0, sum -> 0, mass -> 650.85489, nsites -> 107, sites -> {
       {site -> 0, mass -> c, element -> "C", charge -> -0.159, connects -> {4,
         1, 2, 3}, bonds -> {single, single, single, single}}, 
       {site -> 1, mass -> hc, element -> "H", charge -> 0.053, connects -> 0, 
@@ -803,8 +817,8 @@ groups = {
         bonds -> single}, 
       {site -> 3, mass -> hc, element -> "H", charge -> 0.053, connects -> 0, 
         bonds -> single}, 
-      {site -> 4, mass -> c, element -> "C", charge -> 0, connects -> {0, 59,
-        5, 55}, bonds -> {single, single, single, single}}, 
+      {site -> 4, mass -> c, element -> "C", charge -> 0, connects -> {0, 94,
+        5, 90}, bonds -> {single, single, single, single}}, 
       {site -> 5, mass -> c, element -> "C", charge -> 0.027, connects -> {4,
         8, 6, 7}, bonds -> {single, single, single, single}}, 
       {site -> 6, mass -> hc, element -> "H", charge -> 0.053, connects -> 5, 
@@ -842,112 +856,187 @@ groups = {
         20, bonds -> single}, 
       {site -> 22, mass -> hc, element -> "H", charge -> 0.053, connects ->
         20, bonds -> single}, 
-      {site -> 23, mass -> c, element -> "C", charge -> -0.106, connects ->
-        {20, 26, 24, 25}, bonds -> {single, single, single, single}}, 
+      {site -> 23, mass -> c1, element -> "C", charge -> 0.08, isomer ->
+        right, connects -> {20, 54, 24, 25}, bonds -> {single, single, single,
+        single}}, 
       {site -> 24, mass -> hc, element -> "H", charge -> 0.053, connects ->
         23, bonds -> single}, 
-      {site -> 25, mass -> hc, element -> "H", charge -> 0.053, connects ->
-        23, bonds -> single}, 
-      {site -> 26, mass -> c, element -> "C", charge -> 0.027, connects ->
-        {23, 29, 27, 28}, bonds -> {single, single, single, single}}, 
+      {site -> 25, mass -> c, element -> "C", charge -> 0.027, connects ->
+        {23, 28, 26, 27}, bonds -> {single, single, single, single}}, 
+      {site -> 26, mass -> hc, element -> "H", charge -> 0.053, connects ->
+        25, bonds -> single}, 
       {site -> 27, mass -> hc, element -> "H", charge -> 0.053, connects ->
-        26, bonds -> single}, 
-      {site -> 28, mass -> hc, element -> "H", charge -> 0.053, connects ->
-        26, bonds -> single}, 
-      {site -> 29, mass -> oc, element -> "O", charge -> -0.266, connects ->
-        {26, 30}, bonds -> {single, single}}, 
-      {site -> 30, mass -> c, element -> "C", charge -> 0.027, connects ->
-        {29, 33, 31, 32}, bonds -> {single, single, single, single}}, 
+        25, bonds -> single}, 
+      {site -> 28, mass -> oc, element -> "O", charge -> -0.266, connects ->
+        {25, 29}, bonds -> {single, single}}, 
+      {site -> 29, mass -> c, element -> "C", charge -> 0.027, connects ->
+        {28, 32, 30, 31}, bonds -> {single, single, single, single}}, 
+      {site -> 30, mass -> hc, element -> "H", charge -> 0.053, connects ->
+        29, bonds -> single}, 
       {site -> 31, mass -> hc, element -> "H", charge -> 0.053, connects ->
-        30, bonds -> single}, 
-      {site -> 32, mass -> hc, element -> "H", charge -> 0.053, connects ->
-        30, bonds -> single}, 
-      {site -> 33, mass -> c, element -> "C", charge -> 0, connects -> {30,
-        51, 34, 38}, bonds -> {single, single, single, single}}, 
-      {site -> 34, mass -> c, element -> "C", charge -> -0.159, connects ->
-        {33, 35, 36, 37}, bonds -> {single, single, single, single}}, 
+        29, bonds -> single}, 
+      {site -> 32, mass -> c, element -> "C", charge -> 0, connects -> {29,
+        50, 33, 37}, bonds -> {single, single, single, single}}, 
+      {site -> 33, mass -> c, element -> "C", charge -> -0.159, connects ->
+        {32, 34, 35, 36}, bonds -> {single, single, single, single}}, 
+      {site -> 34, mass -> hc, element -> "H", charge -> 0.053, connects ->
+        33, bonds -> single}, 
       {site -> 35, mass -> hc, element -> "H", charge -> 0.053, connects ->
-        34, bonds -> single}, 
+        33, bonds -> single}, 
       {site -> 36, mass -> hc, element -> "H", charge -> 0.053, connects ->
-        34, bonds -> single}, 
-      {site -> 37, mass -> hc, element -> "H", charge -> 0.053, connects ->
-        34, bonds -> single}, 
-      {site -> 38, mass -> c, element -> "C", charge -> 0.027, connects ->
-        {33, 41, 39, 40}, bonds -> {single, single, single, single}}, 
+        33, bonds -> single}, 
+      {site -> 37, mass -> c, element -> "C", charge -> 0.027, connects ->
+        {32, 40, 38, 39}, bonds -> {single, single, single, single}}, 
+      {site -> 38, mass -> hc, element -> "H", charge -> 0.053, connects ->
+        37, bonds -> single}, 
       {site -> 39, mass -> hc, element -> "H", charge -> 0.053, connects ->
-        38, bonds -> single}, 
-      {site -> 40, mass -> hc, element -> "H", charge -> 0.053, connects ->
-        38, bonds -> single}, 
-      {site -> 41, mass -> oc, element -> "O", charge -> -0.266, connects ->
-        {38, 42}, bonds -> {single, single}}, 
-      {site -> 42, mass -> c, element -> "C", charge -> 0.027, connects ->
-        {41, 45, 43, 44}, bonds -> {single, single, single, single}}, 
+        37, bonds -> single}, 
+      {site -> 40, mass -> oc, element -> "O", charge -> -0.266, connects ->
+        {37, 41}, bonds -> {single, single}}, 
+      {site -> 41, mass -> c, element -> "C", charge -> 0.027, connects ->
+        {40, 44, 42, 43}, bonds -> {single, single, single, single}}, 
+      {site -> 42, mass -> hc, element -> "H", charge -> 0.053, connects ->
+        41, bonds -> single}, 
       {site -> 43, mass -> hc, element -> "H", charge -> 0.053, connects ->
-        42, bonds -> single}, 
-      {site -> 44, mass -> hc, element -> "H", charge -> 0.053, connects ->
-        42, bonds -> single}, 
-      {site -> 45, mass -> c3h, element -> "C", charge -> 0.08, isomer ->
+        41, bonds -> single}, 
+      {site -> 44, mass -> c3h, element -> "C", charge -> 0.08, isomer ->
         right, ring -> {nsites -> 3, aromatic -> 0, bits -> 0x1, link -> 0x1},
-          connects -> {42, 47, 46, 48}, bonds -> {single, single, single,
+          connects -> {41, 46, 45, 47}, bonds -> {single, single, single,
         single}}, 
-      {site -> 46, mass -> hc, element -> "H", charge -> 0.053, connects ->
-        45, bonds -> single}, 
-      {site -> 47, mass -> o3e, element -> "O", charge -> -0.266, ring -> {
-          nsites -> 3, aromatic -> 0, bits -> 0x1}, connects -> {45, 48}, 
+      {site -> 45, mass -> hc, element -> "H", charge -> 0.053, connects ->
+        44, bonds -> single}, 
+      {site -> 46, mass -> o3e, element -> "O", charge -> -0.266, ring -> {
+          nsites -> 3, aromatic -> 0, bits -> 0x1}, connects -> {44, 47}, 
         bonds -> {single, single}}, 
-      {site -> 48, mass -> c, element -> "C", charge -> 0.027, ring -> {nsites
-          -> 3, aromatic -> 0, bits -> 0x1, end -> 0x1}, connects -> {47, 45,
-        49, 50}, bonds -> {single, single, single, single}}, 
+      {site -> 47, mass -> c, element -> "C", charge -> 0.027, ring -> {nsites
+          -> 3, aromatic -> 0, bits -> 0x1, end -> 0x1}, connects -> {46, 44,
+        48, 49}, bonds -> {single, single, single, single}}, 
+      {site -> 48, mass -> hc, element -> "H", charge -> 0.053, connects ->
+        47, bonds -> single}, 
       {site -> 49, mass -> hc, element -> "H", charge -> 0.053, connects ->
-        48, bonds -> single}, 
-      {site -> 50, mass -> hc, element -> "H", charge -> 0.053, connects ->
-        48, bonds -> single}, 
-      {site -> 51, mass -> c, element -> "C", charge -> -0.159, connects ->
-        {33, 52, 53, 54}, bonds -> {single, single, single, single}}, 
+        47, bonds -> single}, 
+      {site -> 50, mass -> c, element -> "C", charge -> -0.159, connects ->
+        {32, 51, 52, 53}, bonds -> {single, single, single, single}}, 
+      {site -> 51, mass -> hc, element -> "H", charge -> 0.053, connects ->
+        50, bonds -> single}, 
       {site -> 52, mass -> hc, element -> "H", charge -> 0.053, connects ->
-        51, bonds -> single}, 
+        50, bonds -> single}, 
       {site -> 53, mass -> hc, element -> "H", charge -> 0.053, connects ->
-        51, bonds -> single}, 
-      {site -> 54, mass -> hc, element -> "H", charge -> 0.053, connects ->
-        51, bonds -> single}, 
-      {site -> 55, mass -> c, element -> "C", charge -> -0.159, connects ->
-        {4, 56, 57, 58}, bonds -> {single, single, single, single}}, 
+        50, bonds -> single}, 
+      {site -> 54, mass -> oc, element -> "O", charge -> -0.266, connects ->
+        {23, 55}, bonds -> {single, single}}, 
+      {site -> 55, mass -> c, element -> "C", charge -> 0.027, connects ->
+        {54, 58, 56, 57}, bonds -> {single, single, single, single}}, 
       {site -> 56, mass -> hc, element -> "H", charge -> 0.053, connects ->
         55, bonds -> single}, 
       {site -> 57, mass -> hc, element -> "H", charge -> 0.053, connects ->
         55, bonds -> single}, 
-      {site -> 58, mass -> hc, element -> "H", charge -> 0.053, connects ->
-        55, bonds -> single}, 
-      {site -> 59, mass -> c, element -> "C", charge -> 0.027, connects -> {4,
-        62, 60, 61}, bonds -> {single, single, single, single}}, 
+      {site -> 58, mass -> c, element -> "C", charge -> -0.106, connects ->
+        {55, 61, 59, 60}, bonds -> {single, single, single, single}}, 
+      {site -> 59, mass -> hc, element -> "H", charge -> 0.053, connects ->
+        58, bonds -> single}, 
       {site -> 60, mass -> hc, element -> "H", charge -> 0.053, connects ->
-        59, bonds -> single}, 
-      {site -> 61, mass -> hc, element -> "H", charge -> 0.053, connects ->
-        59, bonds -> single}, 
-      {site -> 62, mass -> oc, element -> "O", charge -> -0.266, connects ->
-        {59, 63}, bonds -> {single, single}}, 
-      {site -> 63, mass -> c, element -> "C", charge -> 0.027, connects ->
-        {62, 66, 64, 65}, bonds -> {single, single, single, single}}, 
-      {site -> 64, mass -> hc, element -> "H", charge -> 0.053, connects ->
-        63, bonds -> single}, 
-      {site -> 65, mass -> hc, element -> "H", charge -> 0.053, connects ->
-        63, bonds -> single}, 
-      {site -> 66, mass -> c3h, element -> "C", charge -> 0.08, isomer ->
-        right, ring -> {nsites -> 3, aromatic -> 0, bits -> 0x1, link -> 0x1},
-          connects -> {63, 68, 67, 69}, bonds -> {single, single, single,
-        single}}, 
+        58, bonds -> single}, 
+      {site -> 61, mass -> c, element -> "C", charge -> 0.027, connects ->
+        {58, 64, 62, 63}, bonds -> {single, single, single, single}}, 
+      {site -> 62, mass -> hc, element -> "H", charge -> 0.053, connects ->
+        61, bonds -> single}, 
+      {site -> 63, mass -> hc, element -> "H", charge -> 0.053, connects ->
+        61, bonds -> single}, 
+      {site -> 64, mass -> oc, element -> "O", charge -> -0.266, connects ->
+        {61, 65}, bonds -> {single, single}}, 
+      {site -> 65, mass -> c, element -> "C", charge -> 0.027, connects ->
+        {64, 68, 66, 67}, bonds -> {single, single, single, single}}, 
+      {site -> 66, mass -> hc, element -> "H", charge -> 0.053, connects ->
+        65, bonds -> single}, 
       {site -> 67, mass -> hc, element -> "H", charge -> 0.053, connects ->
-        66, bonds -> single}, 
-      {site -> 68, mass -> o3e, element -> "O", charge -> -0.266, ring -> {
-          nsites -> 3, aromatic -> 0, bits -> 0x1}, connects -> {66, 69}, 
-        bonds -> {single, single}}, 
-      {site -> 69, mass -> c, element -> "C", charge -> 0.027, ring -> {nsites
-          -> 3, aromatic -> 0, bits -> 0x1, end -> 0x1}, connects -> {68, 66,
-        70, 71}, bonds -> {single, single, single, single}}, 
+        65, bonds -> single}, 
+      {site -> 68, mass -> c, element -> "C", charge -> 0, connects -> {65,
+        86, 69, 73}, bonds -> {single, single, single, single}}, 
+      {site -> 69, mass -> c, element -> "C", charge -> -0.159, connects ->
+        {68, 70, 71, 72}, bonds -> {single, single, single, single}}, 
       {site -> 70, mass -> hc, element -> "H", charge -> 0.053, connects ->
         69, bonds -> single}, 
       {site -> 71, mass -> hc, element -> "H", charge -> 0.053, connects ->
-        69, bonds -> single}}, nbranches -> 0}};
+        69, bonds -> single}, 
+      {site -> 72, mass -> hc, element -> "H", charge -> 0.053, connects ->
+        69, bonds -> single}, 
+      {site -> 73, mass -> c, element -> "C", charge -> 0.027, connects ->
+        {68, 76, 74, 75}, bonds -> {single, single, single, single}}, 
+      {site -> 74, mass -> hc, element -> "H", charge -> 0.053, connects ->
+        73, bonds -> single}, 
+      {site -> 75, mass -> hc, element -> "H", charge -> 0.053, connects ->
+        73, bonds -> single}, 
+      {site -> 76, mass -> oc, element -> "O", charge -> -0.266, connects ->
+        {73, 77}, bonds -> {single, single}}, 
+      {site -> 77, mass -> c, element -> "C", charge -> 0.027, connects ->
+        {76, 80, 78, 79}, bonds -> {single, single, single, single}}, 
+      {site -> 78, mass -> hc, element -> "H", charge -> 0.053, connects ->
+        77, bonds -> single}, 
+      {site -> 79, mass -> hc, element -> "H", charge -> 0.053, connects ->
+        77, bonds -> single}, 
+      {site -> 80, mass -> c3h, element -> "C", charge -> 0.08, isomer ->
+        right, ring -> {nsites -> 3, aromatic -> 0, bits -> 0x1, link -> 0x1},
+          connects -> {77, 82, 81, 83}, bonds -> {single, single, single,
+        single}}, 
+      {site -> 81, mass -> hc, element -> "H", charge -> 0.053, connects ->
+        80, bonds -> single}, 
+      {site -> 82, mass -> o3e, element -> "O", charge -> -0.266, ring -> {
+          nsites -> 3, aromatic -> 0, bits -> 0x1}, connects -> {80, 83}, 
+        bonds -> {single, single}}, 
+      {site -> 83, mass -> c, element -> "C", charge -> 0.027, ring -> {nsites
+          -> 3, aromatic -> 0, bits -> 0x1, end -> 0x1}, connects -> {82, 80,
+        84, 85}, bonds -> {single, single, single, single}}, 
+      {site -> 84, mass -> hc, element -> "H", charge -> 0.053, connects ->
+        83, bonds -> single}, 
+      {site -> 85, mass -> hc, element -> "H", charge -> 0.053, connects ->
+        83, bonds -> single}, 
+      {site -> 86, mass -> c, element -> "C", charge -> -0.159, connects ->
+        {68, 87, 88, 89}, bonds -> {single, single, single, single}}, 
+      {site -> 87, mass -> hc, element -> "H", charge -> 0.053, connects ->
+        86, bonds -> single}, 
+      {site -> 88, mass -> hc, element -> "H", charge -> 0.053, connects ->
+        86, bonds -> single}, 
+      {site -> 89, mass -> hc, element -> "H", charge -> 0.053, connects ->
+        86, bonds -> single}, 
+      {site -> 90, mass -> c, element -> "C", charge -> -0.159, connects ->
+        {4, 91, 92, 93}, bonds -> {single, single, single, single}}, 
+      {site -> 91, mass -> hc, element -> "H", charge -> 0.053, connects ->
+        90, bonds -> single}, 
+      {site -> 92, mass -> hc, element -> "H", charge -> 0.053, connects ->
+        90, bonds -> single}, 
+      {site -> 93, mass -> hc, element -> "H", charge -> 0.053, connects ->
+        90, bonds -> single}, 
+      {site -> 94, mass -> c, element -> "C", charge -> 0.027, connects -> {4,
+        97, 95, 96}, bonds -> {single, single, single, single}}, 
+      {site -> 95, mass -> hc, element -> "H", charge -> 0.053, connects ->
+        94, bonds -> single}, 
+      {site -> 96, mass -> hc, element -> "H", charge -> 0.053, connects ->
+        94, bonds -> single}, 
+      {site -> 97, mass -> oc, element -> "O", charge -> -0.266, connects ->
+        {94, 98}, bonds -> {single, single}}, 
+      {site -> 98, mass -> c, element -> "C", charge -> 0.027, connects ->
+        {97, 101, 99, 100}, bonds -> {single, single, single, single}}, 
+      {site -> 99, mass -> hc, element -> "H", charge -> 0.053, connects ->
+        98, bonds -> single}, 
+      {site -> 100, mass -> hc, element -> "H", charge -> 0.053, connects ->
+        98, bonds -> single}, 
+      {site -> 101, mass -> c3h, element -> "C", charge -> 0.08, isomer ->
+        right, ring -> {nsites -> 3, aromatic -> 0, bits -> 0x1, link -> 0x1},
+          connects -> {98, 103, 102, 104}, bonds -> {single, single, single,
+        single}}, 
+      {site -> 102, mass -> hc, element -> "H", charge -> 0.053, connects ->
+        101, bonds -> single}, 
+      {site -> 103, mass -> o3e, element -> "O", charge -> -0.266, ring -> {
+          nsites -> 3, aromatic -> 0, bits -> 0x1}, connects -> {101, 104}, 
+        bonds -> {single, single}}, 
+      {site -> 104, mass -> c, element -> "C", charge -> 0.027, ring -> {
+          nsites -> 3, aromatic -> 0, bits -> 0x1, end -> 0x1}, connects ->
+        {103, 101, 105, 106}, bonds -> {single, single, single, single}}, 
+      {site -> 105, mass -> hc, element -> "H", charge -> 0.053, connects ->
+        104, bonds -> single}, 
+      {site -> 106, mass -> hc, element -> "H", charge -> 0.053, connects ->
+        104, bonds -> single}}, nbranches -> 0}};
 
 (* Selects *)
 
@@ -958,11 +1047,11 @@ selects = {
 
 systems = {
   n -> 1, properties -> 
-  {id -> main, p -> 0, v -> 0, t -> 0, mass -> 434.57524, flag -> {charge ->
+  {id -> main, p -> 0, v -> 0, t -> 0, mass -> 650.85489, flag -> {charge ->
       true, map -> true, pbc -> true, geometry -> true}, nclusters -> 1, 
-    nsites -> {total -> 72, mobile -> 72, semi -> 0, junction -> 22}, plane ->
-    x, periodic -> {x -> true, y -> true, z -> true}, geometry -> {xx -> 0, yy
-      -> 0, zz -> 0, zy -> 0, zx -> 0, yx -> 0}}};
+    nsites -> {total -> 107, mobile -> 107, semi -> 0, junction -> 33}, plane
+    -> x, periodic -> {x -> true, y -> true, z -> true}, geometry -> {xx -> 0,
+      yy -> 0, zz -> 0, zy -> 0, zx -> 0, yx -> 0}}};
 
 (* Moves *)
 
@@ -1036,13 +1125,13 @@ profiles = {frequency -> 0,
 
 clusters = {
   n -> 1, data -> 
-  {cluster -> 0, id -> mol, head -> 0, tail -> 71, flags -> 0b0, nsites -> {
-      total -> 72, mobile -> 72, semi -> 0, junction -> 22}}};
+  {cluster -> 0, id -> mol, head -> 0, tail -> 106, flags -> 0b0, nsites -> {
+      total -> 107, mobile -> 107, semi -> 0, junction -> 33}}};
 
 (* Sites *)
 
 sites = {
-  n -> 72, data -> {
+  n -> 107, data -> {
     {site -> 0, tag -> 0, mass -> c, charge -> -0.159, flags -> 0b1000000100, 
       group -> {mol, 0, 0, 0, 0}, cluster -> 0, system -> main, connects ->
       {4, 1, 2, 3}, p -> {0, 0, 0}}, 
@@ -1056,8 +1145,8 @@ sites = {
       group -> {mol, 3, 0, 0, 0}, cluster -> 0, system -> main, connects -> 0,
       p -> {0, 0, 0}}, 
     {site -> 4, tag -> 4, mass -> c, charge -> 0, flags -> 0b1000000000, group
-      -> {mol, 4, 0, 0, 0}, cluster -> 0, system -> main, connects -> {0, 59,
-      5, 55}, p -> {0, 0, 0}}, 
+      -> {mol, 4, 0, 0, 0}, cluster -> 0, system -> main, connects -> {0, 94,
+      5, 90}, p -> {0, 0, 0}}, 
     {site -> 5, tag -> 5, mass -> c, charge -> 0.027, flags -> 0b1000000000, 
       group -> {mol, 5, 0, 0, 0}, cluster -> 0, system -> main, connects ->
       {4, 8, 6, 7}, p -> {0, 0, 0}}, 
@@ -1112,151 +1201,256 @@ sites = {
     {site -> 22, tag -> 22, mass -> hc, charge -> 0.053, flags ->
       0b1000000000, group -> {mol, 22, 0, 0, 0}, cluster -> 0, system -> main,
       connects -> 20, p -> {0, 0, 0}}, 
-    {site -> 23, tag -> 23, mass -> c, charge -> -0.106, flags ->
-      0b1000000000, group -> {mol, 23, 0, 0, 0}, cluster -> 0, system -> main,
-      connects -> {20, 26, 24, 25}, p -> {0, 0, 0}}, 
+    {site -> 23, tag -> 23, mass -> c1, charge -> 0.08, flags -> 0b1000000000,
+      group -> {mol, 23, 0, 0, 0}, cluster -> 0, system -> main, connects ->
+      {20, 54, 24, 25}, p -> {0, 0, 0}}, 
     {site -> 24, tag -> 24, mass -> hc, charge -> 0.053, flags ->
       0b1000000000, group -> {mol, 24, 0, 0, 0}, cluster -> 0, system -> main,
       connects -> 23, p -> {0, 0, 0}}, 
-    {site -> 25, tag -> 25, mass -> hc, charge -> 0.053, flags ->
-      0b1000000000, group -> {mol, 25, 0, 0, 0}, cluster -> 0, system -> main,
-      connects -> 23, p -> {0, 0, 0}}, 
-    {site -> 26, tag -> 26, mass -> c, charge -> 0.027, flags -> 0b1000000000,
-      group -> {mol, 26, 0, 0, 0}, cluster -> 0, system -> main, connects ->
-      {23, 29, 27, 28}, p -> {0, 0, 0}}, 
+    {site -> 25, tag -> 25, mass -> c, charge -> 0.027, flags -> 0b1000000000,
+      group -> {mol, 25, 0, 0, 0}, cluster -> 0, system -> main, connects ->
+      {23, 28, 26, 27}, p -> {0, 0, 0}}, 
+    {site -> 26, tag -> 26, mass -> hc, charge -> 0.053, flags ->
+      0b1000000000, group -> {mol, 26, 0, 0, 0}, cluster -> 0, system -> main,
+      connects -> 25, p -> {0, 0, 0}}, 
     {site -> 27, tag -> 27, mass -> hc, charge -> 0.053, flags ->
       0b1000000000, group -> {mol, 27, 0, 0, 0}, cluster -> 0, system -> main,
-      connects -> 26, p -> {0, 0, 0}}, 
-    {site -> 28, tag -> 28, mass -> hc, charge -> 0.053, flags ->
+      connects -> 25, p -> {0, 0, 0}}, 
+    {site -> 28, tag -> 28, mass -> oc, charge -> -0.266, flags ->
       0b1000000000, group -> {mol, 28, 0, 0, 0}, cluster -> 0, system -> main,
-      connects -> 26, p -> {0, 0, 0}}, 
-    {site -> 29, tag -> 29, mass -> oc, charge -> -0.266, flags ->
-      0b1000000000, group -> {mol, 29, 0, 0, 0}, cluster -> 0, system -> main,
-      connects -> {26, 30}, p -> {0, 0, 0}}, 
-    {site -> 30, tag -> 30, mass -> c, charge -> 0.027, flags -> 0b1000000000,
-      group -> {mol, 30, 0, 0, 0}, cluster -> 0, system -> main, connects ->
-      {29, 33, 31, 32}, p -> {0, 0, 0}}, 
+      connects -> {25, 29}, p -> {0, 0, 0}}, 
+    {site -> 29, tag -> 29, mass -> c, charge -> 0.027, flags -> 0b1000000000,
+      group -> {mol, 29, 0, 0, 0}, cluster -> 0, system -> main, connects ->
+      {28, 32, 30, 31}, p -> {0, 0, 0}}, 
+    {site -> 30, tag -> 30, mass -> hc, charge -> 0.053, flags ->
+      0b1000000000, group -> {mol, 30, 0, 0, 0}, cluster -> 0, system -> main,
+      connects -> 29, p -> {0, 0, 0}}, 
     {site -> 31, tag -> 31, mass -> hc, charge -> 0.053, flags ->
       0b1000000000, group -> {mol, 31, 0, 0, 0}, cluster -> 0, system -> main,
-      connects -> 30, p -> {0, 0, 0}}, 
-    {site -> 32, tag -> 32, mass -> hc, charge -> 0.053, flags ->
-      0b1000000000, group -> {mol, 32, 0, 0, 0}, cluster -> 0, system -> main,
-      connects -> 30, p -> {0, 0, 0}}, 
-    {site -> 33, tag -> 33, mass -> c, charge -> 0, flags -> 0b1000000000, 
-      group -> {mol, 33, 0, 0, 0}, cluster -> 0, system -> main, connects ->
-      {30, 51, 34, 38}, p -> {0, 0, 0}}, 
-    {site -> 34, tag -> 34, mass -> c, charge -> -0.159, flags ->
+      connects -> 29, p -> {0, 0, 0}}, 
+    {site -> 32, tag -> 32, mass -> c, charge -> 0, flags -> 0b1000000000, 
+      group -> {mol, 32, 0, 0, 0}, cluster -> 0, system -> main, connects ->
+      {29, 50, 33, 37}, p -> {0, 0, 0}}, 
+    {site -> 33, tag -> 33, mass -> c, charge -> -0.159, flags ->
+      0b1000000000, group -> {mol, 33, 0, 0, 0}, cluster -> 0, system -> main,
+      connects -> {32, 34, 35, 36}, p -> {0, 0, 0}}, 
+    {site -> 34, tag -> 34, mass -> hc, charge -> 0.053, flags ->
       0b1000000000, group -> {mol, 34, 0, 0, 0}, cluster -> 0, system -> main,
-      connects -> {33, 35, 36, 37}, p -> {0, 0, 0}}, 
+      connects -> 33, p -> {0, 0, 0}}, 
     {site -> 35, tag -> 35, mass -> hc, charge -> 0.053, flags ->
       0b1000000000, group -> {mol, 35, 0, 0, 0}, cluster -> 0, system -> main,
-      connects -> 34, p -> {0, 0, 0}}, 
+      connects -> 33, p -> {0, 0, 0}}, 
     {site -> 36, tag -> 36, mass -> hc, charge -> 0.053, flags ->
       0b1000000000, group -> {mol, 36, 0, 0, 0}, cluster -> 0, system -> main,
-      connects -> 34, p -> {0, 0, 0}}, 
-    {site -> 37, tag -> 37, mass -> hc, charge -> 0.053, flags ->
-      0b1000000000, group -> {mol, 37, 0, 0, 0}, cluster -> 0, system -> main,
-      connects -> 34, p -> {0, 0, 0}}, 
-    {site -> 38, tag -> 38, mass -> c, charge -> 0.027, flags -> 0b1000000000,
-      group -> {mol, 38, 0, 0, 0}, cluster -> 0, system -> main, connects ->
-      {33, 41, 39, 40}, p -> {0, 0, 0}}, 
+      connects -> 33, p -> {0, 0, 0}}, 
+    {site -> 37, tag -> 37, mass -> c, charge -> 0.027, flags -> 0b1000000000,
+      group -> {mol, 37, 0, 0, 0}, cluster -> 0, system -> main, connects ->
+      {32, 40, 38, 39}, p -> {0, 0, 0}}, 
+    {site -> 38, tag -> 38, mass -> hc, charge -> 0.053, flags ->
+      0b1000000000, group -> {mol, 38, 0, 0, 0}, cluster -> 0, system -> main,
+      connects -> 37, p -> {0, 0, 0}}, 
     {site -> 39, tag -> 39, mass -> hc, charge -> 0.053, flags ->
       0b1000000000, group -> {mol, 39, 0, 0, 0}, cluster -> 0, system -> main,
-      connects -> 38, p -> {0, 0, 0}}, 
-    {site -> 40, tag -> 40, mass -> hc, charge -> 0.053, flags ->
+      connects -> 37, p -> {0, 0, 0}}, 
+    {site -> 40, tag -> 40, mass -> oc, charge -> -0.266, flags ->
       0b1000000000, group -> {mol, 40, 0, 0, 0}, cluster -> 0, system -> main,
-      connects -> 38, p -> {0, 0, 0}}, 
-    {site -> 41, tag -> 41, mass -> oc, charge -> -0.266, flags ->
-      0b1000000000, group -> {mol, 41, 0, 0, 0}, cluster -> 0, system -> main,
-      connects -> {38, 42}, p -> {0, 0, 0}}, 
-    {site -> 42, tag -> 42, mass -> c, charge -> 0.027, flags -> 0b1000000000,
-      group -> {mol, 42, 0, 0, 0}, cluster -> 0, system -> main, connects ->
-      {41, 45, 43, 44}, p -> {0, 0, 0}}, 
+      connects -> {37, 41}, p -> {0, 0, 0}}, 
+    {site -> 41, tag -> 41, mass -> c, charge -> 0.027, flags -> 0b1000000000,
+      group -> {mol, 41, 0, 0, 0}, cluster -> 0, system -> main, connects ->
+      {40, 44, 42, 43}, p -> {0, 0, 0}}, 
+    {site -> 42, tag -> 42, mass -> hc, charge -> 0.053, flags ->
+      0b1000000000, group -> {mol, 42, 0, 0, 0}, cluster -> 0, system -> main,
+      connects -> 41, p -> {0, 0, 0}}, 
     {site -> 43, tag -> 43, mass -> hc, charge -> 0.053, flags ->
       0b1000000000, group -> {mol, 43, 0, 0, 0}, cluster -> 0, system -> main,
-      connects -> 42, p -> {0, 0, 0}}, 
-    {site -> 44, tag -> 44, mass -> hc, charge -> 0.053, flags ->
-      0b1000000000, group -> {mol, 44, 0, 0, 0}, cluster -> 0, system -> main,
-      connects -> 42, p -> {0, 0, 0}}, 
-    {site -> 45, tag -> 45, mass -> c3h, charge -> 0.08, flags ->
-      0b1101000000000, group -> {mol, 45, 0, 0, 0}, cluster -> 0, system ->
-      main, connects -> {42, 47, 46, 48}, p -> {0, 0, 0}}, 
-    {site -> 46, tag -> 46, mass -> hc, charge -> 0.053, flags ->
-      0b1000000000, group -> {mol, 46, 0, 0, 0}, cluster -> 0, system -> main,
-      connects -> 45, p -> {0, 0, 0}}, 
-    {site -> 47, tag -> 47, mass -> o3e, charge -> -0.266, flags ->
-      0b101000000000, group -> {mol, 47, 0, 0, 0}, cluster -> 0, system ->
-      main, connects -> {45, 48}, p -> {0, 0, 0}}, 
-    {site -> 48, tag -> 48, mass -> c, charge -> 0.027, flags ->
-      0b1101000000000, group -> {mol, 48, 0, 0, 0}, cluster -> 0, system ->
-      main, connects -> {47, 45, 49, 50}, p -> {0, 0, 0}}, 
+      connects -> 41, p -> {0, 0, 0}}, 
+    {site -> 44, tag -> 44, mass -> c3h, charge -> 0.08, flags ->
+      0b1101000000000, group -> {mol, 44, 0, 0, 0}, cluster -> 0, system ->
+      main, connects -> {41, 46, 45, 47}, p -> {0, 0, 0}}, 
+    {site -> 45, tag -> 45, mass -> hc, charge -> 0.053, flags ->
+      0b1000000000, group -> {mol, 45, 0, 0, 0}, cluster -> 0, system -> main,
+      connects -> 44, p -> {0, 0, 0}}, 
+    {site -> 46, tag -> 46, mass -> o3e, charge -> -0.266, flags ->
+      0b101000000000, group -> {mol, 46, 0, 0, 0}, cluster -> 0, system ->
+      main, connects -> {44, 47}, p -> {0, 0, 0}}, 
+    {site -> 47, tag -> 47, mass -> c, charge -> 0.027, flags ->
+      0b1101000000000, group -> {mol, 47, 0, 0, 0}, cluster -> 0, system ->
+      main, connects -> {46, 44, 48, 49}, p -> {0, 0, 0}}, 
+    {site -> 48, tag -> 48, mass -> hc, charge -> 0.053, flags ->
+      0b1000000000, group -> {mol, 48, 0, 0, 0}, cluster -> 0, system -> main,
+      connects -> 47, p -> {0, 0, 0}}, 
     {site -> 49, tag -> 49, mass -> hc, charge -> 0.053, flags ->
       0b1000000000, group -> {mol, 49, 0, 0, 0}, cluster -> 0, system -> main,
-      connects -> 48, p -> {0, 0, 0}}, 
-    {site -> 50, tag -> 50, mass -> hc, charge -> 0.053, flags ->
+      connects -> 47, p -> {0, 0, 0}}, 
+    {site -> 50, tag -> 50, mass -> c, charge -> -0.159, flags ->
       0b1000000000, group -> {mol, 50, 0, 0, 0}, cluster -> 0, system -> main,
-      connects -> 48, p -> {0, 0, 0}}, 
-    {site -> 51, tag -> 51, mass -> c, charge -> -0.159, flags ->
+      connects -> {32, 51, 52, 53}, p -> {0, 0, 0}}, 
+    {site -> 51, tag -> 51, mass -> hc, charge -> 0.053, flags ->
       0b1000000000, group -> {mol, 51, 0, 0, 0}, cluster -> 0, system -> main,
-      connects -> {33, 52, 53, 54}, p -> {0, 0, 0}}, 
+      connects -> 50, p -> {0, 0, 0}}, 
     {site -> 52, tag -> 52, mass -> hc, charge -> 0.053, flags ->
       0b1000000000, group -> {mol, 52, 0, 0, 0}, cluster -> 0, system -> main,
-      connects -> 51, p -> {0, 0, 0}}, 
+      connects -> 50, p -> {0, 0, 0}}, 
     {site -> 53, tag -> 53, mass -> hc, charge -> 0.053, flags ->
       0b1000000000, group -> {mol, 53, 0, 0, 0}, cluster -> 0, system -> main,
-      connects -> 51, p -> {0, 0, 0}}, 
-    {site -> 54, tag -> 54, mass -> hc, charge -> 0.053, flags ->
+      connects -> 50, p -> {0, 0, 0}}, 
+    {site -> 54, tag -> 54, mass -> oc, charge -> -0.266, flags ->
       0b1000000000, group -> {mol, 54, 0, 0, 0}, cluster -> 0, system -> main,
-      connects -> 51, p -> {0, 0, 0}}, 
-    {site -> 55, tag -> 55, mass -> c, charge -> -0.159, flags ->
-      0b1000000000, group -> {mol, 55, 0, 0, 0}, cluster -> 0, system -> main,
-      connects -> {4, 56, 57, 58}, p -> {0, 0, 0}}, 
+      connects -> {23, 55}, p -> {0, 0, 0}}, 
+    {site -> 55, tag -> 55, mass -> c, charge -> 0.027, flags -> 0b1000000000,
+      group -> {mol, 55, 0, 0, 0}, cluster -> 0, system -> main, connects ->
+      {54, 58, 56, 57}, p -> {0, 0, 0}}, 
     {site -> 56, tag -> 56, mass -> hc, charge -> 0.053, flags ->
       0b1000000000, group -> {mol, 56, 0, 0, 0}, cluster -> 0, system -> main,
       connects -> 55, p -> {0, 0, 0}}, 
     {site -> 57, tag -> 57, mass -> hc, charge -> 0.053, flags ->
       0b1000000000, group -> {mol, 57, 0, 0, 0}, cluster -> 0, system -> main,
       connects -> 55, p -> {0, 0, 0}}, 
-    {site -> 58, tag -> 58, mass -> hc, charge -> 0.053, flags ->
+    {site -> 58, tag -> 58, mass -> c, charge -> -0.106, flags ->
       0b1000000000, group -> {mol, 58, 0, 0, 0}, cluster -> 0, system -> main,
-      connects -> 55, p -> {0, 0, 0}}, 
-    {site -> 59, tag -> 59, mass -> c, charge -> 0.027, flags -> 0b1000000000,
-      group -> {mol, 59, 0, 0, 0}, cluster -> 0, system -> main, connects ->
-      {4, 62, 60, 61}, p -> {0, 0, 0}}, 
+      connects -> {55, 61, 59, 60}, p -> {0, 0, 0}}, 
+    {site -> 59, tag -> 59, mass -> hc, charge -> 0.053, flags ->
+      0b1000000000, group -> {mol, 59, 0, 0, 0}, cluster -> 0, system -> main,
+      connects -> 58, p -> {0, 0, 0}}, 
     {site -> 60, tag -> 60, mass -> hc, charge -> 0.053, flags ->
       0b1000000000, group -> {mol, 60, 0, 0, 0}, cluster -> 0, system -> main,
-      connects -> 59, p -> {0, 0, 0}}, 
-    {site -> 61, tag -> 61, mass -> hc, charge -> 0.053, flags ->
-      0b1000000000, group -> {mol, 61, 0, 0, 0}, cluster -> 0, system -> main,
-      connects -> 59, p -> {0, 0, 0}}, 
-    {site -> 62, tag -> 62, mass -> oc, charge -> -0.266, flags ->
+      connects -> 58, p -> {0, 0, 0}}, 
+    {site -> 61, tag -> 61, mass -> c, charge -> 0.027, flags -> 0b1000000000,
+      group -> {mol, 61, 0, 0, 0}, cluster -> 0, system -> main, connects ->
+      {58, 64, 62, 63}, p -> {0, 0, 0}}, 
+    {site -> 62, tag -> 62, mass -> hc, charge -> 0.053, flags ->
       0b1000000000, group -> {mol, 62, 0, 0, 0}, cluster -> 0, system -> main,
-      connects -> {59, 63}, p -> {0, 0, 0}}, 
-    {site -> 63, tag -> 63, mass -> c, charge -> 0.027, flags -> 0b1000000000,
-      group -> {mol, 63, 0, 0, 0}, cluster -> 0, system -> main, connects ->
-      {62, 66, 64, 65}, p -> {0, 0, 0}}, 
-    {site -> 64, tag -> 64, mass -> hc, charge -> 0.053, flags ->
+      connects -> 61, p -> {0, 0, 0}}, 
+    {site -> 63, tag -> 63, mass -> hc, charge -> 0.053, flags ->
+      0b1000000000, group -> {mol, 63, 0, 0, 0}, cluster -> 0, system -> main,
+      connects -> 61, p -> {0, 0, 0}}, 
+    {site -> 64, tag -> 64, mass -> oc, charge -> -0.266, flags ->
       0b1000000000, group -> {mol, 64, 0, 0, 0}, cluster -> 0, system -> main,
-      connects -> 63, p -> {0, 0, 0}}, 
-    {site -> 65, tag -> 65, mass -> hc, charge -> 0.053, flags ->
-      0b1000000000, group -> {mol, 65, 0, 0, 0}, cluster -> 0, system -> main,
-      connects -> 63, p -> {0, 0, 0}}, 
-    {site -> 66, tag -> 66, mass -> c3h, charge -> 0.08, flags ->
-      0b1101000000000, group -> {mol, 66, 0, 0, 0}, cluster -> 0, system ->
-      main, connects -> {63, 68, 67, 69}, p -> {0, 0, 0}}, 
+      connects -> {61, 65}, p -> {0, 0, 0}}, 
+    {site -> 65, tag -> 65, mass -> c, charge -> 0.027, flags -> 0b1000000000,
+      group -> {mol, 65, 0, 0, 0}, cluster -> 0, system -> main, connects ->
+      {64, 68, 66, 67}, p -> {0, 0, 0}}, 
+    {site -> 66, tag -> 66, mass -> hc, charge -> 0.053, flags ->
+      0b1000000000, group -> {mol, 66, 0, 0, 0}, cluster -> 0, system -> main,
+      connects -> 65, p -> {0, 0, 0}}, 
     {site -> 67, tag -> 67, mass -> hc, charge -> 0.053, flags ->
       0b1000000000, group -> {mol, 67, 0, 0, 0}, cluster -> 0, system -> main,
-      connects -> 66, p -> {0, 0, 0}}, 
-    {site -> 68, tag -> 68, mass -> o3e, charge -> -0.266, flags ->
-      0b101000000000, group -> {mol, 68, 0, 0, 0}, cluster -> 0, system ->
-      main, connects -> {66, 69}, p -> {0, 0, 0}}, 
-    {site -> 69, tag -> 69, mass -> c, charge -> 0.027, flags ->
-      0b1101000000000, group -> {mol, 69, 0, 0, 0}, cluster -> 0, system ->
-      main, connects -> {68, 66, 70, 71}, p -> {0, 0, 0}}, 
+      connects -> 65, p -> {0, 0, 0}}, 
+    {site -> 68, tag -> 68, mass -> c, charge -> 0, flags -> 0b1000000000, 
+      group -> {mol, 68, 0, 0, 0}, cluster -> 0, system -> main, connects ->
+      {65, 86, 69, 73}, p -> {0, 0, 0}}, 
+    {site -> 69, tag -> 69, mass -> c, charge -> -0.159, flags ->
+      0b1000000000, group -> {mol, 69, 0, 0, 0}, cluster -> 0, system -> main,
+      connects -> {68, 70, 71, 72}, p -> {0, 0, 0}}, 
     {site -> 70, tag -> 70, mass -> hc, charge -> 0.053, flags ->
       0b1000000000, group -> {mol, 70, 0, 0, 0}, cluster -> 0, system -> main,
       connects -> 69, p -> {0, 0, 0}}, 
     {site -> 71, tag -> 71, mass -> hc, charge -> 0.053, flags ->
-      0b1000001000, group -> {mol, 71, 0, 0, 0}, cluster -> 0, system -> main,
-      connects -> 69, p -> {0, 0, 0}}}};
+      0b1000000000, group -> {mol, 71, 0, 0, 0}, cluster -> 0, system -> main,
+      connects -> 69, p -> {0, 0, 0}}, 
+    {site -> 72, tag -> 72, mass -> hc, charge -> 0.053, flags ->
+      0b1000000000, group -> {mol, 72, 0, 0, 0}, cluster -> 0, system -> main,
+      connects -> 69, p -> {0, 0, 0}}, 
+    {site -> 73, tag -> 73, mass -> c, charge -> 0.027, flags -> 0b1000000000,
+      group -> {mol, 73, 0, 0, 0}, cluster -> 0, system -> main, connects ->
+      {68, 76, 74, 75}, p -> {0, 0, 0}}, 
+    {site -> 74, tag -> 74, mass -> hc, charge -> 0.053, flags ->
+      0b1000000000, group -> {mol, 74, 0, 0, 0}, cluster -> 0, system -> main,
+      connects -> 73, p -> {0, 0, 0}}, 
+    {site -> 75, tag -> 75, mass -> hc, charge -> 0.053, flags ->
+      0b1000000000, group -> {mol, 75, 0, 0, 0}, cluster -> 0, system -> main,
+      connects -> 73, p -> {0, 0, 0}}, 
+    {site -> 76, tag -> 76, mass -> oc, charge -> -0.266, flags ->
+      0b1000000000, group -> {mol, 76, 0, 0, 0}, cluster -> 0, system -> main,
+      connects -> {73, 77}, p -> {0, 0, 0}}, 
+    {site -> 77, tag -> 77, mass -> c, charge -> 0.027, flags -> 0b1000000000,
+      group -> {mol, 77, 0, 0, 0}, cluster -> 0, system -> main, connects ->
+      {76, 80, 78, 79}, p -> {0, 0, 0}}, 
+    {site -> 78, tag -> 78, mass -> hc, charge -> 0.053, flags ->
+      0b1000000000, group -> {mol, 78, 0, 0, 0}, cluster -> 0, system -> main,
+      connects -> 77, p -> {0, 0, 0}}, 
+    {site -> 79, tag -> 79, mass -> hc, charge -> 0.053, flags ->
+      0b1000000000, group -> {mol, 79, 0, 0, 0}, cluster -> 0, system -> main,
+      connects -> 77, p -> {0, 0, 0}}, 
+    {site -> 80, tag -> 80, mass -> c3h, charge -> 0.08, flags ->
+      0b1101000000000, group -> {mol, 80, 0, 0, 0}, cluster -> 0, system ->
+      main, connects -> {77, 82, 81, 83}, p -> {0, 0, 0}}, 
+    {site -> 81, tag -> 81, mass -> hc, charge -> 0.053, flags ->
+      0b1000000000, group -> {mol, 81, 0, 0, 0}, cluster -> 0, system -> main,
+      connects -> 80, p -> {0, 0, 0}}, 
+    {site -> 82, tag -> 82, mass -> o3e, charge -> -0.266, flags ->
+      0b101000000000, group -> {mol, 82, 0, 0, 0}, cluster -> 0, system ->
+      main, connects -> {80, 83}, p -> {0, 0, 0}}, 
+    {site -> 83, tag -> 83, mass -> c, charge -> 0.027, flags ->
+      0b1101000000000, group -> {mol, 83, 0, 0, 0}, cluster -> 0, system ->
+      main, connects -> {82, 80, 84, 85}, p -> {0, 0, 0}}, 
+    {site -> 84, tag -> 84, mass -> hc, charge -> 0.053, flags ->
+      0b1000000000, group -> {mol, 84, 0, 0, 0}, cluster -> 0, system -> main,
+      connects -> 83, p -> {0, 0, 0}}, 
+    {site -> 85, tag -> 85, mass -> hc, charge -> 0.053, flags ->
+      0b1000000000, group -> {mol, 85, 0, 0, 0}, cluster -> 0, system -> main,
+      connects -> 83, p -> {0, 0, 0}}, 
+    {site -> 86, tag -> 86, mass -> c, charge -> -0.159, flags ->
+      0b1000000000, group -> {mol, 86, 0, 0, 0}, cluster -> 0, system -> main,
+      connects -> {68, 87, 88, 89}, p -> {0, 0, 0}}, 
+    {site -> 87, tag -> 87, mass -> hc, charge -> 0.053, flags ->
+      0b1000000000, group -> {mol, 87, 0, 0, 0}, cluster -> 0, system -> main,
+      connects -> 86, p -> {0, 0, 0}}, 
+    {site -> 88, tag -> 88, mass -> hc, charge -> 0.053, flags ->
+      0b1000000000, group -> {mol, 88, 0, 0, 0}, cluster -> 0, system -> main,
+      connects -> 86, p -> {0, 0, 0}}, 
+    {site -> 89, tag -> 89, mass -> hc, charge -> 0.053, flags ->
+      0b1000000000, group -> {mol, 89, 0, 0, 0}, cluster -> 0, system -> main,
+      connects -> 86, p -> {0, 0, 0}}, 
+    {site -> 90, tag -> 90, mass -> c, charge -> -0.159, flags ->
+      0b1000000000, group -> {mol, 90, 0, 0, 0}, cluster -> 0, system -> main,
+      connects -> {4, 91, 92, 93}, p -> {0, 0, 0}}, 
+    {site -> 91, tag -> 91, mass -> hc, charge -> 0.053, flags ->
+      0b1000000000, group -> {mol, 91, 0, 0, 0}, cluster -> 0, system -> main,
+      connects -> 90, p -> {0, 0, 0}}, 
+    {site -> 92, tag -> 92, mass -> hc, charge -> 0.053, flags ->
+      0b1000000000, group -> {mol, 92, 0, 0, 0}, cluster -> 0, system -> main,
+      connects -> 90, p -> {0, 0, 0}}, 
+    {site -> 93, tag -> 93, mass -> hc, charge -> 0.053, flags ->
+      0b1000000000, group -> {mol, 93, 0, 0, 0}, cluster -> 0, system -> main,
+      connects -> 90, p -> {0, 0, 0}}, 
+    {site -> 94, tag -> 94, mass -> c, charge -> 0.027, flags -> 0b1000000000,
+      group -> {mol, 94, 0, 0, 0}, cluster -> 0, system -> main, connects ->
+      {4, 97, 95, 96}, p -> {0, 0, 0}}, 
+    {site -> 95, tag -> 95, mass -> hc, charge -> 0.053, flags ->
+      0b1000000000, group -> {mol, 95, 0, 0, 0}, cluster -> 0, system -> main,
+      connects -> 94, p -> {0, 0, 0}}, 
+    {site -> 96, tag -> 96, mass -> hc, charge -> 0.053, flags ->
+      0b1000000000, group -> {mol, 96, 0, 0, 0}, cluster -> 0, system -> main,
+      connects -> 94, p -> {0, 0, 0}}, 
+    {site -> 97, tag -> 97, mass -> oc, charge -> -0.266, flags ->
+      0b1000000000, group -> {mol, 97, 0, 0, 0}, cluster -> 0, system -> main,
+      connects -> {94, 98}, p -> {0, 0, 0}}, 
+    {site -> 98, tag -> 98, mass -> c, charge -> 0.027, flags -> 0b1000000000,
+      group -> {mol, 98, 0, 0, 0}, cluster -> 0, system -> main, connects ->
+      {97, 101, 99, 100}, p -> {0, 0, 0}}, 
+    {site -> 99, tag -> 99, mass -> hc, charge -> 0.053, flags ->
+      0b1000000000, group -> {mol, 99, 0, 0, 0}, cluster -> 0, system -> main,
+      connects -> 98, p -> {0, 0, 0}}, 
+    {site -> 100, tag -> 100, mass -> hc, charge -> 0.053, flags ->
+      0b1000000000, group -> {mol, 100, 0, 0, 0}, cluster -> 0, system ->
+      main, connects -> 98, p -> {0, 0, 0}}, 
+    {site -> 101, tag -> 101, mass -> c3h, charge -> 0.08, flags ->
+      0b1101000000000, group -> {mol, 101, 0, 0, 0}, cluster -> 0, system ->
+      main, connects -> {98, 103, 102, 104}, p -> {0, 0, 0}}, 
+    {site -> 102, tag -> 102, mass -> hc, charge -> 0.053, flags ->
+      0b1000000000, group -> {mol, 102, 0, 0, 0}, cluster -> 0, system ->
+      main, connects -> 101, p -> {0, 0, 0}}, 
+    {site -> 103, tag -> 103, mass -> o3e, charge -> -0.266, flags ->
+      0b101000000000, group -> {mol, 103, 0, 0, 0}, cluster -> 0, system ->
+      main, connects -> {101, 104}, p -> {0, 0, 0}}, 
+    {site -> 104, tag -> 104, mass -> c, charge -> 0.027, flags ->
+      0b1101000000000, group -> {mol, 104, 0, 0, 0}, cluster -> 0, system ->
+      main, connects -> {103, 101, 105, 106}, p -> {0, 0, 0}}, 
+    {site -> 105, tag -> 105, mass -> hc, charge -> 0.053, flags ->
+      0b1000000000, group -> {mol, 105, 0, 0, 0}, cluster -> 0, system ->
+      main, connects -> 104, p -> {0, 0, 0}}, 
+    {site -> 106, tag -> 106, mass -> hc, charge -> 0.053, flags ->
+      0b1000001000, group -> {mol, 106, 0, 0, 0}, cluster -> 0, system ->
+      main, connects -> 104, p -> {0, 0, 0}}}};
 
