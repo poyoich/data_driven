@@ -25,20 +25,35 @@ include calc.pram
 # ------------------------------- OPT Section -------------------------------
 minimize 1.0e-5 1.0e-7 100000 400000
 # ------------------------------- Run Section -------------------------------
+#
+
+thermo_style custom step temp pe evdwl ecoul ebond eangle edihed eimp density vol
+thermo          100
+
+fix Langevin  all langevin 300 300 100.0 482432
+fix moveLimit all nve/limit 0.1
+run 20000
+unfix Langevin
+unfix moveLimit
+
+
+
+fix 		relax all npt temp 300.0 300.0 100 iso 1.0 1.0 1000
+run 50000
+unfix relax
+
 
 molecule 	pre cleaned_pre-mol
 molecule	post cleaned_post-mol
 
 fix		fxrct all bond/react stabilization yes statted_grp .03 &
-		 react rxn1 all 100 0.0 3.5 pre post cleaned_semi.map stabilize_steps 100 &
+		 react rxn1 all 100 0.0 10.0 pre post semi.map stabilize_steps 2000 molecule inter &
 
-fix 		1 statted_grp_REACT npt temp 300.0 300.0 100 iso 1.0 1.0 1000
-
-fix 		4 bond_react_MASTER_group temp/rescale 1 300.0 300.0 1 1
-
+fix 		npt statted_grp_REACT npt temp 300.0 300.0 100 iso 1.0 1.0 1000
+fix 		reacted bond_react_MASTER_group temp/rescale 1 300.0 300.0 1 1
 
 
-thermo_style custom step temp pe evdwl ecoul ebond eangle edihed eimp density vol f_fxrct[1] spcpu
+thermo_style custom step temp pe evdwl ecoul ebond eangle edihed eimp density vol f_fxrct[1]
 thermo          100
 
 
@@ -47,10 +62,20 @@ compute 1 all property/local btype batom1 batom2
 compute 2 all stress/atom NULL
 fix 5 all ave/atom 1 500 1000 c_2[*]
 
-
 dump DumpPos all custom 1000 dump.pos id type x y z mol  f_5[*]
 dump DumpBond all local 1000 bonds.dump index c_1[*]
 
+run 20000
 
-run 200000
+unfix fxrct
+unfix npt
+unfix reacted
 
+
+fix		fxrct all bond/react stabilization yes statted_grp .03 &
+		 react rxn1 all 100 0.0 5.0 pre post semi.map stabilize_steps 2000  &
+
+fix 		npt statted_grp_REACT npt temp 300.0 300.0 100 iso 1.0 1.0 1000
+fix 		reacted bond_react_MASTER_group temp/rescale 1 300.0 300.0 1 1
+
+run 20000

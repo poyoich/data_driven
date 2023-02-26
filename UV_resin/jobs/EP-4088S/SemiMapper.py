@@ -40,14 +40,15 @@ def lmp2Graph(ifn):
 
 G_pre = lmp2Graph(sys.argv[1])
 G_post = lmp2Graph(sys.argv[2])
-react_a = 1
-react_b = 2
 
-G_pre.add_edge(24,87)
-G_pre.add_edge(26,85)
+react_a = 10
+react_b = 117
 
-G_pre.remove_edge(24,26)
-G_pre.remove_edge(85,87)
+G_pre.add_edge(react_a ,react_b)
+G_pre.add_edge(11,112)
+
+G_pre.remove_edge(112,117)
+G_pre.remove_edge(10,11)
 
 
 GM = nx.isomorphism.GraphMatcher(G_pre, G_post)
