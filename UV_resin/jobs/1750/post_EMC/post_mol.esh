@@ -1,0 +1,23 @@
+#!/usr/bin/env emc_setup.pl
+#
+ITEM		OPTIONS
+
+replace		true
+mass		true
+ntotal		131	
+density		0.1
+field		pcff
+build_dir	.
+field_location ../../field
+field_debug reduced
+
+ITEM		END
+
+
+ITEM		SHORTHAND
+
+mol		[C@H]1(OC[C@H](CO)OC[C@H](CO[C@H]2CC[C@@H](C[C@@H]3CC[C@H](OC[C@@H]4OC4)CC3)CC2)OCCCO[C@H]2CC[C@@H](C[C@@H]3CC[C@@H](OC[C@@H]4OC4)CC3)CC2)CC[C@@H](C[C@@H]2CC[C@H](OC[C@@H]3OC3)CC2)CC1,100	
+
+ITEM		END
+
+

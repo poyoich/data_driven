@@ -1,0 +1,22 @@
+#!/usr/bin/env emc_setup.pl
+#
+ITEM		OPTIONS
+
+replace		true
+mass		true
+ntotal		5000
+density		0.45
+field		pcff
+build_dir	.
+field_location ../../field
+
+ITEM		END
+
+ITEM		SHORTHAND
+
+mol1		XXXXX_1,75
+mol2		XXXXX_2,25
+
+ITEM		END
+
+

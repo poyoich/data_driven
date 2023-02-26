@@ -1,0 +1,11 @@
+(* EMC: Enhanced Monte Carlo simulations *)
+
+version 9.4.4, build Jul 27 2022 18:02:20, date Sun Feb 26 16:16:59 2023
+
+valid until Aug 01, 2023
+
+Info: script v1.0 started at Sun Feb 26 16:17:00 2023
+Error: core/parse.c:152 ParseConstant:
+       Undefined variable in line 29 of input: f_mol1
+       Program aborted.
+

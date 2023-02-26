@@ -1,0 +1,47 @@
+(* EMC: Enhanced Monte Carlo simulations *)
+
+version 9.4.4, build Jul 27 2022 18:02:20, date Sun Feb 26 18:34:55 2023
+
+valid until Aug 01, 2023
+
+Info: script v1.0 started at Sun Feb 26 18:34:55 2023
+Info: variables = {seed -> -1, ntotal -> 5000, fshape -> 1, output ->
+        "pack_mol", field -> "pcff/pcff", location1 -> "../../field/", nav ->
+        0.6022141179, temperature -> 300, radius -> 5, nrelax -> 100, 
+        weight_nonbond -> 0.0001, weight_bond -> 0.0001, weight_focus -> 1, 
+        cutoff -> 9.5, charge_cutoff -> 9.5, kappa -> 4, density1 -> 0.45, 
+        lprevious -> 0, lphase -> 0, f_mol1 -> 75, f_mol2 -> 25, chem_mol1 ->
+        "[C]1(OC[C@@H]2OC2)[CH][CH][C](C[C]2[CH][CH][C](OC[C@@H]3OC3)[CH][CH]2)[CH][CH]1",
+        chem_mol2 ->
+        "[C]1(OC[C@H](CO)OCCCO[C]2[CH][CH][C](C[C]3[CH][CH][C](OC[C@@H]4OC4)[CH][CH]3)[CH][CH]2)[CH][CH][C](C[C]2[CH][CH][C](OC[C@@H]3OC3)[CH][CH]2)[CH][CH]1"}
+Info: output = 
+      {detail -> 3, wide -> false, expand -> false, math -> true, reduced ->
+        false, info -> true, strict -> true, warning -> true, message -> true,
+        debug -> false, exit -> true, ignore -> false}
+Info: field = {id -> pcff, mode -> cff, style -> none, name ->
+        {"../../field/pcff/pcff.frc", "../../field/pcff/pcff_templates.dat"}, 
+        compress -> false, error -> true, debug -> false, check -> {atomistic
+          -> true, charge -> true}}
+Info: importing '../../field/pcff/pcff.frc'
+Warning: duplicate field.bond entry 40 [28:28] omitted.
+Warning: duplicate field.bond entry 51 [28:77] omitted.
+Warning: duplicate field.bond entry 62 [28:157] omitted.
+Warning: duplicate field.bond entry 176 [44:45] omitted.
+Warning: duplicate field.bond entry 328 [53:156] omitted.
+Warning: duplicate field.bond entry 364 [65:65] omitted.
+Warning: duplicate field.bond entry 365 [65:65] omitted.
+Warning: duplicate field.bond entry 367 [65:77] omitted.
+Warning: duplicate field.bond entry 689 [143:171] omitted.
+Info: groups = {ngroups -> 2, group -> {
+          {id -> mol1, chemistry ->
+            "[C]1(OC[C@@H]2OC2)[CH][CH][C](C[C]2[CH][CH][C](OC[C@@H]3OC3)[CH][CH]2)[CH][CH]1",
+            depth -> 8, charges -> forcefield, charge -> 0, terminator ->
+            false, bias -> none}, 
+          {id -> mol2, chemistry ->
+            "[C]1(OC[C@H](CO)OCCCO[C]2[CH][CH][C](C[C]3[CH][CH][C](OC[C@@H]4OC4)[CH][CH]3)[CH][CH]2)[CH][CH][C](C[C]2[CH][CH][C](OC[C@@H]3OC3)[CH][CH]2)[CH][CH]1",
+            depth -> 8, charges -> forcefield, charge -> 0, terminator ->
+            false, bias -> none}}, ndeletes -> 0, npolymers -> 0}
+Error: core/chemistry/entry.c:416 ChemistryEntry:
+       Type 'Ch' not found (field not set?).
+       Program aborted.
+

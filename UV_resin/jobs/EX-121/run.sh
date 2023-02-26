@@ -7,9 +7,9 @@ output=$(obabel.exe -i mol2 mol2/pre_mol.mol2 -o smi)
 smiles_pre=$(echo "${output}" | awk '{print $1; exit}')
 echo "SIMILES ${smiles_pre}"
 
-output=$(echo "${smiles_pre}" | obabel.exe -i smi -o fh --gen3D)
+output=$(echo "${smiles_pre}" | obabel.exe -ismi  -oxyz -h )
 
-atom_smi1=$(echo "${output}" | sed -n '2p')
+atom_smi1=$(echo "${output}" | sed -n '1p')
 echo "Atom Number : ${atom_smi1}"
 
 cd pre_EMC
@@ -29,9 +29,9 @@ output=$(obabel.exe -i mol2 mol2/post_mol.mol2 -o smi)
 smiles_post=$(echo "${output}" | awk '{print $1; exit}')
 echo "SIMILES ${smiles_post}"
 
-output=$(echo "${smiles_post}" | obabel.exe -i smi -o fh --gen3D)
+output=$(echo "${smiles_post}" | obabel.exe -ismi  -oxyz -h)
 
-atom_smi2=$(echo "${output}" | sed -n '2p')
+atom_smi2=$(echo "${output}" | sed -n '1p')
 echo "Atom Number : ${atom_smi2}"
 
 cd post_EMC
@@ -76,8 +76,11 @@ emc_win32.exe build.emc > emc.log
 cd ../
 
 
-../concat_param.py
 cd automap
+rm *.data
+cd ../
+../concat_param.py
 
+cd automap
 AutoMapper.py . molecule pre_mol.data  --save_name pre-mol.data
 AutoMapper.py . molecule post_mol.data  --save_name post-mol.data

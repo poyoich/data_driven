@@ -1,0 +1,22 @@
+# two molecules DGEBA (diepoxy) and one DETA (linker)
+# two crosslinking reactions
+
+units real
+boundary p p p
+atom_style full
+pair_style lj/class2 8
+angle_style class2
+bond_style class2
+dihedral_style class2
+improper_style class2
+
+kspace_style pppm/cg 0.0001
+
+read_data post_mol.data extra/bond/per/atom 1 extra/angle/per/atom 12 extra/dihedral/per/atom 12 extra/improper/per/atom 12 extra/special/per/atom 12
+include post_mol.params
+
+group delete_atom id 10
+
+delete_atoms group delete_atom compress yes
+
+write_data test.data nocoeff

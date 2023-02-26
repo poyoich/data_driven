@@ -39,7 +39,7 @@ unfix moveLimit
 
 
 fix 		relax all npt temp 300.0 300.0 100 iso 1.0 1.0 1000
-run 50000
+run 1000
 unfix relax
 
 
@@ -65,11 +65,11 @@ fix 5 all ave/atom 1 500 1000 c_2[*]
 dump DumpPos all custom 1000 dump.pos id type x y z mol  f_5[*]
 dump DumpBond all local 1000 bonds.dump index c_1[*]
 
-run 20000
+run 10000
 
-unfix fxrct
-unfix npt
 unfix reacted
+unfix npt
+unfix fxrct
 
 
 fix		fxrct all bond/react stabilization yes statted_grp .03 &

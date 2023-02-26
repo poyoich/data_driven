@@ -37,7 +37,6 @@ unfix Langevin
 unfix moveLimit
 
 
-
 fix 		relax all npt temp 300.0 300.0 100 iso 1.0 1.0 1000
 run 10000
 unfix relax
