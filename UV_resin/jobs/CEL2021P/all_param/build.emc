@@ -1,0 +1,301 @@
+(* EMC: Script *)
+
+(* Created by emc_setup.pl v4.1, August 1, 2021
+   on Wed Mar 01 22:09:22 JST 2023 *)
+
+(* define variables *)
+
+variables	= {
+  seed		-> -1,
+  ntotal	-> 1000,
+  fshape	-> 1,
+  output	-> "pack_mol",
+  field		-> "pcff/pcff",
+  location1	-> "../../field/",
+
+  nav		-> 0.6022141179,
+  temperature	-> 300,
+  radius	-> 5,
+  nrelax	-> 100,
+  weight_nonbond -> 0.0001,
+  weight_bond	-> 0.0001,
+  weight_focus	-> 1,
+  cutoff	-> 9.5,
+  charge_cutoff	-> 9.5,
+  kappa		-> 4,
+
+  density1	-> 0.045,
+  lprevious	-> 0,
+  lphase	-> 0,
+
+  f_pre_1	-> 1,
+  f_post1	-> 1,
+  f_post2	-> 1,
+  f_pre_2	-> 1,
+  f_post_3	-> 1,
+  f_post_4	-> 1,
+
+  chem_pre_1	-> "O=C(OC[C@H]1CC[C@H]([C@@H](O)C1)O[C@H]1CCC[C@H](COC(=O)[C@H]2CC[C@@H]3[C@H](O3)C2)C1)[C@H]1CC[C@@H]2[C@H](O2)C1.O=C(OC[C@H]1CC[C@@H]2[C@@H](O2)C1)[C@H]1CC[C@@H]2[C@H](O2)C1",
+  chem_post1	-> "O=C(OC[C@H]1CC[C@@H]2[C@@H](O2)C1)[C@H]1CC[C@@H]([C@@H](O)C1)O[C@@H]1[C@@H](CC[C@H](C(=O)OC[C@H]2CC[C@@H]3[C@@H](O3)C2)C1)O[C@H]1CCC[C@H](C(=O)OC[C@H]2CC[C@@H]3[C@@H](O3)C2)C1",
+  chem_post2	-> "O=C(OC[C@H]1CC[C@@H]2[C@@H](O2)C1)[C@H]1CC[C@@H]([C@@H](O)C1)O[C@@H]1[C@H](CC[C@H](C(=O)OC[C@H]2CC[C@@H]3[C@@H](O3)C2)C1)O[C@@H]1CCC[C@H](COC(=O)[C@H]2CC[C@@H]3[C@H](O3)C2)C1",
+  chem_pre_2	-> "O=C(OC[C@H]1CC[C@H]([C@@H](O)C1)O[C@H]1CCC[C@H](COC(=O)[C@H]2CC[C@@H]3[C@H](O3)C2)C1)[C@H]1CC[C@@H]2[C@H](O2)C1.O=C(OC[C@H]1CC[C@@H]2[C@@H](O2)C1)[C@H]1CC[C@@H]2[C@H](O2)C1",
+  chem_post_3	-> "O=C(OC[C@H]1CC[C@H]([C@@H](O)C1)O[C@H]1[C@H](CC[C@H](COC(=O)[C@H]2CC[C@@H]3[C@H](O3)C2)C1)O[C@@H]1CCC[C@H](COC(=O)[C@H]2CC[C@@H]3[C@H](O3)C2)C1)[C@H]1CC[C@@H]2[C@H](O2)C1",
+  chem_post_4	-> "O=C(OC[C@H]1CC[C@H]([C@@H](O)C1)O[C@H]1C[C@@H](C[C@H](COC(=O)[C@H]2CC[C@@H]3[C@H](O3)C2)C1)O[C@@H]1CCC[C@H](C(=O)OC[C@H]2CC[C@@H]3[C@@H](O3)C2)C1)[C@H]1CC[C@@H]2[C@H](O2)C1"
+};
+
+output		= {
+  debug		-> false,
+  exit		-> true,
+  info		-> true,
+  warning	-> true
+};
+
+(* define force field *)
+
+field		= {
+  id		-> pcff,
+  mode		-> cff,
+    name	-> {location1+field+".frc", location1+field+"_templates.dat"},
+  compress	-> false
+};
+
+(* define groups *)
+
+groups		= {
+  group		-> {
+    id		-> pre_1,
+    depth	-> 8,
+    chemistry	-> chem_pre_1
+  },
+  group		-> {
+    id		-> post1,
+    depth	-> 8,
+    chemistry	-> chem_post1
+  },
+  group		-> {
+    id		-> post2,
+    depth	-> 8,
+    chemistry	-> chem_post2
+  },
+  group		-> {
+    id		-> pre_2,
+    depth	-> 8,
+    chemistry	-> chem_pre_2
+  },
+  group		-> {
+    id		-> post_3,
+    depth	-> 8,
+    chemistry	-> chem_post_3
+  },
+  group		-> {
+    id		-> post_4,
+    depth	-> 8,
+    chemistry	-> chem_post_4
+  }
+};
+
+field		= {
+  mode		-> apply,
+  check		-> {
+    atomistic	-> true,
+    charge	-> true
+  },
+  debug		-> false
+};
+
+(* determine simulation sizing *)
+
+variables	= {
+
+  (* lengths *)
+
+  lg_pre_1	-> nsites(pre_1),
+  lg_post1	-> nsites(post1),
+  lg_post2	-> nsites(post2),
+  lg_pre_2	-> nsites(pre_2),
+  lg_post_3	-> nsites(post_3),
+  lg_post_4	-> nsites(post_4),
+  l_pre_1	-> lg_pre_1,
+  norm_pre_1	-> 1,
+  l_post1	-> lg_post1,
+  norm_post1	-> 1,
+  l_post2	-> lg_post2,
+  norm_post2	-> 1,
+  l_pre_2	-> lg_pre_2,
+  norm_pre_2	-> 1,
+  l_post_3	-> lg_post_3,
+  norm_post_3	-> 1,
+  l_post_4	-> lg_post_4,
+  norm_post_4	-> 1,
+
+  (* masses *)
+
+  mg_pre_1	-> mass(pre_1),
+  mg_post1	-> mass(post1),
+  mg_post2	-> mass(post2),
+  mg_pre_2	-> mass(pre_2),
+  mg_post_3	-> mass(post_3),
+  mg_post_4	-> mass(post_4),
+
+  m_pre_1	-> mg_pre_1,
+  norm_pre_1	-> 1,
+  m_post1	-> mg_post1,
+  norm_post1	-> 1,
+  m_post2	-> mg_post2,
+  norm_post2	-> 1,
+  m_pre_2	-> mg_pre_2,
+  norm_pre_2	-> 1,
+  m_post_3	-> mg_post_3,
+  norm_post_3	-> 1,
+  m_post_4	-> mg_post_4,
+  norm_post_4	-> 1,
+
+  (* mass fractions *)
+
+  f_pre_1	-> f_pre_1*l_pre_1/m_pre_1,
+  f_post1	-> f_post1*l_post1/m_post1,
+  f_post2	-> f_post2*l_post2/m_post2,
+  f_pre_2	-> f_pre_2*l_pre_2/m_pre_2,
+  f_post_3	-> f_post_3*l_post_3/m_post_3,
+  f_post_4	-> f_post_4*l_post_4/m_post_4,
+
+  (* normalization *)
+
+  norm		-> f_pre_1+f_post1+f_post2+f_pre_2+f_post_3+f_post_4,
+
+  f_pre_1	-> f_pre_1/norm,
+  f_post1	-> f_post1/norm,
+  f_post2	-> f_post2/norm,
+  f_pre_2	-> f_pre_2/norm,
+  f_post_3	-> f_post_3/norm,
+  f_post_4	-> f_post_4/norm,
+
+  (* sizing *)
+
+  n_pre_1	-> int(f_pre_1*ntotal/l_pre_1+0.5),
+  n_post1	-> int(f_post1*ntotal/l_post1+0.5),
+  n_post2	-> int(f_post2*ntotal/l_post2+0.5),
+  n_pre_2	-> int(f_pre_2*ntotal/l_pre_2+0.5),
+  n_post_3	-> int(f_post_3*ntotal/l_post_3+0.5),
+  n_post_4	-> int(f_post_4*ntotal/l_post_4+0.5),
+
+  (* system sizing *)
+
+  ntotal	-> 0,
+  mtotal	-> 0
+};
+
+(* define interactions *)
+
+simulation	= {
+  units		-> {
+    permittivity -> 1,
+    seed	-> seed
+  },
+  types		-> {
+    coulomb	-> {
+      pair	-> {active -> true, cutoff -> charge_cutoff}
+    }
+  }
+};
+
+(* clusters phase 1 *)
+
+clusters	= {
+  progress	-> none,
+  cluster	-> {
+    id		-> pre_1, system -> main, group -> pre_1, n -> n_pre_1},
+  cluster	-> {
+    id		-> post1, system -> main, group -> post1, n -> n_post1},
+  cluster	-> {
+    id		-> post2, system -> main, group -> post2, n -> n_post2},
+  cluster	-> {
+    id		-> pre_2, system -> main, group -> pre_2, n -> n_pre_2},
+  cluster	-> {
+    id		-> post_3, system -> main, group -> post_3, n -> n_post_3},
+  cluster	-> {
+    id		-> post_4, system -> main, group -> post_4, n -> n_post_4}
+};
+
+field		= {
+  mode		-> apply,
+  check		-> {
+    atomistic	-> true,
+    charge	-> true
+  },
+  debug		-> false
+};
+
+(* build phase 1 *)
+
+variables	= {
+  nphase1	-> ntotal()-ntotal,
+  mphase1	-> mtotal()-mtotal,
+  vphase1	-> mphase1/nav/density1,
+  lbox		-> (vphase1/fshape)^(1/3),
+  lphase1	-> fshape*lbox,
+  lxx		-> lphase1,
+  lyy		-> lbox,
+  lzz		-> lbox,
+  lzy		-> 0,
+  lzx		-> 0,
+  lyx		-> 0,
+  lphase	-> lphase1,
+  ntotal	-> nphase1,
+  mtotal	-> mphase1,
+  vtotal	-> vphase1
+};
+
+types		= {
+  cff		-> {
+    pair	-> {active -> true, mode -> repulsive, cutoff -> cutoff}
+  }
+};
+
+build		= {
+  system	-> {
+    id		-> main,
+    split	-> false,
+    geometry	-> {xx -> lxx, yy -> lyy, zz -> lzz,
+		    zy -> lzy, zx -> lzx, yx -> lyx},
+    temperature	-> temperature,
+    flag	-> {charge -> true, geometry -> true, map -> true, pbc -> true}
+  },
+  select	-> {
+    progress	-> list,
+    frequency	-> 1,
+    name	-> "error",
+    order	-> random,
+    cluster	-> {pre_1, post1, post2, pre_2, post_3, post_4},
+    relax	-> {ncycles -> nrelax, radius -> radius},
+    grow	-> {
+      method	-> energetic,
+      check	-> all,
+      nbonded	-> 20,
+      ntrials	-> 20,
+      niterations -> 1000,
+      theta	-> 0,
+      weight	-> {
+	bonded	-> weight_bond, nonbonded -> weight_nonbond,
+	focus	-> weight_focus}
+    }
+  }
+};
+
+force		= {style -> none, message -> nkt};
+force		= {style -> init, message -> nkt};
+
+(* storage *)
+
+put		= {name -> output, compress -> true};
+
+pdb		= {name -> output, compress -> true, extend -> false,
+		   forcefield -> cff, detect -> false, hexadecimal -> false,
+		   unwrap -> true, pbc -> true, atom -> index, residue -> index,
+		   segment -> index, rank -> false, vdw -> false, cut -> false,
+		   fixed -> true, rigid -> true, connectivity -> false,
+		   parameters -> false};
+
+lammps		= {name -> output, mode -> put, forcefield -> cff,
+		   parameters -> true, types -> false, unwrap -> true,
+		   charges -> true, ewald -> true};

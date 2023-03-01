@@ -1,0 +1,1637 @@
+(* EMC: Enhanced Monte Carlo simulations *)
+
+identity = {
+  name -> "debug", machine -> "", date -> "Wed Mar 01 22:41:37 2023", version
+  -> "9.4.4", build -> "Jul 27 2022 18:02:20"};
+
+(* Output *)
+
+output = {
+  detail -> 3, wide -> false, expand -> false, math -> true, reduced -> false,
+  info -> true, strict -> true, warning -> true, message -> true, debug ->
+  false, exit -> true, ignore -> true};
+
+(* Timing *)
+
+timing = {
+  total -> {wall -> 21.53, cpu -> 21.53}, 
+  pairs -> {wall -> 0, cpu -> 0}, 
+  bonds -> {wall -> 0, cpu -> 0}, 
+  messages -> {wall -> 0, cpu -> 0}};
+
+(* Script *)
+
+script = {
+  variables -> {seed -> -1, ntotal -> 128, fshape -> 1, output -> "post_mol", 
+    field -> "pcff/pcff", location1 -> "../../field/", nav -> 0.6022141179, 
+    temperature -> 300, radius -> 5, nrelax -> 100, weight_nonbond -> 0.0001, 
+    weight_bond -> 0.0001, weight_focus -> 1, cutoff -> 9.5, charge_cutoff ->
+    9.5, kappa -> 4, density1 -> 0.1, lprevious -> 0, lphase -> 0, f_mol ->
+    100, chem_mol ->
+    "[C@@H]1(COC[C@@H](CO)OC[C@H](COC[C@@H]2CC[C@H](COC[C@@H]3OC3)CC2)OCCCOC[C@H]2CC[C@@H](COC[C@@H]3CO3)CC2)CC[C@H](COC[C@@H]2OC2)CC1"},
+    
+  output -> {debug -> false, exit -> true, info -> true, warning -> true}, 
+  field -> {id -> pcff, mode -> cff, name -> {location1+field+".frc", 
+      location1+field+"_templates.dat"}, compress -> false}, 
+  groups -> {group -> {id -> mol, depth -> 8, chemistry -> chem_mol}}, 
+  field -> {mode -> apply, check -> {atomistic -> true, charge -> true}, debug
+    -> reduced}, 
+  put -> {name -> "debug"}, 
+  variables -> {lg_mol -> nsites(mol), l_mol -> lg_mol, norm_mol -> 1, mg_mol
+    -> mass(mol), m_mol -> mg_mol, norm_mol -> 1, f_mol -> f_mol*l_mol/m_mol, 
+    norm -> f_mol, f_mol -> f_mol/norm, n_mol -> int(f_mol*ntotal/l_mol+0.5), 
+    ntotal -> 0, mtotal -> 0}, 
+  simulation -> {units -> {permittivity -> 1, seed -> seed}, types -> {coulomb
+      -> {pair -> {active -> true, cutoff -> charge_cutoff}}}}, 
+  clusters -> {progress -> none, cluster -> {id -> mol, system -> main, group
+      -> mol, n -> n_mol}}, 
+  field -> {mode -> apply, check -> {atomistic -> true, charge -> true}, debug
+    -> reduced}, 
+  put -> {name -> "debug"}, 
+  variables -> {nphase1 -> ntotal()-ntotal, mphase1 -> mtotal()-mtotal, 
+    vphase1 -> mphase1/nav/density1, lbox -> (vphase1/fshape)^(1/3), lphase1
+    -> fshape*lbox, lxx -> lphase1, lyy -> lbox, lzz -> lbox, lzy -> 0, lzx ->
+    0, lyx -> 0, lphase -> lphase1, ntotal -> nphase1, mtotal -> mphase1, 
+    vtotal -> vphase1}, 
+  types -> {cff -> {pair -> {active -> true, mode -> repulsive, cutoff ->
+        cutoff}}}, 
+  build -> {system -> {id -> main, split -> false, geometry -> {xx -> lxx, yy
+        -> lyy, zz -> lzz, zy -> lzy, zx -> lzx, yx -> lyx}, temperature ->
+      temperature, flag -> {charge -> true, geometry -> true, map -> true, pbc
+        -> true}}, select -> {progress -> list, frequency -> 1, name ->
+      "error", order -> random, cluster -> mol, relax -> {ncycles -> nrelax, 
+        radius -> radius}, grow -> {method -> energetic, check -> all, nbonded
+        -> 20, ntrials -> 20, niterations -> 1000, theta -> 0, weight -> {
+          bonded -> weight_bond, nonbonded -> weight_nonbond, focus ->
+          weight_focus}}}}, 
+  force -> {style -> none, message -> nkt}, 
+  force -> {style -> init, message -> nkt}, 
+  put -> {name -> output, compress -> true}, 
+  pdb -> {name -> output, compress -> true, extend -> false, forcefield ->
+    cff, detect -> false, hexadecimal -> false, unwrap -> true, pbc -> true, 
+    atom -> index, residue -> index, segment -> index, rank -> false, vdw ->
+    false, cut -> false, fixed -> true, rigid -> true, connectivity -> false, 
+    parameters -> false}, 
+  lammps -> {name -> output, mode -> put, forcefield -> cff, parameters ->
+    true, types -> false, unwrap -> true, charges -> true, ewald -> true}};
+
+(* Variables *)
+
+variables = {
+  seed -> -1, ntotal -> 0, fshape -> 1, output -> "post_mol", field ->
+  "pcff/pcff", location1 -> "../../field/", nav -> 0.6022141179, temperature
+  -> 300, radius -> 5, nrelax -> 100, weight_nonbond -> 0.0001, weight_bond ->
+  0.0001, weight_focus -> 1, cutoff -> 9.5, charge_cutoff -> 9.5, kappa -> 4, 
+  density1 -> 0.1, lprevious -> 0, lphase -> 0, f_mol -> 1, chem_mol ->
+  "[C@@H]1(COC[C@@H](CO)OC[C@H](COC[C@@H]2CC[C@H](COC[C@@H]3OC3)CC2)OCCCOC[C@H]2CC[C@@H](COC[C@@H]3CO3)CC2)CC[C@H](COC[C@@H]2OC2)CC1",
+  lg_mol -> 128, l_mol -> 128, norm_mol -> 1, mg_mol -> 771.05088, m_mol ->
+  771.05088, norm -> 16.6007203053, n_mol -> 1, mtotal -> 0};
+
+(* Constants *)
+
+constants = {
+  systems -> main, 
+  clusters -> mol, 
+  groups -> mol, 
+  sites -> {c, c1, c3h, h, hc, o3e, oc, oh}, 
+  fields -> pcff};
+
+(* Units *)
+
+units = {
+  type -> atomistic, mass -> 1, length -> 1, angstrom -> 1, angle ->
+  57.2957795131, energy -> 1, kb -> 0.00329983365201, nav -> 0.6022141179, 
+  charge -> 1, permittivity -> 0.000239645217054, dielectric -> 1, beta ->
+  1.68780475671, seed -> -1, reduced -> true};
+
+(* Types *)
+
+types = {
+  atomistic -> full, force -> false, virial -> false, periodic -> {x -> true, 
+    y -> true, z -> true}, neighbor -> sector, stencil -> standard, skin -> 0,
+  shake -> none, depth -> auto, 
+  mass -> {
+    n -> 8, data -> {
+      {id -> c, reference -> 28, element -> "C", comment ->
+        "generic SP3 carbon", mass -> 12.01115, charge -> 0}, 
+      {id -> c1, reference -> 34, element -> "C", comment ->
+        "sp3 carbon with 1 H 3 heavies", mass -> 12.01115, charge -> 0}, 
+      {id -> c3h, reference -> 37, element -> "C", comment ->
+        "sp3 carbon in 3-membered ring with hydrogens", mass -> 12.01115, 
+        charge -> 0}, 
+      {id -> h, reference -> 77, element -> "H", comment ->
+        "generic hydrogen bound to C, Si,or H", mass -> 1.00797, charge -> 0}, 
+      {id -> hc, reference -> 82, element -> "H", comment ->
+        "hydrogen bonded to carbon", mass -> 1.00797, charge -> 0}, 
+      {id -> o3e, reference -> 149, element -> "O", comment ->
+        "sp3 oxygen  in three membered ring", mass -> 15.9994, charge -> 0}, 
+      {id -> oc, reference -> 161, element -> "O", comment ->
+        "sp3 oxygen  in ether or acetals", mass -> 15.9994, charge -> 0}, 
+      {id -> oh, reference -> 163, element -> "O", comment ->
+        "oxygen bonded to hydrogen", mass -> 15.9994, charge -> 0}}}, 
+  cff -> {active -> true, 
+    angle -> {active -> true, n -> 26, data -> {
+        {i0 -> c, i1 -> c, i2 -> c, theta -> 1.96646246822, k -> {39.516,
+          -7.443, -9.5583}}, 
+        {i0 -> c, i1 -> c, i2 -> c1, theta -> 1.96646246822, k -> {39.516,
+          -7.443, -9.5583}}, 
+        {i0 -> c, i1 -> c, i2 -> hc, theta -> 1.93330121243, k -> {41.453,
+          -10.604, 5.129}}, 
+        {i0 -> c, i1 -> c, i2 -> oc, theta -> 1.94202785869, k -> {54.5381,
+          -8.3642, -13.0838}}, 
+        {i0 -> c, i1 -> c1, i2 -> c, theta -> 1.96646246822, k -> {39.516,
+          -7.443, -9.5583}}, 
+        {i0 -> c, i1 -> c1, i2 -> hc, theta -> 1.93330121243, k -> {41.453,
+          -10.604, 5.129}}, 
+        {i0 -> c, i1 -> c1, i2 -> oc, theta -> 1.94202785869, k -> {54.5381,
+          -8.3642, -13.0838}}, 
+        {i0 -> c, i1 -> c3h, i2 -> c, theta -> 1.96646246822, k -> {39.516,
+          -7.443, -9.5583}}, 
+        {i0 -> c, i1 -> c3h, i2 -> hc, theta -> 1.93330121243, k -> {41.453,
+          -10.604, 5.129}}, 
+        {i0 -> c, i1 -> c3h, i2 -> o3e, theta -> 1.94202785869, k -> {54.5381,
+          -8.3642, -13.0838}}, 
+        {i0 -> c, i1 -> o3e, i2 -> c3h, theta -> 1.82386906833, k -> {35.7454,
+          -10.0067, -6.2729}}, 
+        {i0 -> c, i1 -> oc, i2 -> c, theta -> 1.82386906833, k -> {35.7454,
+          -10.0067, -6.2729}}, 
+        {i0 -> c, i1 -> oc, i2 -> c1, theta -> 1.82386906833, k -> {35.7454,
+          -10.0067, -6.2729}}, 
+        {i0 -> c, i1 -> oh, i2 -> h, theta -> 1.90240888467, k -> {58.5, 0,
+          0}}, 
+        {i0 -> c1, i1 -> c, i2 -> hc, theta -> 1.93330121243, k -> {41.453,
+          -10.604, 5.129}}, 
+        {i0 -> c1, i1 -> c, i2 -> oc, theta -> 1.94202785869, k -> {54.5381,
+          -8.3642, -13.0838}}, 
+        {i0 -> c1, i1 -> c, i2 -> oh, theta -> 1.94202785869, k -> {54.5381,
+          -8.3642, -13.0838}}, 
+        {i0 -> c3h, i1 -> c, i2 -> hc, theta -> 1.93330121243, k -> {41.453,
+          -10.604, 5.129}}, 
+        {i0 -> c3h, i1 -> c, i2 -> o3e, theta -> 1.94202785869, k -> {54.5381,
+          -8.3642, -13.0838}}, 
+        {i0 -> c3h, i1 -> c, i2 -> oc, theta -> 1.94202785869, k -> {54.5381,
+          -8.3642, -13.0838}}, 
+        {i0 -> hc, i1 -> c, i2 -> hc, theta -> 1.8790214727, k -> {39.641,
+          -12.921, -2.4318}}, 
+        {i0 -> hc, i1 -> c, i2 -> o3e, theta -> 1.89766158911, k -> {58.5446,
+          -10.8088, -12.4006}}, 
+        {i0 -> hc, i1 -> c, i2 -> oc, theta -> 1.89766158911, k -> {58.5446,
+          -10.8088, -12.4006}}, 
+        {i0 -> hc, i1 -> c, i2 -> oh, theta -> 1.89766158911, k -> {58.5446,
+          -10.8088, -12.4006}}, 
+        {i0 -> hc, i1 -> c1, i2 -> oc, theta -> 1.89766158911, k -> {58.5446,
+          -10.8088, -12.4006}}, 
+        {i0 -> hc, i1 -> c3h, i2 -> o3e, theta -> 1.89766158911, k ->
+          {58.5446, -10.8088, -12.4006}}}}, 
+    angle_angle -> {active -> true, n -> 47, data -> {
+        {i0 -> c, i1 -> c, i2 -> hc, i3 -> c, k -> 0.1184}, 
+        {i0 -> c, i1 -> c, i2 -> hc, i3 -> oc, k -> 3.9177}, 
+        {i0 -> c, i1 -> c1, i2 -> c, i3 -> hc, k -> -1.3199}, 
+        {i0 -> c, i1 -> c1, i2 -> hc, i3 -> c, k -> 0.1184}, 
+        {i0 -> c, i1 -> c1, i2 -> hc, i3 -> hc, k -> 0.2738}, 
+        {i0 -> c, i1 -> c1, i2 -> hc, i3 -> oc, k -> 3.9177}, 
+        {i0 -> c, i1 -> c1, i2 -> hc, i3 -> oh, k -> 3.9177}, 
+        {i0 -> c, i1 -> c1, i2 -> oc, i3 -> hc, k -> 0.1689}, 
+        {i0 -> c, i1 -> c1, i2 -> oh, i3 -> hc, k -> 0.1689}, 
+        {i0 -> c, i1 -> c3h, i2 -> hc, i3 -> o3e, k -> 3.9177}, 
+        {i0 -> c, i1 -> hc, i2 -> c, i3 -> c, k -> -1.3199}, 
+        {i0 -> c, i1 -> hc, i2 -> c, i3 -> hc, k -> -0.4825}, 
+        {i0 -> c, i1 -> hc, i2 -> c, i3 -> oc, k -> 2.5926}, 
+        {i0 -> c, i1 -> hc, i2 -> c1, i3 -> c, k -> -1.3199}, 
+        {i0 -> c, i1 -> hc, i2 -> c1, i3 -> hc, k -> -0.4825}, 
+        {i0 -> c, i1 -> hc, i2 -> c1, i3 -> oc, k -> 2.5926}, 
+        {i0 -> c, i1 -> hc, i2 -> c1, i3 -> oh, k -> 2.5926}, 
+        {i0 -> c, i1 -> hc, i2 -> c3h, i3 -> hc, k -> -0.4825}, 
+        {i0 -> c, i1 -> hc, i2 -> c3h, i3 -> o3e, k -> 2.5926}, 
+        {i0 -> c, i1 -> hc, i2 -> c3h, i3 -> oc, k -> 2.5926}, 
+        {i0 -> c, i1 -> hc, i2 -> hc, i3 -> c, k -> 0.2738}, 
+        {i0 -> c, i1 -> hc, i2 -> hc, i3 -> c3h, k -> 0.2738}, 
+        {i0 -> c, i1 -> hc, i2 -> hc, i3 -> o3e, k -> 2.4259}, 
+        {i0 -> c, i1 -> hc, i2 -> hc, i3 -> oc, k -> 2.4259}, 
+        {i0 -> c, i1 -> hc, i2 -> hc, i3 -> oh, k -> 2.4259}, 
+        {i0 -> c, i1 -> hc, i2 -> o3e, i3 -> c3h, k -> 0.1689}, 
+        {i0 -> c, i1 -> hc, i2 -> o3e, i3 -> hc, k -> 2.1283}, 
+        {i0 -> c, i1 -> hc, i2 -> oc, i3 -> c, k -> 0.1689}, 
+        {i0 -> c, i1 -> hc, i2 -> oc, i3 -> c3h, k -> 0.1689}, 
+        {i0 -> c, i1 -> hc, i2 -> oc, i3 -> hc, k -> 2.1283}, 
+        {i0 -> c, i1 -> hc, i2 -> oh, i3 -> hc, k -> 2.1283}, 
+        {i0 -> c, i1 -> oc, i2 -> hc, i3 -> c3h, k -> 3.9177}, 
+        {i0 -> c1, i1 -> c, i2 -> c, i3 -> c, k -> -0.1729}, 
+        {i0 -> c1, i1 -> c, i2 -> c, i3 -> oc, k -> -0.833}, 
+        {i0 -> c1, i1 -> c, i2 -> hc, i3 -> c, k -> 0.1184}, 
+        {i0 -> c1, i1 -> c, i2 -> hc, i3 -> oc, k -> 3.9177}, 
+        {i0 -> c1, i1 -> c, i2 -> oc, i3 -> c, k -> -3.5744}, 
+        {i0 -> c1, i1 -> hc, i2 -> c, i3 -> c, k -> -1.3199}, 
+        {i0 -> c1, i1 -> hc, i2 -> c, i3 -> oc, k -> 2.5926}, 
+        {i0 -> c1, i1 -> hc, i2 -> oc, i3 -> c, k -> 0.1689}, 
+        {i0 -> c3h, i1 -> c, i2 -> c, i3 -> o3e, k -> -0.833}, 
+        {i0 -> c3h, i1 -> c, i2 -> hc, i3 -> c, k -> 0.1184}, 
+        {i0 -> c3h, i1 -> c, i2 -> hc, i3 -> o3e, k -> 3.9177}, 
+        {i0 -> c3h, i1 -> c, i2 -> o3e, i3 -> c, k -> -3.5744}, 
+        {i0 -> c3h, i1 -> hc, i2 -> c, i3 -> c, k -> -1.3199}, 
+        {i0 -> c3h, i1 -> hc, i2 -> c, i3 -> o3e, k -> 2.5926}, 
+        {i0 -> c3h, i1 -> hc, i2 -> o3e, i3 -> c, k -> 0.1689}}}, 
+    angle_angle_torsion -> {active -> true, n -> 39, data -> {
+        {i0 -> c, i1 -> c, i2 -> c, i3 -> hc, k -> -16.164}, 
+        {i0 -> c, i1 -> c, i2 -> c, i3 -> oc, k -> -29.042}, 
+        {i0 -> c, i1 -> c, i2 -> c1, i3 -> c, k -> -22.045}, 
+        {i0 -> c, i1 -> c, i2 -> c1, i3 -> hc, k -> -16.164}, 
+        {i0 -> c, i1 -> c, i2 -> oc, i3 -> c, k -> -19.0059}, 
+        {i0 -> c, i1 -> c, i2 -> oc, i3 -> c1, k -> -19.0059}, 
+        {i0 -> c, i1 -> c1, i2 -> c, i3 -> hc, k -> -16.164}, 
+        {i0 -> c, i1 -> c1, i2 -> c, i3 -> oc, k -> -29.042}, 
+        {i0 -> c, i1 -> c1, i2 -> c, i3 -> oh, k -> -29.042}, 
+        {i0 -> c, i1 -> c1, i2 -> oc, i3 -> c, k -> -19.0059}, 
+        {i0 -> c, i1 -> c3h, i2 -> c, i3 -> hc, k -> -16.164}, 
+        {i0 -> c, i1 -> c3h, i2 -> c, i3 -> o3e, k -> -29.042}, 
+        {i0 -> c, i1 -> c3h, i2 -> c, i3 -> oc, k -> -29.042}, 
+        {i0 -> c, i1 -> c3h, i2 -> o3e, i3 -> c, k -> -19.0059}, 
+        {i0 -> c, i1 -> o3e, i2 -> c3h, i3 -> hc, k -> -16.4438}, 
+        {i0 -> c, i1 -> oc, i2 -> c, i3 -> c1, k -> -19.0059}, 
+        {i0 -> c, i1 -> oc, i2 -> c, i3 -> c3h, k -> -19.0059}, 
+        {i0 -> c, i1 -> oc, i2 -> c, i3 -> hc, k -> -16.4438}, 
+        {i0 -> c, i1 -> oc, i2 -> c1, i3 -> hc, k -> -16.4438}, 
+        {i0 -> c1, i1 -> c, i2 -> c, i3 -> c1, k -> -22.045}, 
+        {i0 -> c1, i1 -> c, i2 -> c, i3 -> hc, k -> -16.164}, 
+        {i0 -> c1, i1 -> c, i2 -> oc, i3 -> c1, k -> -19.0059}, 
+        {i0 -> c1, i1 -> c, i2 -> oh, i3 -> h, k -> 0}, 
+        {i0 -> c1, i1 -> oc, i2 -> c, i3 -> hc, k -> -16.4438}, 
+        {i0 -> c3h, i1 -> o3e, i2 -> c, i3 -> hc, k -> -16.4438}, 
+        {i0 -> h, i1 -> oh, i2 -> c, i3 -> hc, k -> 0}, 
+        {i0 -> hc, i1 -> c, i2 -> c, i3 -> hc, k -> -12.564}, 
+        {i0 -> hc, i1 -> c, i2 -> c, i3 -> oc, k -> -20.2006}, 
+        {i0 -> hc, i1 -> c, i2 -> c1, i3 -> hc, k -> -12.564}, 
+        {i0 -> hc, i1 -> c, i2 -> c1, i3 -> oc, k -> -20.2006}, 
+        {i0 -> hc, i1 -> c, i2 -> c3h, i3 -> hc, k -> -12.564}, 
+        {i0 -> hc, i1 -> c, i2 -> c3h, i3 -> o3e, k -> -20.2006}, 
+        {i0 -> hc, i1 -> c1, i2 -> c, i3 -> oc, k -> -20.2006}, 
+        {i0 -> hc, i1 -> c1, i2 -> c, i3 -> oh, k -> -20.2006}, 
+        {i0 -> hc, i1 -> c3h, i2 -> c, i3 -> o3e, k -> -20.2006}, 
+        {i0 -> hc, i1 -> c3h, i2 -> c, i3 -> oc, k -> -20.2006}, 
+        {i0 -> o3e, i1 -> c3h, i2 -> c, i3 -> oc, k -> -14.0484}, 
+        {i0 -> oc, i1 -> c, i2 -> c1, i3 -> oc, k -> -14.0484}, 
+        {i0 -> oc, i1 -> c1, i2 -> c, i3 -> oh, k -> -14.0484}}}, 
+    angle_torsion -> {active -> true, n -> 39, data -> {
+        {i0 -> c, i1 -> c, i2 -> c, i3 -> hc, k -> {0.3113, 0.4516, -0.1988,
+          -0.2454, 0, -0.1136}}, 
+        {i0 -> c, i1 -> c, i2 -> c, i3 -> oc, k -> {0.5623, -0.3041, -0.4015,
+          0.9672, -0.7566, -1.2331}}, 
+        {i0 -> c, i1 -> c, i2 -> c1, i3 -> c, k -> {0.3886, -0.3139, 0.1389,
+          0.3886, -0.3139, 0.1389}}, 
+        {i0 -> c, i1 -> c, i2 -> c1, i3 -> hc, k -> {0.3113, 0.4516, -0.1988,
+          -0.2454, 0, -0.1136}}, 
+        {i0 -> c, i1 -> c, i2 -> oc, i3 -> c, k -> {-2.7466, 1.4877, -0.8955,
+          0.5676, 0.945, 0.0703}}, 
+        {i0 -> c, i1 -> c, i2 -> oc, i3 -> c1, k -> {0.5676, 0.945, 0.0703,
+          -2.7466, 1.4877, -0.8955}}, 
+        {i0 -> c, i1 -> c1, i2 -> c, i3 -> hc, k -> {0.3113, 0.4516, -0.1988,
+          -0.2454, 0, -0.1136}}, 
+        {i0 -> c, i1 -> c1, i2 -> c, i3 -> oc, k -> {0.5623, -0.3041, -0.4015,
+          0.9672, -0.7566, -1.2331}}, 
+        {i0 -> c, i1 -> c1, i2 -> c, i3 -> oh, k -> {0.5623, -0.3041, -0.4015,
+          0.9672, -0.7566, -1.2331}}, 
+        {i0 -> c, i1 -> c1, i2 -> oc, i3 -> c, k -> {-2.7466, 1.4877, -0.8955,
+          0.5676, 0.945, 0.0703}}, 
+        {i0 -> c, i1 -> c3h, i2 -> c, i3 -> hc, k -> {0.3113, 0.4516, -0.1988,
+          -0.2454, 0, -0.1136}}, 
+        {i0 -> c, i1 -> c3h, i2 -> c, i3 -> o3e, k -> {0.5623, -0.3041,
+          -0.4015, 0.9672, -0.7566, -1.2331}}, 
+        {i0 -> c, i1 -> c3h, i2 -> c, i3 -> oc, k -> {0.5623, -0.3041,
+          -0.4015, 0.9672, -0.7566, -1.2331}}, 
+        {i0 -> c, i1 -> c3h, i2 -> o3e, i3 -> c, k -> {-2.7466, 1.4877,
+          -0.8955, 0.5676, 0.945, 0.0703}}, 
+        {i0 -> c, i1 -> o3e, i2 -> c3h, i3 -> hc, k -> {-1.8234, 1.6393,
+          0.5144, -0.7777, 0.434, -0.6653}}, 
+        {i0 -> c, i1 -> oc, i2 -> c, i3 -> c1, k -> {-2.7466, 1.4877, -0.8955,
+          0.5676, 0.945, 0.0703}}, 
+        {i0 -> c, i1 -> oc, i2 -> c, i3 -> c3h, k -> {0.5676, 0.945, 0.0703,
+          -2.7466, 1.4877, -0.8955}}, 
+        {i0 -> c, i1 -> oc, i2 -> c, i3 -> hc, k -> {-1.8234, 1.6393, 0.5144,
+          -0.7777, 0.434, -0.6653}}, 
+        {i0 -> c, i1 -> oc, i2 -> c1, i3 -> hc, k -> {-1.8234, 1.6393, 0.5144,
+          -0.7777, 0.434, -0.6653}}, 
+        {i0 -> c1, i1 -> c, i2 -> c, i3 -> c1, k -> {0.3886, -0.3139, 0.1389,
+          0.3886, -0.3139, 0.1389}}, 
+        {i0 -> c1, i1 -> c, i2 -> c, i3 -> hc, k -> {-0.2454, 0, -0.1136,
+          0.3113, 0.4516, -0.1988}}, 
+        {i0 -> c1, i1 -> c, i2 -> oc, i3 -> c1, k -> {-2.7466, 1.4877,
+          -0.8955, 0.5676, 0.945, 0.0703}}, 
+        {i0 -> c1, i1 -> c, i2 -> oh, i3 -> h, k -> {0, 0, 0, 0, 0, 0}}, 
+        {i0 -> c1, i1 -> oc, i2 -> c, i3 -> hc, k -> {-0.7777, 0.434, -0.6653,
+          -1.8234, 1.6393, 0.5144}}, 
+        {i0 -> c3h, i1 -> o3e, i2 -> c, i3 -> hc, k -> {-1.8234, 1.6393,
+          0.5144, -0.7777, 0.434, -0.6653}}, 
+        {i0 -> h, i1 -> oh, i2 -> c, i3 -> hc, k -> {0, 0, 0, 0, 0, 0}}, 
+        {i0 -> hc, i1 -> c, i2 -> c, i3 -> hc, k -> {-0.8085, 0.5569, -0.2466,
+          -0.8085, 0.5569, -0.2466}}, 
+        {i0 -> hc, i1 -> c, i2 -> c, i3 -> oc, k -> {2.3668, 2.492, -1.0122,
+          -0.1892, 0.4918, 0.7273}}, 
+        {i0 -> hc, i1 -> c, i2 -> c1, i3 -> hc, k -> {-0.8085, 0.5569,
+          -0.2466, -0.8085, 0.5569, -0.2466}}, 
+        {i0 -> hc, i1 -> c, i2 -> c1, i3 -> oc, k -> {2.3668, 2.492, -1.0122,
+          -0.1892, 0.4918, 0.7273}}, 
+        {i0 -> hc, i1 -> c, i2 -> c3h, i3 -> hc, k -> {-0.8085, 0.5569,
+          -0.2466, -0.8085, 0.5569, -0.2466}}, 
+        {i0 -> hc, i1 -> c, i2 -> c3h, i3 -> o3e, k -> {2.3668, 2.492,
+          -1.0122, -0.1892, 0.4918, 0.7273}}, 
+        {i0 -> hc, i1 -> c1, i2 -> c, i3 -> oc, k -> {2.3668, 2.492, -1.0122,
+          -0.1892, 0.4918, 0.7273}}, 
+        {i0 -> hc, i1 -> c1, i2 -> c, i3 -> oh, k -> {2.3668, 2.492, -1.0122,
+          -0.1892, 0.4918, 0.7273}}, 
+        {i0 -> hc, i1 -> c3h, i2 -> c, i3 -> o3e, k -> {2.3668, 2.492,
+          -1.0122, -0.1892, 0.4918, 0.7273}}, 
+        {i0 -> hc, i1 -> c3h, i2 -> c, i3 -> oc, k -> {2.3668, 2.492, -1.0122,
+          -0.1892, 0.4918, 0.7273}}, 
+        {i0 -> o3e, i1 -> c3h, i2 -> c, i3 -> oc, k -> {0.5511, 0.9737,
+          -0.6673, 0.5511, 0.9737, -0.6673}}, 
+        {i0 -> oc, i1 -> c, i2 -> c1, i3 -> oc, k -> {0.5511, 0.9737, -0.6673,
+          0.5511, 0.9737, -0.6673}}, 
+        {i0 -> oc, i1 -> c1, i2 -> c, i3 -> oh, k -> {0.5511, 0.9737, -0.6673,
+          0.5511, 0.9737, -0.6673}}}}, 
+    bond -> {active -> true, n -> 12, data -> {
+        {i0 -> c, i1 -> c, l -> 1.53, k -> {299.67, -501.77, 679.81}}, 
+        {i0 -> c, i1 -> c1, l -> 1.53, k -> {299.67, -501.77, 679.81}}, 
+        {i0 -> c, i1 -> c3h, l -> 1.53, k -> {299.67, -501.77, 679.81}}, 
+        {i0 -> c, i1 -> hc, l -> 1.101, k -> {345, -691.89, 844.6}}, 
+        {i0 -> c, i1 -> o3e, l -> 1.42, k -> {400.3954, -835.1951,
+          1313.0142}}, 
+        {i0 -> c, i1 -> oc, l -> 1.42, k -> {400.3954, -835.1951, 1313.0142}}, 
+        {i0 -> c, i1 -> oh, l -> 1.42, k -> {400.3954, -835.1951, 1313.0142}}, 
+        {i0 -> c1, i1 -> hc, l -> 1.101, k -> {345, -691.89, 844.6}}, 
+        {i0 -> c1, i1 -> oc, l -> 1.42, k -> {400.3954, -835.1951,
+          1313.0142}}, 
+        {i0 -> c3h, i1 -> hc, l -> 1.101, k -> {345, -691.89, 844.6}}, 
+        {i0 -> c3h, i1 -> o3e, l -> 1.42, k -> {400.3954, -835.1951,
+          1313.0142}}, 
+        {i0 -> h, i1 -> oh, l -> 0.96, k -> {493.848, 0, 0}}}}, 
+    bond_angle -> {active -> true, n -> 26, data -> {
+        {i0 -> c, i1 -> c, i2 -> c, k -> {8.016, 8.016}}, 
+        {i0 -> c, i1 -> c, i2 -> c1, k -> {8.016, 8.016}}, 
+        {i0 -> c, i1 -> c, i2 -> hc, k -> {11.421, 20.754}}, 
+        {i0 -> c, i1 -> c, i2 -> oc, k -> {2.6868, 20.4033}}, 
+        {i0 -> c, i1 -> c1, i2 -> c, k -> {8.016, 8.016}}, 
+        {i0 -> c, i1 -> c1, i2 -> hc, k -> {11.421, 20.754}}, 
+        {i0 -> c, i1 -> c1, i2 -> oc, k -> {2.6868, 20.4033}}, 
+        {i0 -> c, i1 -> c3h, i2 -> c, k -> {8.016, 8.016}}, 
+        {i0 -> c, i1 -> c3h, i2 -> hc, k -> {11.421, 20.754}}, 
+        {i0 -> c, i1 -> c3h, i2 -> o3e, k -> {2.6868, 20.4033}}, 
+        {i0 -> c, i1 -> o3e, i2 -> c3h, k -> {-2.8112, -2.8112}}, 
+        {i0 -> c, i1 -> oc, i2 -> c, k -> {-2.8112, -2.8112}}, 
+        {i0 -> c, i1 -> oc, i2 -> c1, k -> {-2.8112, -2.8112}}, 
+        {i0 -> c, i1 -> oh, i2 -> h, k -> {0, 0}}, 
+        {i0 -> c1, i1 -> c, i2 -> hc, k -> {20.754, 11.421}}, 
+        {i0 -> c1, i1 -> c, i2 -> oc, k -> {2.6868, 20.4033}}, 
+        {i0 -> c1, i1 -> c, i2 -> oh, k -> {2.6868, 20.4033}}, 
+        {i0 -> c3h, i1 -> c, i2 -> hc, k -> {11.421, 20.754}}, 
+        {i0 -> c3h, i1 -> c, i2 -> o3e, k -> {2.6868, 20.4033}}, 
+        {i0 -> c3h, i1 -> c, i2 -> oc, k -> {20.4033, 2.6868}}, 
+        {i0 -> hc, i1 -> c, i2 -> hc, k -> {18.103, 18.103}}, 
+        {i0 -> hc, i1 -> c, i2 -> o3e, k -> {4.6189, 55.327}}, 
+        {i0 -> hc, i1 -> c, i2 -> oc, k -> {4.6189, 55.327}}, 
+        {i0 -> hc, i1 -> c, i2 -> oh, k -> {4.6189, 55.327}}, 
+        {i0 -> hc, i1 -> c1, i2 -> oc, k -> {4.6189, 55.327}}, 
+        {i0 -> hc, i1 -> c3h, i2 -> o3e, k -> {4.6189, 55.327}}}}, 
+    bond_bond -> {active -> true, n -> 26, data -> {
+        {i0 -> c, i1 -> c, i2 -> c, k -> 0}, 
+        {i0 -> c, i1 -> c, i2 -> c1, k -> 0}, 
+        {i0 -> c, i1 -> c, i2 -> hc, k -> 3.3872}, 
+        {i0 -> c, i1 -> c, i2 -> oc, k -> 11.4318}, 
+        {i0 -> c, i1 -> c1, i2 -> c, k -> 0}, 
+        {i0 -> c, i1 -> c1, i2 -> hc, k -> 3.3872}, 
+        {i0 -> c, i1 -> c1, i2 -> oc, k -> 11.4318}, 
+        {i0 -> c, i1 -> c3h, i2 -> c, k -> 0}, 
+        {i0 -> c, i1 -> c3h, i2 -> hc, k -> 3.3872}, 
+        {i0 -> c, i1 -> c3h, i2 -> o3e, k -> 11.4318}, 
+        {i0 -> c, i1 -> o3e, i2 -> c3h, k -> -7.1131}, 
+        {i0 -> c, i1 -> oc, i2 -> c, k -> -7.1131}, 
+        {i0 -> c, i1 -> oc, i2 -> c1, k -> -7.1131}, 
+        {i0 -> c, i1 -> oh, i2 -> h, k -> 0}, 
+        {i0 -> c1, i1 -> c, i2 -> hc, k -> 3.3872}, 
+        {i0 -> c1, i1 -> c, i2 -> oc, k -> 11.4318}, 
+        {i0 -> c1, i1 -> c, i2 -> oh, k -> 11.4318}, 
+        {i0 -> c3h, i1 -> c, i2 -> hc, k -> 3.3872}, 
+        {i0 -> c3h, i1 -> c, i2 -> o3e, k -> 11.4318}, 
+        {i0 -> c3h, i1 -> c, i2 -> oc, k -> 11.4318}, 
+        {i0 -> hc, i1 -> c, i2 -> hc, k -> 5.3316}, 
+        {i0 -> hc, i1 -> c, i2 -> o3e, k -> 23.1979}, 
+        {i0 -> hc, i1 -> c, i2 -> oc, k -> 23.1979}, 
+        {i0 -> hc, i1 -> c, i2 -> oh, k -> 23.1979}, 
+        {i0 -> hc, i1 -> c1, i2 -> oc, k -> 23.1979}, 
+        {i0 -> hc, i1 -> c3h, i2 -> o3e, k -> 23.1979}}}, 
+    bond_bond_13 -> {active -> true, n -> 39, data -> {
+        {i0 -> c, i1 -> c, i2 -> c, i3 -> hc, k -> 0}, 
+        {i0 -> c, i1 -> c, i2 -> c, i3 -> oc, k -> 0}, 
+        {i0 -> c, i1 -> c, i2 -> c1, i3 -> c, k -> 0}, 
+        {i0 -> c, i1 -> c, i2 -> c1, i3 -> hc, k -> 0}, 
+        {i0 -> c, i1 -> c, i2 -> oc, i3 -> c, k -> 0}, 
+        {i0 -> c, i1 -> c, i2 -> oc, i3 -> c1, k -> 0}, 
+        {i0 -> c, i1 -> c1, i2 -> c, i3 -> hc, k -> 0}, 
+        {i0 -> c, i1 -> c1, i2 -> c, i3 -> oc, k -> 0}, 
+        {i0 -> c, i1 -> c1, i2 -> c, i3 -> oh, k -> 0}, 
+        {i0 -> c, i1 -> c1, i2 -> oc, i3 -> c, k -> 0}, 
+        {i0 -> c, i1 -> c3h, i2 -> c, i3 -> hc, k -> 0}, 
+        {i0 -> c, i1 -> c3h, i2 -> c, i3 -> o3e, k -> 0}, 
+        {i0 -> c, i1 -> c3h, i2 -> c, i3 -> oc, k -> 0}, 
+        {i0 -> c, i1 -> c3h, i2 -> o3e, i3 -> c, k -> 0}, 
+        {i0 -> c, i1 -> o3e, i2 -> c3h, i3 -> hc, k -> 0}, 
+        {i0 -> c, i1 -> oc, i2 -> c, i3 -> c1, k -> 0}, 
+        {i0 -> c, i1 -> oc, i2 -> c, i3 -> c3h, k -> 0}, 
+        {i0 -> c, i1 -> oc, i2 -> c, i3 -> hc, k -> 0}, 
+        {i0 -> c, i1 -> oc, i2 -> c1, i3 -> hc, k -> 0}, 
+        {i0 -> c1, i1 -> c, i2 -> c, i3 -> c1, k -> 0}, 
+        {i0 -> c1, i1 -> c, i2 -> c, i3 -> hc, k -> 0}, 
+        {i0 -> c1, i1 -> c, i2 -> oc, i3 -> c1, k -> 0}, 
+        {i0 -> c1, i1 -> c, i2 -> oh, i3 -> h, k -> 0}, 
+        {i0 -> c1, i1 -> oc, i2 -> c, i3 -> hc, k -> 0}, 
+        {i0 -> c3h, i1 -> o3e, i2 -> c, i3 -> hc, k -> 0}, 
+        {i0 -> h, i1 -> oh, i2 -> c, i3 -> hc, k -> 0}, 
+        {i0 -> hc, i1 -> c, i2 -> c, i3 -> hc, k -> 0}, 
+        {i0 -> hc, i1 -> c, i2 -> c, i3 -> oc, k -> 0}, 
+        {i0 -> hc, i1 -> c, i2 -> c1, i3 -> hc, k -> 0}, 
+        {i0 -> hc, i1 -> c, i2 -> c1, i3 -> oc, k -> 0}, 
+        {i0 -> hc, i1 -> c, i2 -> c3h, i3 -> hc, k -> 0}, 
+        {i0 -> hc, i1 -> c, i2 -> c3h, i3 -> o3e, k -> 0}, 
+        {i0 -> hc, i1 -> c1, i2 -> c, i3 -> oc, k -> 0}, 
+        {i0 -> hc, i1 -> c1, i2 -> c, i3 -> oh, k -> 0}, 
+        {i0 -> hc, i1 -> c3h, i2 -> c, i3 -> o3e, k -> 0}, 
+        {i0 -> hc, i1 -> c3h, i2 -> c, i3 -> oc, k -> 0}, 
+        {i0 -> o3e, i1 -> c3h, i2 -> c, i3 -> oc, k -> 0}, 
+        {i0 -> oc, i1 -> c, i2 -> c1, i3 -> oc, k -> 0}, 
+        {i0 -> oc, i1 -> c1, i2 -> c, i3 -> oh, k -> 0}}}, 
+    end_bond_torsion -> {active -> true, n -> 39, data -> {
+        {i0 -> c, i1 -> c, i2 -> c, i3 -> hc, k -> {0.0814, 0.0591, 0.2219,
+          0.2486, 0.2422, -0.0925}}, 
+        {i0 -> c, i1 -> c, i2 -> c, i3 -> oc, k -> {-0.319, 0.4411, -0.7174,
+          1.1538, 0.8409, -0.9138}}, 
+        {i0 -> c, i1 -> c, i2 -> c1, i3 -> c, k -> {-0.0732, 0, 0, -0.0732, 0,
+          0}}, 
+        {i0 -> c, i1 -> c, i2 -> c1, i3 -> hc, k -> {0.0814, 0.0591, 0.2219,
+          0.2486, 0.2422, -0.0925}}, 
+        {i0 -> c, i1 -> c, i2 -> oc, i3 -> c, k -> {-0.2456, 1.0517, -0.7795,
+          0.4741, 1.2635, 0.5576}}, 
+        {i0 -> c, i1 -> c, i2 -> oc, i3 -> c1, k -> {0.4741, 1.2635, 0.5576,
+          -0.2456, 1.0517, -0.7795}}, 
+        {i0 -> c, i1 -> c1, i2 -> c, i3 -> hc, k -> {0.0814, 0.0591, 0.2219,
+          0.2486, 0.2422, -0.0925}}, 
+        {i0 -> c, i1 -> c1, i2 -> c, i3 -> oc, k -> {-0.319, 0.4411, -0.7174,
+          1.1538, 0.8409, -0.9138}}, 
+        {i0 -> c, i1 -> c1, i2 -> c, i3 -> oh, k -> {-0.319, 0.4411, -0.7174,
+          1.1538, 0.8409, -0.9138}}, 
+        {i0 -> c, i1 -> c1, i2 -> oc, i3 -> c, k -> {-0.2456, 1.0517, -0.7795,
+          0.4741, 1.2635, 0.5576}}, 
+        {i0 -> c, i1 -> c3h, i2 -> c, i3 -> hc, k -> {0.0814, 0.0591, 0.2219,
+          0.2486, 0.2422, -0.0925}}, 
+        {i0 -> c, i1 -> c3h, i2 -> c, i3 -> o3e, k -> {-0.319, 0.4411,
+          -0.7174, 1.1538, 0.8409, -0.9138}}, 
+        {i0 -> c, i1 -> c3h, i2 -> c, i3 -> oc, k -> {-0.319, 0.4411, -0.7174,
+          1.1538, 0.8409, -0.9138}}, 
+        {i0 -> c, i1 -> c3h, i2 -> o3e, i3 -> c, k -> {-0.2456, 1.0517,
+          -0.7795, 0.4741, 1.2635, 0.5576}}, 
+        {i0 -> c, i1 -> o3e, i2 -> c3h, i3 -> hc, k -> {-0.6054, 1.3339,
+          0.9648, -0.162, 0.1564, -1.1408}}, 
+        {i0 -> c, i1 -> oc, i2 -> c, i3 -> c1, k -> {-0.2456, 1.0517, -0.7795,
+          0.4741, 1.2635, 0.5576}}, 
+        {i0 -> c, i1 -> oc, i2 -> c, i3 -> c3h, k -> {0.4741, 1.2635, 0.5576,
+          -0.2456, 1.0517, -0.7795}}, 
+        {i0 -> c, i1 -> oc, i2 -> c, i3 -> hc, k -> {-0.6054, 1.3339, 0.9648,
+          -0.162, 0.1564, -1.1408}}, 
+        {i0 -> c, i1 -> oc, i2 -> c1, i3 -> hc, k -> {-0.6054, 1.3339, 0.9648,
+          -0.162, 0.1564, -1.1408}}, 
+        {i0 -> c1, i1 -> c, i2 -> c, i3 -> c1, k -> {-0.0732, 0, 0, -0.0732,
+          0, 0}}, 
+        {i0 -> c1, i1 -> c, i2 -> c, i3 -> hc, k -> {0.2486, 0.2422, -0.0925,
+          0.0814, 0.0591, 0.2219}}, 
+        {i0 -> c1, i1 -> c, i2 -> oc, i3 -> c1, k -> {-0.2456, 1.0517,
+          -0.7795, 0.4741, 1.2635, 0.5576}}, 
+        {i0 -> c1, i1 -> c, i2 -> oh, i3 -> h, k -> {0, 0, 0, 0, 0, 0}}, 
+        {i0 -> c1, i1 -> oc, i2 -> c, i3 -> hc, k -> {-0.162, 0.1564, -1.1408,
+          -0.6054, 1.3339, 0.9648}}, 
+        {i0 -> c3h, i1 -> o3e, i2 -> c, i3 -> hc, k -> {-0.6054, 1.3339,
+          0.9648, -0.162, 0.1564, -1.1408}}, 
+        {i0 -> h, i1 -> oh, i2 -> c, i3 -> hc, k -> {0, 0, 0, 0, 0, 0}}, 
+        {i0 -> hc, i1 -> c, i2 -> c, i3 -> hc, k -> {0.213, 0.312, 0.0777,
+          0.213, 0.312, 0.0777}}, 
+        {i0 -> hc, i1 -> c, i2 -> c, i3 -> oc, k -> {0.9681, 0.9551, 0.0436,
+          0.5903, 0.6669, 0.8584}}, 
+        {i0 -> hc, i1 -> c, i2 -> c1, i3 -> hc, k -> {0.213, 0.312, 0.0777,
+          0.213, 0.312, 0.0777}}, 
+        {i0 -> hc, i1 -> c, i2 -> c1, i3 -> oc, k -> {0.9681, 0.9551, 0.0436,
+          0.5903, 0.6669, 0.8584}}, 
+        {i0 -> hc, i1 -> c, i2 -> c3h, i3 -> hc, k -> {0.213, 0.312, 0.0777,
+          0.213, 0.312, 0.0777}}, 
+        {i0 -> hc, i1 -> c, i2 -> c3h, i3 -> o3e, k -> {0.9681, 0.9551,
+          0.0436, 0.5903, 0.6669, 0.8584}}, 
+        {i0 -> hc, i1 -> c1, i2 -> c, i3 -> oc, k -> {0.9681, 0.9551, 0.0436,
+          0.5903, 0.6669, 0.8584}}, 
+        {i0 -> hc, i1 -> c1, i2 -> c, i3 -> oh, k -> {0.9681, 0.9551, 0.0436,
+          0.5903, 0.6669, 0.8584}}, 
+        {i0 -> hc, i1 -> c3h, i2 -> c, i3 -> o3e, k -> {0.9681, 0.9551,
+          0.0436, 0.5903, 0.6669, 0.8584}}, 
+        {i0 -> hc, i1 -> c3h, i2 -> c, i3 -> oc, k -> {0.9681, 0.9551, 0.0436,
+          0.5903, 0.6669, 0.8584}}, 
+        {i0 -> o3e, i1 -> c3h, i2 -> c, i3 -> oc, k -> {1.0165, 0.7553,
+          -0.4609, 1.0165, 0.7553, -0.4609}}, 
+        {i0 -> oc, i1 -> c, i2 -> c1, i3 -> oc, k -> {1.0165, 0.7553, -0.4609,
+          1.0165, 0.7553, -0.4609}}, 
+        {i0 -> oc, i1 -> c1, i2 -> c, i3 -> oh, k -> {1.0165, 0.7553, -0.4609,
+          1.0165, 0.7553, -0.4609}}}}, 
+    improper -> {active -> true, n -> 25, data -> {
+        {i0 -> c, i1 -> c, i2 -> c, i3 -> hc, psi -> 0, k -> 0}, 
+        {i0 -> c, i1 -> c, i2 -> c1, i3 -> hc, psi -> 0, k -> 0}, 
+        {i0 -> c, i1 -> c, i2 -> hc, i3 -> c1, psi -> 0, k -> 0}, 
+        {i0 -> c, i1 -> c, i2 -> hc, i3 -> hc, psi -> 0, k -> 0}, 
+        {i0 -> c, i1 -> c, i2 -> hc, i3 -> oc, psi -> 0, k -> 0}, 
+        {i0 -> c, i1 -> c, i2 -> oc, i3 -> hc, psi -> 0, k -> 0}, 
+        {i0 -> c, i1 -> c1, i2 -> hc, i3 -> hc, psi -> 0, k -> 0}, 
+        {i0 -> c, i1 -> c1, i2 -> hc, i3 -> oc, psi -> 0, k -> 0}, 
+        {i0 -> c, i1 -> c1, i2 -> oc, i3 -> hc, psi -> 0, k -> 0}, 
+        {i0 -> c, i1 -> c1, i2 -> oh, i3 -> hc, psi -> 0, k -> 0}, 
+        {i0 -> c, i1 -> c3h, i2 -> hc, i3 -> hc, psi -> 0, k -> 0}, 
+        {i0 -> c, i1 -> c3h, i2 -> hc, i3 -> o3e, psi -> 0, k -> 0}, 
+        {i0 -> c, i1 -> c3h, i2 -> hc, i3 -> oc, psi -> 0, k -> 0}, 
+        {i0 -> c, i1 -> c3h, i2 -> o3e, i3 -> hc, psi -> 0, k -> 0}, 
+        {i0 -> c, i1 -> hc, i2 -> hc, i3 -> o3e, psi -> 0, k -> 0}, 
+        {i0 -> c, i1 -> hc, i2 -> hc, i3 -> oc, psi -> 0, k -> 0}, 
+        {i0 -> c, i1 -> hc, i2 -> hc, i3 -> oh, psi -> 0, k -> 0}, 
+        {i0 -> c1, i1 -> c, i2 -> c, i3 -> c, psi -> 0, k -> 0}, 
+        {i0 -> c1, i1 -> c, i2 -> c, i3 -> hc, psi -> 0, k -> 0}, 
+        {i0 -> c1, i1 -> c, i2 -> c, i3 -> oc, psi -> 0, k -> 0}, 
+        {i0 -> c1, i1 -> c, i2 -> oc, i3 -> hc, psi -> 0, k -> 0}, 
+        {i0 -> c3h, i1 -> c, i2 -> c, i3 -> hc, psi -> 0, k -> 0}, 
+        {i0 -> c3h, i1 -> c, i2 -> c, i3 -> o3e, psi -> 0, k -> 0}, 
+        {i0 -> c3h, i1 -> c, i2 -> hc, i3 -> o3e, psi -> 0, k -> 0}, 
+        {i0 -> c3h, i1 -> c, i2 -> o3e, i3 -> hc, psi -> 0, k -> 0}}}, 
+    middle_bond_torsion -> {active -> true, n -> 39, data -> {
+        {i0 -> c, i1 -> c, i2 -> c, i3 -> hc, k -> {-14.879, -3.6581,
+          -0.3138}}, 
+        {i0 -> c, i1 -> c, i2 -> c, i3 -> oc, k -> {-21.8842, -7.6764,
+          -0.6868}}, 
+        {i0 -> c, i1 -> c, i2 -> c1, i3 -> c, k -> {-17.787, -7.1877, 0}}, 
+        {i0 -> c, i1 -> c, i2 -> c1, i3 -> hc, k -> {-14.879, -3.6581,
+          -0.3138}}, 
+        {i0 -> c, i1 -> c, i2 -> oc, i3 -> c, k -> {-5.9288, -2.7007,
+          -0.3175}}, 
+        {i0 -> c, i1 -> c, i2 -> oc, i3 -> c1, k -> {-5.9288, -2.7007,
+          -0.3175}}, 
+        {i0 -> c, i1 -> c1, i2 -> c, i3 -> hc, k -> {-14.879, -3.6581,
+          -0.3138}}, 
+        {i0 -> c, i1 -> c1, i2 -> c, i3 -> oc, k -> {-21.8842, -7.6764,
+          -0.6868}}, 
+        {i0 -> c, i1 -> c1, i2 -> c, i3 -> oh, k -> {-21.8842, -7.6764,
+          -0.6868}}, 
+        {i0 -> c, i1 -> c1, i2 -> oc, i3 -> c, k -> {-5.9288, -2.7007,
+          -0.3175}}, 
+        {i0 -> c, i1 -> c3h, i2 -> c, i3 -> hc, k -> {-14.879, -3.6581,
+          -0.3138}}, 
+        {i0 -> c, i1 -> c3h, i2 -> c, i3 -> o3e, k -> {-21.8842, -7.6764,
+          -0.6868}}, 
+        {i0 -> c, i1 -> c3h, i2 -> c, i3 -> oc, k -> {-21.8842, -7.6764,
+          -0.6868}}, 
+        {i0 -> c, i1 -> c3h, i2 -> o3e, i3 -> c, k -> {-5.9288, -2.7007,
+          -0.3175}}, 
+        {i0 -> c, i1 -> o3e, i2 -> c3h, i3 -> hc, k -> {-6.8007, -4.6546,
+          -1.4101}}, 
+        {i0 -> c, i1 -> oc, i2 -> c, i3 -> c1, k -> {-5.9288, -2.7007,
+          -0.3175}}, 
+        {i0 -> c, i1 -> oc, i2 -> c, i3 -> c3h, k -> {-5.9288, -2.7007,
+          -0.3175}}, 
+        {i0 -> c, i1 -> oc, i2 -> c, i3 -> hc, k -> {-6.8007, -4.6546,
+          -1.4101}}, 
+        {i0 -> c, i1 -> oc, i2 -> c1, i3 -> hc, k -> {-6.8007, -4.6546,
+          -1.4101}}, 
+        {i0 -> c1, i1 -> c, i2 -> c, i3 -> c1, k -> {-17.787, -7.1877, 0}}, 
+        {i0 -> c1, i1 -> c, i2 -> c, i3 -> hc, k -> {-14.879, -3.6581,
+          -0.3138}}, 
+        {i0 -> c1, i1 -> c, i2 -> oc, i3 -> c1, k -> {-5.9288, -2.7007,
+          -0.3175}}, 
+        {i0 -> c1, i1 -> c, i2 -> oh, i3 -> h, k -> {0, 0, 0}}, 
+        {i0 -> c1, i1 -> oc, i2 -> c, i3 -> hc, k -> {-6.8007, -4.6546,
+          -1.4101}}, 
+        {i0 -> c3h, i1 -> o3e, i2 -> c, i3 -> hc, k -> {-6.8007, -4.6546,
+          -1.4101}}, 
+        {i0 -> h, i1 -> oh, i2 -> c, i3 -> hc, k -> {0, 0, 0}}, 
+        {i0 -> hc, i1 -> c, i2 -> c, i3 -> hc, k -> {-14.261, -0.5322,
+          -0.4864}}, 
+        {i0 -> hc, i1 -> c, i2 -> c, i3 -> oc, k -> {-16.7975, -1.2296,
+          -0.275}}, 
+        {i0 -> hc, i1 -> c, i2 -> c1, i3 -> hc, k -> {-14.261, -0.5322,
+          -0.4864}}, 
+        {i0 -> hc, i1 -> c, i2 -> c1, i3 -> oc, k -> {-16.7975, -1.2296,
+          -0.275}}, 
+        {i0 -> hc, i1 -> c, i2 -> c3h, i3 -> hc, k -> {-14.261, -0.5322,
+          -0.4864}}, 
+        {i0 -> hc, i1 -> c, i2 -> c3h, i3 -> o3e, k -> {-16.7975, -1.2296,
+          -0.275}}, 
+        {i0 -> hc, i1 -> c1, i2 -> c, i3 -> oc, k -> {-16.7975, -1.2296,
+          -0.275}}, 
+        {i0 -> hc, i1 -> c1, i2 -> c, i3 -> oh, k -> {-16.7975, -1.2296,
+          -0.275}}, 
+        {i0 -> hc, i1 -> c3h, i2 -> c, i3 -> o3e, k -> {-16.7975, -1.2296,
+          -0.275}}, 
+        {i0 -> hc, i1 -> c3h, i2 -> c, i3 -> oc, k -> {-16.7975, -1.2296,
+          -0.275}}, 
+        {i0 -> o3e, i1 -> c3h, i2 -> c, i3 -> oc, k -> {-17.2585, -3.6157,
+          -0.8364}}, 
+        {i0 -> oc, i1 -> c, i2 -> c1, i3 -> oc, k -> {-17.2585, -3.6157,
+          -0.8364}}, 
+        {i0 -> oc, i1 -> c1, i2 -> c, i3 -> oh, k -> {-17.2585, -3.6157,
+          -0.8364}}}}, 
+    pair -> {active -> true, mix -> sixth, shift -> false, coulomb -> none, 
+      nbonded -> 2, mode -> global, cutoff -> 9.5, n -> 36, data -> {
+        {i0 -> c, i1 -> c, epsilon -> 0.054, sigma -> 4.01}, 
+        {i0 -> c, i1 -> c1, epsilon -> 0.054, sigma -> 4.01}, 
+        {i0 -> c, i1 -> c3h, epsilon -> 0.054, sigma -> 4.01}, 
+        {i0 -> c, i1 -> h, epsilon -> 0.0233337376908, sigma ->
+          3.66909137369}, 
+        {i0 -> c, i1 -> hc, epsilon -> 0.0233337376908, sigma ->
+          3.66909137369}, 
+        {i0 -> c, i1 -> o3e, epsilon -> 0.106157542438, sigma ->
+          3.80912743973}, 
+        {i0 -> c, i1 -> oc, epsilon -> 0.106157542438, sigma ->
+          3.80912743973}, 
+        {i0 -> c, i1 -> oh, epsilon -> 0.106157542438, sigma ->
+          3.80912743973}, 
+        {i0 -> c1, i1 -> c1, epsilon -> 0.054, sigma -> 4.01}, 
+        {i0 -> c1, i1 -> c3h, epsilon -> 0.054, sigma -> 4.01}, 
+        {i0 -> c1, i1 -> h, epsilon -> 0.0233337376908, sigma ->
+          3.66909137369}, 
+        {i0 -> c1, i1 -> hc, epsilon -> 0.0233337376908, sigma ->
+          3.66909137369}, 
+        {i0 -> c1, i1 -> o3e, epsilon -> 0.106157542438, sigma ->
+          3.80912743973}, 
+        {i0 -> c1, i1 -> oc, epsilon -> 0.106157542438, sigma ->
+          3.80912743973}, 
+        {i0 -> c1, i1 -> oh, epsilon -> 0.106157542438, sigma ->
+          3.80912743973}, 
+        {i0 -> c3h, i1 -> c3h, epsilon -> 0.054, sigma -> 4.01}, 
+        {i0 -> c3h, i1 -> h, epsilon -> 0.0233337376908, sigma ->
+          3.66909137369}, 
+        {i0 -> c3h, i1 -> hc, epsilon -> 0.0233337376908, sigma ->
+          3.66909137369}, 
+        {i0 -> c3h, i1 -> o3e, epsilon -> 0.106157542438, sigma ->
+          3.80912743973}, 
+        {i0 -> c3h, i1 -> oc, epsilon -> 0.106157542438, sigma ->
+          3.80912743973}, 
+        {i0 -> c3h, i1 -> oh, epsilon -> 0.106157542438, sigma ->
+          3.80912743973}, 
+        {i0 -> h, i1 -> h, epsilon -> 0.02, sigma -> 2.995}, 
+        {i0 -> h, i1 -> hc, epsilon -> 0.02, sigma -> 2.995}, 
+        {i0 -> h, i1 -> o3e, epsilon -> 0.0615169425404, sigma ->
+          3.31892497454}, 
+        {i0 -> h, i1 -> oc, epsilon -> 0.0615169425404, sigma ->
+          3.31892497454}, 
+        {i0 -> h, i1 -> oh, epsilon -> 0.0615169425404, sigma ->
+          3.31892497454}, 
+        {i0 -> hc, i1 -> hc, epsilon -> 0.02, sigma -> 2.995}, 
+        {i0 -> hc, i1 -> o3e, epsilon -> 0.0615169425404, sigma ->
+          3.31892497454}, 
+        {i0 -> hc, i1 -> oc, epsilon -> 0.0615169425404, sigma ->
+          3.31892497454}, 
+        {i0 -> hc, i1 -> oh, epsilon -> 0.0615169425404, sigma ->
+          3.31892497454}, 
+        {i0 -> o3e, i1 -> o3e, epsilon -> 0.24, sigma -> 3.535}, 
+        {i0 -> o3e, i1 -> oc, epsilon -> 0.24, sigma -> 3.535}, 
+        {i0 -> o3e, i1 -> oh, epsilon -> 0.24, sigma -> 3.535}, 
+        {i0 -> oc, i1 -> oc, epsilon -> 0.24, sigma -> 3.535}, 
+        {i0 -> oc, i1 -> oh, epsilon -> 0.24, sigma -> 3.535}, 
+        {i0 -> oh, i1 -> oh, epsilon -> 0.24, sigma -> 3.535}}}, 
+    torsion -> {active -> true, n -> 39, data -> {
+        {i0 -> c, i1 -> c, i2 -> c, i3 -> hc, coefficients -> {
+            {k -> 0, n -> 1, delta -> 0}, 
+            {k -> 0.0316, n -> 2, delta -> 0}, 
+            {k -> -0.1681, n -> 3, delta -> 0}}}, 
+        {i0 -> c, i1 -> c, i2 -> c, i3 -> oc, coefficients -> {
+            {k -> 0.7137, n -> 1, delta -> 0}, 
+            {k -> 0.266, n -> 2, delta -> 0}, 
+            {k -> -0.2545, n -> 3, delta -> 0}}}, 
+        {i0 -> c, i1 -> c, i2 -> c1, i3 -> c, coefficients -> {
+            {k -> 0, n -> 1, delta -> 0}, 
+            {k -> 0.0514, n -> 2, delta -> 0}, 
+            {k -> -0.143, n -> 3, delta -> 0}}}, 
+        {i0 -> c, i1 -> c, i2 -> c1, i3 -> hc, coefficients -> {
+            {k -> 0, n -> 1, delta -> 0}, 
+            {k -> 0.0316, n -> 2, delta -> 0}, 
+            {k -> -0.1681, n -> 3, delta -> 0}}}, 
+        {i0 -> c, i1 -> c, i2 -> oc, i3 -> c, coefficients -> {
+            {k -> -0.5203, n -> 1, delta -> 0}, 
+            {k -> -0.3028, n -> 2, delta -> 0}, 
+            {k -> -0.345, n -> 3, delta -> 0}}}, 
+        {i0 -> c, i1 -> c, i2 -> oc, i3 -> c1, coefficients -> {
+            {k -> -0.5203, n -> 1, delta -> 0}, 
+            {k -> -0.3028, n -> 2, delta -> 0}, 
+            {k -> -0.345, n -> 3, delta -> 0}}}, 
+        {i0 -> c, i1 -> c1, i2 -> c, i3 -> hc, coefficients -> {
+            {k -> 0, n -> 1, delta -> 0}, 
+            {k -> 0.0316, n -> 2, delta -> 0}, 
+            {k -> -0.1681, n -> 3, delta -> 0}}}, 
+        {i0 -> c, i1 -> c1, i2 -> c, i3 -> oc, coefficients -> {
+            {k -> 0.7137, n -> 1, delta -> 0}, 
+            {k -> 0.266, n -> 2, delta -> 0}, 
+            {k -> -0.2545, n -> 3, delta -> 0}}}, 
+        {i0 -> c, i1 -> c1, i2 -> c, i3 -> oh, coefficients -> {
+            {k -> 0.7137, n -> 1, delta -> 0}, 
+            {k -> 0.266, n -> 2, delta -> 0}, 
+            {k -> -0.2545, n -> 3, delta -> 0}}}, 
+        {i0 -> c, i1 -> c1, i2 -> oc, i3 -> c, coefficients -> {
+            {k -> -0.5203, n -> 1, delta -> 0}, 
+            {k -> -0.3028, n -> 2, delta -> 0}, 
+            {k -> -0.345, n -> 3, delta -> 0}}}, 
+        {i0 -> c, i1 -> c3h, i2 -> c, i3 -> hc, coefficients -> {
+            {k -> 0, n -> 1, delta -> 0}, 
+            {k -> 0.0316, n -> 2, delta -> 0}, 
+            {k -> -0.1681, n -> 3, delta -> 0}}}, 
+        {i0 -> c, i1 -> c3h, i2 -> c, i3 -> o3e, coefficients -> {
+            {k -> 0.7137, n -> 1, delta -> 0}, 
+            {k -> 0.266, n -> 2, delta -> 0}, 
+            {k -> -0.2545, n -> 3, delta -> 0}}}, 
+        {i0 -> c, i1 -> c3h, i2 -> c, i3 -> oc, coefficients -> {
+            {k -> 0.7137, n -> 1, delta -> 0}, 
+            {k -> 0.266, n -> 2, delta -> 0}, 
+            {k -> -0.2545, n -> 3, delta -> 0}}}, 
+        {i0 -> c, i1 -> c3h, i2 -> o3e, i3 -> c, coefficients -> {
+            {k -> -0.5203, n -> 1, delta -> 0}, 
+            {k -> -0.3028, n -> 2, delta -> 0}, 
+            {k -> -0.345, n -> 3, delta -> 0}}}, 
+        {i0 -> c, i1 -> o3e, i2 -> c3h, i3 -> hc, coefficients -> {
+            {k -> 0.5302, n -> 1, delta -> 0}, 
+            {k -> 0, n -> 2, delta -> 0}, 
+            {k -> -0.3966, n -> 3, delta -> 0}}}, 
+        {i0 -> c, i1 -> oc, i2 -> c, i3 -> c1, coefficients -> {
+            {k -> -0.5203, n -> 1, delta -> 0}, 
+            {k -> -0.3028, n -> 2, delta -> 0}, 
+            {k -> -0.345, n -> 3, delta -> 0}}}, 
+        {i0 -> c, i1 -> oc, i2 -> c, i3 -> c3h, coefficients -> {
+            {k -> -0.5203, n -> 1, delta -> 0}, 
+            {k -> -0.3028, n -> 2, delta -> 0}, 
+            {k -> -0.345, n -> 3, delta -> 0}}}, 
+        {i0 -> c, i1 -> oc, i2 -> c, i3 -> hc, coefficients -> {
+            {k -> 0.5302, n -> 1, delta -> 0}, 
+            {k -> 0, n -> 2, delta -> 0}, 
+            {k -> -0.3966, n -> 3, delta -> 0}}}, 
+        {i0 -> c, i1 -> oc, i2 -> c1, i3 -> hc, coefficients -> {
+            {k -> 0.5302, n -> 1, delta -> 0}, 
+            {k -> 0, n -> 2, delta -> 0}, 
+            {k -> -0.3966, n -> 3, delta -> 0}}}, 
+        {i0 -> c1, i1 -> c, i2 -> c, i3 -> c1, coefficients -> {
+            {k -> 0, n -> 1, delta -> 0}, 
+            {k -> 0.0514, n -> 2, delta -> 0}, 
+            {k -> -0.143, n -> 3, delta -> 0}}}, 
+        {i0 -> c1, i1 -> c, i2 -> c, i3 -> hc, coefficients -> {
+            {k -> 0, n -> 1, delta -> 0}, 
+            {k -> 0.0316, n -> 2, delta -> 0}, 
+            {k -> -0.1681, n -> 3, delta -> 0}}}, 
+        {i0 -> c1, i1 -> c, i2 -> oc, i3 -> c1, coefficients -> {
+            {k -> -0.5203, n -> 1, delta -> 0}, 
+            {k -> -0.3028, n -> 2, delta -> 0}, 
+            {k -> -0.345, n -> 3, delta -> 0}}}, 
+        {i0 -> c1, i1 -> c, i2 -> oh, i3 -> h, coefficients -> {
+            {k -> 0, n -> 0, delta -> 0}, 
+            {k -> 0, n -> 0, delta -> 0}, 
+            {k -> 0.13, n -> 3, delta -> 3.14159265359}}}, 
+        {i0 -> c1, i1 -> oc, i2 -> c, i3 -> hc, coefficients -> {
+            {k -> 0.5302, n -> 1, delta -> 0}, 
+            {k -> 0, n -> 2, delta -> 0}, 
+            {k -> -0.3966, n -> 3, delta -> 0}}}, 
+        {i0 -> c3h, i1 -> o3e, i2 -> c, i3 -> hc, coefficients -> {
+            {k -> 0.5302, n -> 1, delta -> 0}, 
+            {k -> 0, n -> 2, delta -> 0}, 
+            {k -> -0.3966, n -> 3, delta -> 0}}}, 
+        {i0 -> h, i1 -> oh, i2 -> c, i3 -> hc, coefficients -> {
+            {k -> 0, n -> 0, delta -> 0}, 
+            {k -> 0, n -> 0, delta -> 0}, 
+            {k -> 0.13, n -> 3, delta -> 3.14159265359}}}, 
+        {i0 -> hc, i1 -> c, i2 -> c, i3 -> hc, coefficients -> {
+            {k -> -0.1432, n -> 1, delta -> 0}, 
+            {k -> 0.0617, n -> 2, delta -> 0}, 
+            {k -> -0.1083, n -> 3, delta -> 0}}}, 
+        {i0 -> hc, i1 -> c, i2 -> c, i3 -> oc, coefficients -> {
+            {k -> -0.1435, n -> 1, delta -> 0}, 
+            {k -> 0.253, n -> 2, delta -> 0}, 
+            {k -> -0.0905, n -> 3, delta -> 0}}}, 
+        {i0 -> hc, i1 -> c, i2 -> c1, i3 -> hc, coefficients -> {
+            {k -> -0.1432, n -> 1, delta -> 0}, 
+            {k -> 0.0617, n -> 2, delta -> 0}, 
+            {k -> -0.1083, n -> 3, delta -> 0}}}, 
+        {i0 -> hc, i1 -> c, i2 -> c1, i3 -> oc, coefficients -> {
+            {k -> -0.1435, n -> 1, delta -> 0}, 
+            {k -> 0.253, n -> 2, delta -> 0}, 
+            {k -> -0.0905, n -> 3, delta -> 0}}}, 
+        {i0 -> hc, i1 -> c, i2 -> c3h, i3 -> hc, coefficients -> {
+            {k -> -0.1432, n -> 1, delta -> 0}, 
+            {k -> 0.0617, n -> 2, delta -> 0}, 
+            {k -> -0.1083, n -> 3, delta -> 0}}}, 
+        {i0 -> hc, i1 -> c, i2 -> c3h, i3 -> o3e, coefficients -> {
+            {k -> -0.1435, n -> 1, delta -> 0}, 
+            {k -> 0.253, n -> 2, delta -> 0}, 
+            {k -> -0.0905, n -> 3, delta -> 0}}}, 
+        {i0 -> hc, i1 -> c1, i2 -> c, i3 -> oc, coefficients -> {
+            {k -> -0.1435, n -> 1, delta -> 0}, 
+            {k -> 0.253, n -> 2, delta -> 0}, 
+            {k -> -0.0905, n -> 3, delta -> 0}}}, 
+        {i0 -> hc, i1 -> c1, i2 -> c, i3 -> oh, coefficients -> {
+            {k -> -0.1435, n -> 1, delta -> 0}, 
+            {k -> 0.253, n -> 2, delta -> 0}, 
+            {k -> -0.0905, n -> 3, delta -> 0}}}, 
+        {i0 -> hc, i1 -> c3h, i2 -> c, i3 -> o3e, coefficients -> {
+            {k -> -0.1435, n -> 1, delta -> 0}, 
+            {k -> 0.253, n -> 2, delta -> 0}, 
+            {k -> -0.0905, n -> 3, delta -> 0}}}, 
+        {i0 -> hc, i1 -> c3h, i2 -> c, i3 -> oc, coefficients -> {
+            {k -> -0.1435, n -> 1, delta -> 0}, 
+            {k -> 0.253, n -> 2, delta -> 0}, 
+            {k -> -0.0905, n -> 3, delta -> 0}}}, 
+        {i0 -> o3e, i1 -> c3h, i2 -> c, i3 -> oc, coefficients -> {
+            {k -> -0.182, n -> 1, delta -> 0}, 
+            {k -> -0.1084, n -> 2, delta -> 0}, 
+            {k -> -0.7047, n -> 3, delta -> 0}}}, 
+        {i0 -> oc, i1 -> c, i2 -> c1, i3 -> oc, coefficients -> {
+            {k -> -0.182, n -> 1, delta -> 0}, 
+            {k -> -0.1084, n -> 2, delta -> 0}, 
+            {k -> -0.7047, n -> 3, delta -> 0}}}, 
+        {i0 -> oc, i1 -> c1, i2 -> c, i3 -> oh, coefficients -> {
+            {k -> -0.182, n -> 1, delta -> 0}, 
+            {k -> -0.1084, n -> 2, delta -> 0}, 
+            {k -> -0.7047, n -> 3, delta -> 0}}}}}}, 
+  inverse -> {
+    active -> false, order -> 4, depth -> 8, nfunctions -> 50, cutoff ->
+    0.001, niterations -> 100}};
+
+(* Groups *)
+
+groups = {
+  n -> 1, data -> 
+  {group -> mol, name -> "mol", chemistry ->
+    "[C@@H]1(COC[C@@H](CO)OC[C@H](COC[C@@H]2CC[C@H](COC[C@@H]3OC3)CC2)OCCCOC[C@H]2CC[C@@H](COC[C@@H]3CO3)CC2)CC[C@H](COC[C@@H]2OC2)CC1",
+    depth -> 8, connectivity -> 0, terminator -> false, charges -> forcefield,
+    charge -> 0, sum -> 0, mass -> 771.05088, nsites -> 128, sites -> {
+      {site -> 0, mass -> c1, element -> "C", charge -> -0.053, isomer ->
+        right, ring -> {nsites -> 6, aromatic -> 0, bits -> 0x1, link -> 0x1},
+          connects -> {125, 101, 1, 2}, bonds -> {single, single, single,
+        single}}, 
+      {site -> 1, mass -> hc, element -> "H", charge -> 0.053, connects -> 0, 
+        bonds -> single}, 
+      {site -> 2, mass -> c, element -> "C", charge -> 0.027, connects -> {0,
+        5, 3, 4}, bonds -> {single, single, single, single}}, 
+      {site -> 3, mass -> hc, element -> "H", charge -> 0.053, connects -> 2, 
+        bonds -> single}, 
+      {site -> 4, mass -> hc, element -> "H", charge -> 0.053, connects -> 2, 
+        bonds -> single}, 
+      {site -> 5, mass -> oc, element -> "O", charge -> -0.266, connects ->
+        {2, 6}, bonds -> {single, single}}, 
+      {site -> 6, mass -> c, element -> "C", charge -> 0.027, connects -> {5,
+        9, 7, 8}, bonds -> {single, single, single, single}}, 
+      {site -> 7, mass -> hc, element -> "H", charge -> 0.053, connects -> 6, 
+        bonds -> single}, 
+      {site -> 8, mass -> hc, element -> "H", charge -> 0.053, connects -> 6, 
+        bonds -> single}, 
+      {site -> 9, mass -> c1, element -> "C", charge -> 0.08, isomer -> right,
+        connects -> {6, 16, 10, 11}, bonds -> {single, single, single,
+        single}}, 
+      {site -> 10, mass -> hc, element -> "H", charge -> 0.053, connects -> 9,
+        bonds -> single}, 
+      {site -> 11, mass -> c, element -> "C", charge -> 0.027, connects -> {9,
+        14, 12, 13}, bonds -> {single, single, single, single}}, 
+      {site -> 12, mass -> hc, element -> "H", charge -> 0.053, connects ->
+        11, bonds -> single}, 
+      {site -> 13, mass -> hc, element -> "H", charge -> 0.053, connects ->
+        11, bonds -> single}, 
+      {site -> 14, mass -> oh, element -> "O", charge -> -0.5571, connects ->
+        {11, 15}, bonds -> {single, single}}, 
+      {site -> 15, mass -> h, element -> "H", charge -> 0.4241, connects ->
+        14, bonds -> single}, 
+      {site -> 16, mass -> oc, element -> "O", charge -> -0.266, connects ->
+        {9, 17}, bonds -> {single, single}}, 
+      {site -> 17, mass -> c, element -> "C", charge -> 0.027, connects ->
+        {16, 20, 18, 19}, bonds -> {single, single, single, single}}, 
+      {site -> 18, mass -> hc, element -> "H", charge -> 0.053, connects ->
+        17, bonds -> single}, 
+      {site -> 19, mass -> hc, element -> "H", charge -> 0.053, connects ->
+        17, bonds -> single}, 
+      {site -> 20, mass -> c1, element -> "C", charge -> 0.08, isomer -> left,
+        connects -> {17, 58, 21, 22}, bonds -> {single, single, single,
+        single}}, 
+      {site -> 21, mass -> hc, element -> "H", charge -> 0.053, connects ->
+        20, bonds -> single}, 
+      {site -> 22, mass -> c, element -> "C", charge -> 0.027, connects ->
+        {20, 25, 23, 24}, bonds -> {single, single, single, single}}, 
+      {site -> 23, mass -> hc, element -> "H", charge -> 0.053, connects ->
+        22, bonds -> single}, 
+      {site -> 24, mass -> hc, element -> "H", charge -> 0.053, connects ->
+        22, bonds -> single}, 
+      {site -> 25, mass -> oc, element -> "O", charge -> -0.266, connects ->
+        {22, 26}, bonds -> {single, single}}, 
+      {site -> 26, mass -> c, element -> "C", charge -> 0.027, connects ->
+        {25, 29, 27, 28}, bonds -> {single, single, single, single}}, 
+      {site -> 27, mass -> hc, element -> "H", charge -> 0.053, connects ->
+        26, bonds -> single}, 
+      {site -> 28, mass -> hc, element -> "H", charge -> 0.053, connects ->
+        26, bonds -> single}, 
+      {site -> 29, mass -> c1, element -> "C", charge -> -0.053, isomer ->
+        right, ring -> {nsites -> 6, aromatic -> 0, bits -> 0x2, link -> 0x2},
+          connects -> {26, 31, 30, 55}, bonds -> {single, single, single,
+        single}}, 
+      {site -> 30, mass -> hc, element -> "H", charge -> 0.053, connects ->
+        29, bonds -> single}, 
+      {site -> 31, mass -> c, element -> "C", charge -> -0.106, ring -> {
+          nsites -> 6, aromatic -> 0, bits -> 0x2}, connects -> {29, 34, 32,
+        33}, bonds -> {single, single, single, single}}, 
+      {site -> 32, mass -> hc, element -> "H", charge -> 0.053, connects ->
+        31, bonds -> single}, 
+      {site -> 33, mass -> hc, element -> "H", charge -> 0.053, connects ->
+        31, bonds -> single}, 
+      {site -> 34, mass -> c, element -> "C", charge -> -0.106, ring -> {
+          nsites -> 6, aromatic -> 0, bits -> 0x2}, connects -> {31, 37, 35,
+        36}, bonds -> {single, single, single, single}}, 
+      {site -> 35, mass -> hc, element -> "H", charge -> 0.053, connects ->
+        34, bonds -> single}, 
+      {site -> 36, mass -> hc, element -> "H", charge -> 0.053, connects ->
+        34, bonds -> single}, 
+      {site -> 37, mass -> c1, element -> "C", charge -> -0.053, isomer ->
+        left, ring -> {nsites -> 6, aromatic -> 0, bits -> 0x2}, connects ->
+        {34, 52, 38, 39}, bonds -> {single, single, single, single}}, 
+      {site -> 38, mass -> hc, element -> "H", charge -> 0.053, connects ->
+        37, bonds -> single}, 
+      {site -> 39, mass -> c, element -> "C", charge -> 0.027, connects ->
+        {37, 42, 40, 41}, bonds -> {single, single, single, single}}, 
+      {site -> 40, mass -> hc, element -> "H", charge -> 0.053, connects ->
+        39, bonds -> single}, 
+      {site -> 41, mass -> hc, element -> "H", charge -> 0.053, connects ->
+        39, bonds -> single}, 
+      {site -> 42, mass -> oc, element -> "O", charge -> -0.266, connects ->
+        {39, 43}, bonds -> {single, single}}, 
+      {site -> 43, mass -> c, element -> "C", charge -> 0.027, connects ->
+        {42, 46, 44, 45}, bonds -> {single, single, single, single}}, 
+      {site -> 44, mass -> hc, element -> "H", charge -> 0.053, connects ->
+        43, bonds -> single}, 
+      {site -> 45, mass -> hc, element -> "H", charge -> 0.053, connects ->
+        43, bonds -> single}, 
+      {site -> 46, mass -> c3h, element -> "C", charge -> 0.08, isomer ->
+        right, ring -> {nsites -> 3, aromatic -> 0, bits -> 0x4, link -> 0x4},
+          connects -> {43, 48, 47, 49}, bonds -> {single, single, single,
+        single}}, 
+      {site -> 47, mass -> hc, element -> "H", charge -> 0.053, connects ->
+        46, bonds -> single}, 
+      {site -> 48, mass -> o3e, element -> "O", charge -> -0.266, ring -> {
+          nsites -> 3, aromatic -> 0, bits -> 0x4}, connects -> {46, 49}, 
+        bonds -> {single, single}}, 
+      {site -> 49, mass -> c, element -> "C", charge -> 0.027, ring -> {nsites
+          -> 3, aromatic -> 0, bits -> 0x4, end -> 0x4}, connects -> {48, 46,
+        50, 51}, bonds -> {single, single, single, single}}, 
+      {site -> 50, mass -> hc, element -> "H", charge -> 0.053, connects ->
+        49, bonds -> single}, 
+      {site -> 51, mass -> hc, element -> "H", charge -> 0.053, connects ->
+        49, bonds -> single}, 
+      {site -> 52, mass -> c, element -> "C", charge -> -0.106, ring -> {
+          nsites -> 6, aromatic -> 0, bits -> 0x2}, connects -> {37, 55, 53,
+        54}, bonds -> {single, single, single, single}}, 
+      {site -> 53, mass -> hc, element -> "H", charge -> 0.053, connects ->
+        52, bonds -> single}, 
+      {site -> 54, mass -> hc, element -> "H", charge -> 0.053, connects ->
+        52, bonds -> single}, 
+      {site -> 55, mass -> c, element -> "C", charge -> -0.106, ring -> {
+          nsites -> 6, aromatic -> 0, bits -> 0x2, end -> 0x2}, connects ->
+        {52, 29, 56, 57}, bonds -> {single, single, single, single}}, 
+      {site -> 56, mass -> hc, element -> "H", charge -> 0.053, connects ->
+        55, bonds -> single}, 
+      {site -> 57, mass -> hc, element -> "H", charge -> 0.053, connects ->
+        55, bonds -> single}, 
+      {site -> 58, mass -> oc, element -> "O", charge -> -0.266, connects ->
+        {20, 59}, bonds -> {single, single}}, 
+      {site -> 59, mass -> c, element -> "C", charge -> 0.027, connects ->
+        {58, 62, 60, 61}, bonds -> {single, single, single, single}}, 
+      {site -> 60, mass -> hc, element -> "H", charge -> 0.053, connects ->
+        59, bonds -> single}, 
+      {site -> 61, mass -> hc, element -> "H", charge -> 0.053, connects ->
+        59, bonds -> single}, 
+      {site -> 62, mass -> c, element -> "C", charge -> -0.106, connects ->
+        {59, 65, 63, 64}, bonds -> {single, single, single, single}}, 
+      {site -> 63, mass -> hc, element -> "H", charge -> 0.053, connects ->
+        62, bonds -> single}, 
+      {site -> 64, mass -> hc, element -> "H", charge -> 0.053, connects ->
+        62, bonds -> single}, 
+      {site -> 65, mass -> c, element -> "C", charge -> 0.027, connects ->
+        {62, 68, 66, 67}, bonds -> {single, single, single, single}}, 
+      {site -> 66, mass -> hc, element -> "H", charge -> 0.053, connects ->
+        65, bonds -> single}, 
+      {site -> 67, mass -> hc, element -> "H", charge -> 0.053, connects ->
+        65, bonds -> single}, 
+      {site -> 68, mass -> oc, element -> "O", charge -> -0.266, connects ->
+        {65, 69}, bonds -> {single, single}}, 
+      {site -> 69, mass -> c, element -> "C", charge -> 0.027, connects ->
+        {68, 72, 70, 71}, bonds -> {single, single, single, single}}, 
+      {site -> 70, mass -> hc, element -> "H", charge -> 0.053, connects ->
+        69, bonds -> single}, 
+      {site -> 71, mass -> hc, element -> "H", charge -> 0.053, connects ->
+        69, bonds -> single}, 
+      {site -> 72, mass -> c1, element -> "C", charge -> -0.053, isomer ->
+        left, ring -> {nsites -> 6, aromatic -> 0, bits -> 0x2, link -> 0x2}, 
+        connects -> {69, 74, 73, 98}, bonds -> {single, single, single,
+        single}}, 
+      {site -> 73, mass -> hc, element -> "H", charge -> 0.053, connects ->
+        72, bonds -> single}, 
+      {site -> 74, mass -> c, element -> "C", charge -> -0.106, ring -> {
+          nsites -> 6, aromatic -> 0, bits -> 0x2}, connects -> {72, 77, 75,
+        76}, bonds -> {single, single, single, single}}, 
+      {site -> 75, mass -> hc, element -> "H", charge -> 0.053, connects ->
+        74, bonds -> single}, 
+      {site -> 76, mass -> hc, element -> "H", charge -> 0.053, connects ->
+        74, bonds -> single}, 
+      {site -> 77, mass -> c, element -> "C", charge -> -0.106, ring -> {
+          nsites -> 6, aromatic -> 0, bits -> 0x2}, connects -> {74, 80, 78,
+        79}, bonds -> {single, single, single, single}}, 
+      {site -> 78, mass -> hc, element -> "H", charge -> 0.053, connects ->
+        77, bonds -> single}, 
+      {site -> 79, mass -> hc, element -> "H", charge -> 0.053, connects ->
+        77, bonds -> single}, 
+      {site -> 80, mass -> c1, element -> "C", charge -> -0.053, isomer ->
+        right, ring -> {nsites -> 6, aromatic -> 0, bits -> 0x2}, connects ->
+        {77, 95, 81, 82}, bonds -> {single, single, single, single}}, 
+      {site -> 81, mass -> hc, element -> "H", charge -> 0.053, connects ->
+        80, bonds -> single}, 
+      {site -> 82, mass -> c, element -> "C", charge -> 0.027, connects ->
+        {80, 85, 83, 84}, bonds -> {single, single, single, single}}, 
+      {site -> 83, mass -> hc, element -> "H", charge -> 0.053, connects ->
+        82, bonds -> single}, 
+      {site -> 84, mass -> hc, element -> "H", charge -> 0.053, connects ->
+        82, bonds -> single}, 
+      {site -> 85, mass -> oc, element -> "O", charge -> -0.266, connects ->
+        {82, 86}, bonds -> {single, single}}, 
+      {site -> 86, mass -> c, element -> "C", charge -> 0.027, connects ->
+        {85, 89, 87, 88}, bonds -> {single, single, single, single}}, 
+      {site -> 87, mass -> hc, element -> "H", charge -> 0.053, connects ->
+        86, bonds -> single}, 
+      {site -> 88, mass -> hc, element -> "H", charge -> 0.053, connects ->
+        86, bonds -> single}, 
+      {site -> 89, mass -> c3h, element -> "C", charge -> 0.08, isomer ->
+        right, ring -> {nsites -> 3, aromatic -> 0, bits -> 0x4, link -> 0x4},
+          connects -> {86, 91, 90, 94}, bonds -> {single, single, single,
+        single}}, 
+      {site -> 90, mass -> hc, element -> "H", charge -> 0.053, connects ->
+        89, bonds -> single}, 
+      {site -> 91, mass -> c, element -> "C", charge -> 0.027, ring -> {nsites
+          -> 3, aromatic -> 0, bits -> 0x4}, connects -> {89, 94, 92, 93}, 
+        bonds -> {single, single, single, single}}, 
+      {site -> 92, mass -> hc, element -> "H", charge -> 0.053, connects ->
+        91, bonds -> single}, 
+      {site -> 93, mass -> hc, element -> "H", charge -> 0.053, connects ->
+        91, bonds -> single}, 
+      {site -> 94, mass -> o3e, element -> "O", charge -> -0.266, ring -> {
+          nsites -> 3, aromatic -> 0, bits -> 0x4, end -> 0x4}, connects ->
+        {91, 89}, bonds -> {single, single}}, 
+      {site -> 95, mass -> c, element -> "C", charge -> -0.106, ring -> {
+          nsites -> 6, aromatic -> 0, bits -> 0x2}, connects -> {80, 98, 96,
+        97}, bonds -> {single, single, single, single}}, 
+      {site -> 96, mass -> hc, element -> "H", charge -> 0.053, connects ->
+        95, bonds -> single}, 
+      {site -> 97, mass -> hc, element -> "H", charge -> 0.053, connects ->
+        95, bonds -> single}, 
+      {site -> 98, mass -> c, element -> "C", charge -> -0.106, ring -> {
+          nsites -> 6, aromatic -> 0, bits -> 0x2, end -> 0x2}, connects ->
+        {95, 72, 99, 100}, bonds -> {single, single, single, single}}, 
+      {site -> 99, mass -> hc, element -> "H", charge -> 0.053, connects ->
+        98, bonds -> single}, 
+      {site -> 100, mass -> hc, element -> "H", charge -> 0.053, connects ->
+        98, bonds -> single}, 
+      {site -> 101, mass -> c, element -> "C", charge -> -0.106, ring -> {
+          nsites -> 6, aromatic -> 0, bits -> 0x1}, connects -> {0, 104, 102,
+        103}, bonds -> {single, single, single, single}}, 
+      {site -> 102, mass -> hc, element -> "H", charge -> 0.053, connects ->
+        101, bonds -> single}, 
+      {site -> 103, mass -> hc, element -> "H", charge -> 0.053, connects ->
+        101, bonds -> single}, 
+      {site -> 104, mass -> c, element -> "C", charge -> -0.106, ring -> {
+          nsites -> 6, aromatic -> 0, bits -> 0x1}, connects -> {101, 107,
+        105, 106}, bonds -> {single, single, single, single}}, 
+      {site -> 105, mass -> hc, element -> "H", charge -> 0.053, connects ->
+        104, bonds -> single}, 
+      {site -> 106, mass -> hc, element -> "H", charge -> 0.053, connects ->
+        104, bonds -> single}, 
+      {site -> 107, mass -> c1, element -> "C", charge -> -0.053, isomer ->
+        left, ring -> {nsites -> 6, aromatic -> 0, bits -> 0x1}, connects ->
+        {104, 122, 108, 109}, bonds -> {single, single, single, single}}, 
+      {site -> 108, mass -> hc, element -> "H", charge -> 0.053, connects ->
+        107, bonds -> single}, 
+      {site -> 109, mass -> c, element -> "C", charge -> 0.027, connects ->
+        {107, 112, 110, 111}, bonds -> {single, single, single, single}}, 
+      {site -> 110, mass -> hc, element -> "H", charge -> 0.053, connects ->
+        109, bonds -> single}, 
+      {site -> 111, mass -> hc, element -> "H", charge -> 0.053, connects ->
+        109, bonds -> single}, 
+      {site -> 112, mass -> oc, element -> "O", charge -> -0.266, connects ->
+        {109, 113}, bonds -> {single, single}}, 
+      {site -> 113, mass -> c, element -> "C", charge -> 0.027, connects ->
+        {112, 116, 114, 115}, bonds -> {single, single, single, single}}, 
+      {site -> 114, mass -> hc, element -> "H", charge -> 0.053, connects ->
+        113, bonds -> single}, 
+      {site -> 115, mass -> hc, element -> "H", charge -> 0.053, connects ->
+        113, bonds -> single}, 
+      {site -> 116, mass -> c3h, element -> "C", charge -> 0.08, isomer ->
+        right, ring -> {nsites -> 3, aromatic -> 0, bits -> 0x2, link -> 0x2},
+          connects -> {113, 118, 117, 119}, bonds -> {single, single, single,
+        single}}, 
+      {site -> 117, mass -> hc, element -> "H", charge -> 0.053, connects ->
+        116, bonds -> single}, 
+      {site -> 118, mass -> o3e, element -> "O", charge -> -0.266, ring -> {
+          nsites -> 3, aromatic -> 0, bits -> 0x2}, connects -> {116, 119}, 
+        bonds -> {single, single}}, 
+      {site -> 119, mass -> c, element -> "C", charge -> 0.027, ring -> {
+          nsites -> 3, aromatic -> 0, bits -> 0x2, end -> 0x2}, connects ->
+        {118, 116, 120, 121}, bonds -> {single, single, single, single}}, 
+      {site -> 120, mass -> hc, element -> "H", charge -> 0.053, connects ->
+        119, bonds -> single}, 
+      {site -> 121, mass -> hc, element -> "H", charge -> 0.053, connects ->
+        119, bonds -> single}, 
+      {site -> 122, mass -> c, element -> "C", charge -> -0.106, ring -> {
+          nsites -> 6, aromatic -> 0, bits -> 0x1}, connects -> {107, 125,
+        123, 124}, bonds -> {single, single, single, single}}, 
+      {site -> 123, mass -> hc, element -> "H", charge -> 0.053, connects ->
+        122, bonds -> single}, 
+      {site -> 124, mass -> hc, element -> "H", charge -> 0.053, connects ->
+        122, bonds -> single}, 
+      {site -> 125, mass -> c, element -> "C", charge -> -0.106, ring -> {
+          nsites -> 6, aromatic -> 0, bits -> 0x1, end -> 0x1}, connects ->
+        {122, 0, 126, 127}, bonds -> {single, single, single, single}}, 
+      {site -> 126, mass -> hc, element -> "H", charge -> 0.053, connects ->
+        125, bonds -> single}, 
+      {site -> 127, mass -> hc, element -> "H", charge -> 0.053, connects ->
+        125, bonds -> single}}, nbranches -> 0}};
+
+(* Selects *)
+
+selects = {
+  n -> 0};
+
+(* Systems *)
+
+systems = {
+  n -> 1, properties -> 
+  {id -> main, p -> 0, v -> 0, t -> 0, mass -> 771.05088, flag -> {charge ->
+      true, map -> true, pbc -> true, geometry -> true}, nclusters -> 1, 
+    nsites -> {total -> 128, mobile -> 128, semi -> 0, junction -> 42}, plane
+    -> x, periodic -> {x -> true, y -> true, z -> true}, geometry -> {xx -> 0,
+      yy -> 0, zz -> 0, zy -> 0, zx -> 0, yx -> 0}}};
+
+(* Moves *)
+
+moves = {
+  ncycles -> 0, cycle -> 0, move -> 0, 
+  cluster -> {active -> true, frequency -> 0, couple -> false, cut -> auto, 
+    limit -> {0, 0}, min -> {auto, auto}, n -> 0}, 
+  core -> {n -> 0}, 
+  deform -> {active -> true, mode -> isotropic, frequency -> 0, n -> 0}, 
+  delay -> {active -> true, frequency -> 0, d -> 0, ncycles -> 0, n -> 0}, 
+  displace -> {active -> true, frequency -> 1, dlimit -> 0, nsites -> 1, 
+    couple -> true, n -> 0}, 
+  endbridge -> {active -> true, frequency -> 0, nmin -> 3, nmax -> 0, 
+    tolerance -> 0, dmin -> 0, dmax -> 5.60299581666, n -> 0}, 
+  migrate -> {active -> true, frequency -> 0, target -> c, radius -> 0, n ->
+    0}, 
+  rebridge -> {active -> true, frequency -> 0, drivers -> 0, tolerance -> 0, n
+    -> 0}, 
+  reptate -> {active -> true, frequency -> 0, nmin -> 3, n -> 0}, 
+  rotate -> {active -> true, frequency -> 0, nmax -> 0, n -> 0}, 
+  sample -> {active -> true, frequency -> 0, couple -> false, cut -> auto, 
+    limit -> {0, 0}, min -> {auto, auto}, n -> 0}, 
+  surface -> {n -> 0}, 
+  temper -> {active -> true, frequency -> 0, n -> 0}};
+
+(* Blocks *)
+
+blocks = {
+  frequency -> 0, 
+  reports -> {format -> 13, energy -> auto, virial -> auto, volume -> auto, 
+    message -> nkt}};
+
+(* Forces in nkT *)
+
+forces = {
+  n -> 1, data -> 
+  {system -> 0}};
+
+(* Statistics *)
+
+statistics = {
+  n -> 0};
+
+(* Samples *)
+
+samples = {};
+
+(* Profiles *)
+
+profiles = {frequency -> 0, 
+  angle -> {active -> false, convolute -> false, direction -> x, nlevels -> 0,
+    ndistributions -> 0}, 
+  bond -> {active -> false, convolute -> false, direction -> x, nlevels -> 0, 
+    ndistributions -> 0}, 
+  bridge -> {active -> false, convolute -> false, direction -> x, nlevels ->
+    0, ndistributions -> 0}, 
+  density -> {active -> false, convolute -> false, direction -> x, nlevels ->
+    0, ndistributions -> 0}, 
+  force -> {active -> false, convolute -> false, direction -> x, nlevels -> 0,
+    ndistributions -> 0}, 
+  loop -> {active -> false, convolute -> false, direction -> x, nlevels -> 0, 
+    ndistributions -> 0}, 
+  mass -> {active -> false, convolute -> false, direction -> x, nmass -> 8, 
+    nlevels -> 0, ndistributions -> 0}, 
+  order -> {active -> false, convolute -> false, direction -> x, nlevels -> 0,
+    ndistributions -> 0}, 
+  tail -> {active -> false, convolute -> false, direction -> x, nlevels -> 0, 
+    ndistributions -> 0}};
+
+(* Clusters *)
+
+clusters = {
+  n -> 1, data -> 
+  {cluster -> 0, id -> mol, head -> 0, tail -> 127, flags -> 0b0, nsites -> {
+      total -> 128, mobile -> 128, semi -> 0, junction -> 42}}};
+
+(* Sites *)
+
+sites = {
+  n -> 128, data -> {
+    {site -> 0, tag -> 0, mass -> c1, charge -> -0.053, flags ->
+      0b1101000000100, group -> {mol, 0, 0, 0, 0}, cluster -> 0, system ->
+      main, connects -> {125, 101, 1, 2}, p -> {0, 0, 0}}, 
+    {site -> 1, tag -> 1, mass -> hc, charge -> 0.053, flags -> 0b1000000000, 
+      group -> {mol, 1, 0, 0, 0}, cluster -> 0, system -> main, connects -> 0,
+      p -> {0, 0, 0}}, 
+    {site -> 2, tag -> 2, mass -> c, charge -> 0.027, flags -> 0b1000000000, 
+      group -> {mol, 2, 0, 0, 0}, cluster -> 0, system -> main, connects ->
+      {0, 5, 3, 4}, p -> {0, 0, 0}}, 
+    {site -> 3, tag -> 3, mass -> hc, charge -> 0.053, flags -> 0b1000000000, 
+      group -> {mol, 3, 0, 0, 0}, cluster -> 0, system -> main, connects -> 2,
+      p -> {0, 0, 0}}, 
+    {site -> 4, tag -> 4, mass -> hc, charge -> 0.053, flags -> 0b1000000000, 
+      group -> {mol, 4, 0, 0, 0}, cluster -> 0, system -> main, connects -> 2,
+      p -> {0, 0, 0}}, 
+    {site -> 5, tag -> 5, mass -> oc, charge -> -0.266, flags -> 0b1000000000,
+      group -> {mol, 5, 0, 0, 0}, cluster -> 0, system -> main, connects ->
+      {2, 6}, p -> {0, 0, 0}}, 
+    {site -> 6, tag -> 6, mass -> c, charge -> 0.027, flags -> 0b1000000000, 
+      group -> {mol, 6, 0, 0, 0}, cluster -> 0, system -> main, connects ->
+      {5, 9, 7, 8}, p -> {0, 0, 0}}, 
+    {site -> 7, tag -> 7, mass -> hc, charge -> 0.053, flags -> 0b1000000000, 
+      group -> {mol, 7, 0, 0, 0}, cluster -> 0, system -> main, connects -> 6,
+      p -> {0, 0, 0}}, 
+    {site -> 8, tag -> 8, mass -> hc, charge -> 0.053, flags -> 0b1000000000, 
+      group -> {mol, 8, 0, 0, 0}, cluster -> 0, system -> main, connects -> 6,
+      p -> {0, 0, 0}}, 
+    {site -> 9, tag -> 9, mass -> c1, charge -> 0.08, flags -> 0b1000000000, 
+      group -> {mol, 9, 0, 0, 0}, cluster -> 0, system -> main, connects ->
+      {6, 16, 10, 11}, p -> {0, 0, 0}}, 
+    {site -> 10, tag -> 10, mass -> hc, charge -> 0.053, flags ->
+      0b1000000000, group -> {mol, 10, 0, 0, 0}, cluster -> 0, system -> main,
+      connects -> 9, p -> {0, 0, 0}}, 
+    {site -> 11, tag -> 11, mass -> c, charge -> 0.027, flags -> 0b1000000000,
+      group -> {mol, 11, 0, 0, 0}, cluster -> 0, system -> main, connects ->
+      {9, 14, 12, 13}, p -> {0, 0, 0}}, 
+    {site -> 12, tag -> 12, mass -> hc, charge -> 0.053, flags ->
+      0b1000000000, group -> {mol, 12, 0, 0, 0}, cluster -> 0, system -> main,
+      connects -> 11, p -> {0, 0, 0}}, 
+    {site -> 13, tag -> 13, mass -> hc, charge -> 0.053, flags ->
+      0b1000000000, group -> {mol, 13, 0, 0, 0}, cluster -> 0, system -> main,
+      connects -> 11, p -> {0, 0, 0}}, 
+    {site -> 14, tag -> 14, mass -> oh, charge -> -0.5571, flags ->
+      0b1000000000, group -> {mol, 14, 0, 0, 0}, cluster -> 0, system -> main,
+      connects -> {11, 15}, p -> {0, 0, 0}}, 
+    {site -> 15, tag -> 15, mass -> h, charge -> 0.4241, flags ->
+      0b1000000000, group -> {mol, 15, 0, 0, 0}, cluster -> 0, system -> main,
+      connects -> 14, p -> {0, 0, 0}}, 
+    {site -> 16, tag -> 16, mass -> oc, charge -> -0.266, flags ->
+      0b1000000000, group -> {mol, 16, 0, 0, 0}, cluster -> 0, system -> main,
+      connects -> {9, 17}, p -> {0, 0, 0}}, 
+    {site -> 17, tag -> 17, mass -> c, charge -> 0.027, flags -> 0b1000000000,
+      group -> {mol, 17, 0, 0, 0}, cluster -> 0, system -> main, connects ->
+      {16, 20, 18, 19}, p -> {0, 0, 0}}, 
+    {site -> 18, tag -> 18, mass -> hc, charge -> 0.053, flags ->
+      0b1000000000, group -> {mol, 18, 0, 0, 0}, cluster -> 0, system -> main,
+      connects -> 17, p -> {0, 0, 0}}, 
+    {site -> 19, tag -> 19, mass -> hc, charge -> 0.053, flags ->
+      0b1000000000, group -> {mol, 19, 0, 0, 0}, cluster -> 0, system -> main,
+      connects -> 17, p -> {0, 0, 0}}, 
+    {site -> 20, tag -> 20, mass -> c1, charge -> 0.08, flags -> 0b1000000000,
+      group -> {mol, 20, 0, 0, 0}, cluster -> 0, system -> main, connects ->
+      {17, 58, 21, 22}, p -> {0, 0, 0}}, 
+    {site -> 21, tag -> 21, mass -> hc, charge -> 0.053, flags ->
+      0b1000000000, group -> {mol, 21, 0, 0, 0}, cluster -> 0, system -> main,
+      connects -> 20, p -> {0, 0, 0}}, 
+    {site -> 22, tag -> 22, mass -> c, charge -> 0.027, flags -> 0b1000000000,
+      group -> {mol, 22, 0, 0, 0}, cluster -> 0, system -> main, connects ->
+      {20, 25, 23, 24}, p -> {0, 0, 0}}, 
+    {site -> 23, tag -> 23, mass -> hc, charge -> 0.053, flags ->
+      0b1000000000, group -> {mol, 23, 0, 0, 0}, cluster -> 0, system -> main,
+      connects -> 22, p -> {0, 0, 0}}, 
+    {site -> 24, tag -> 24, mass -> hc, charge -> 0.053, flags ->
+      0b1000000000, group -> {mol, 24, 0, 0, 0}, cluster -> 0, system -> main,
+      connects -> 22, p -> {0, 0, 0}}, 
+    {site -> 25, tag -> 25, mass -> oc, charge -> -0.266, flags ->
+      0b1000000000, group -> {mol, 25, 0, 0, 0}, cluster -> 0, system -> main,
+      connects -> {22, 26}, p -> {0, 0, 0}}, 
+    {site -> 26, tag -> 26, mass -> c, charge -> 0.027, flags -> 0b1000000000,
+      group -> {mol, 26, 0, 0, 0}, cluster -> 0, system -> main, connects ->
+      {25, 29, 27, 28}, p -> {0, 0, 0}}, 
+    {site -> 27, tag -> 27, mass -> hc, charge -> 0.053, flags ->
+      0b1000000000, group -> {mol, 27, 0, 0, 0}, cluster -> 0, system -> main,
+      connects -> 26, p -> {0, 0, 0}}, 
+    {site -> 28, tag -> 28, mass -> hc, charge -> 0.053, flags ->
+      0b1000000000, group -> {mol, 28, 0, 0, 0}, cluster -> 0, system -> main,
+      connects -> 26, p -> {0, 0, 0}}, 
+    {site -> 29, tag -> 29, mass -> c1, charge -> -0.053, flags ->
+      0b1101000000000, group -> {mol, 29, 0, 0, 0}, cluster -> 0, system ->
+      main, connects -> {26, 31, 30, 55}, p -> {0, 0, 0}}, 
+    {site -> 30, tag -> 30, mass -> hc, charge -> 0.053, flags ->
+      0b1000000000, group -> {mol, 30, 0, 0, 0}, cluster -> 0, system -> main,
+      connects -> 29, p -> {0, 0, 0}}, 
+    {site -> 31, tag -> 31, mass -> c, charge -> -0.106, flags ->
+      0b101000000000, group -> {mol, 31, 0, 0, 0}, cluster -> 0, system ->
+      main, connects -> {29, 34, 32, 33}, p -> {0, 0, 0}}, 
+    {site -> 32, tag -> 32, mass -> hc, charge -> 0.053, flags ->
+      0b1000000000, group -> {mol, 32, 0, 0, 0}, cluster -> 0, system -> main,
+      connects -> 31, p -> {0, 0, 0}}, 
+    {site -> 33, tag -> 33, mass -> hc, charge -> 0.053, flags ->
+      0b1000000000, group -> {mol, 33, 0, 0, 0}, cluster -> 0, system -> main,
+      connects -> 31, p -> {0, 0, 0}}, 
+    {site -> 34, tag -> 34, mass -> c, charge -> -0.106, flags ->
+      0b101000000000, group -> {mol, 34, 0, 0, 0}, cluster -> 0, system ->
+      main, connects -> {31, 37, 35, 36}, p -> {0, 0, 0}}, 
+    {site -> 35, tag -> 35, mass -> hc, charge -> 0.053, flags ->
+      0b1000000000, group -> {mol, 35, 0, 0, 0}, cluster -> 0, system -> main,
+      connects -> 34, p -> {0, 0, 0}}, 
+    {site -> 36, tag -> 36, mass -> hc, charge -> 0.053, flags ->
+      0b1000000000, group -> {mol, 36, 0, 0, 0}, cluster -> 0, system -> main,
+      connects -> 34, p -> {0, 0, 0}}, 
+    {site -> 37, tag -> 37, mass -> c1, charge -> -0.053, flags ->
+      0b101000000000, group -> {mol, 37, 0, 0, 0}, cluster -> 0, system ->
+      main, connects -> {34, 52, 38, 39}, p -> {0, 0, 0}}, 
+    {site -> 38, tag -> 38, mass -> hc, charge -> 0.053, flags ->
+      0b1000000000, group -> {mol, 38, 0, 0, 0}, cluster -> 0, system -> main,
+      connects -> 37, p -> {0, 0, 0}}, 
+    {site -> 39, tag -> 39, mass -> c, charge -> 0.027, flags -> 0b1000000000,
+      group -> {mol, 39, 0, 0, 0}, cluster -> 0, system -> main, connects ->
+      {37, 42, 40, 41}, p -> {0, 0, 0}}, 
+    {site -> 40, tag -> 40, mass -> hc, charge -> 0.053, flags ->
+      0b1000000000, group -> {mol, 40, 0, 0, 0}, cluster -> 0, system -> main,
+      connects -> 39, p -> {0, 0, 0}}, 
+    {site -> 41, tag -> 41, mass -> hc, charge -> 0.053, flags ->
+      0b1000000000, group -> {mol, 41, 0, 0, 0}, cluster -> 0, system -> main,
+      connects -> 39, p -> {0, 0, 0}}, 
+    {site -> 42, tag -> 42, mass -> oc, charge -> -0.266, flags ->
+      0b1000000000, group -> {mol, 42, 0, 0, 0}, cluster -> 0, system -> main,
+      connects -> {39, 43}, p -> {0, 0, 0}}, 
+    {site -> 43, tag -> 43, mass -> c, charge -> 0.027, flags -> 0b1000000000,
+      group -> {mol, 43, 0, 0, 0}, cluster -> 0, system -> main, connects ->
+      {42, 46, 44, 45}, p -> {0, 0, 0}}, 
+    {site -> 44, tag -> 44, mass -> hc, charge -> 0.053, flags ->
+      0b1000000000, group -> {mol, 44, 0, 0, 0}, cluster -> 0, system -> main,
+      connects -> 43, p -> {0, 0, 0}}, 
+    {site -> 45, tag -> 45, mass -> hc, charge -> 0.053, flags ->
+      0b1000000000, group -> {mol, 45, 0, 0, 0}, cluster -> 0, system -> main,
+      connects -> 43, p -> {0, 0, 0}}, 
+    {site -> 46, tag -> 46, mass -> c3h, charge -> 0.08, flags ->
+      0b1101000000000, group -> {mol, 46, 0, 0, 0}, cluster -> 0, system ->
+      main, connects -> {43, 48, 47, 49}, p -> {0, 0, 0}}, 
+    {site -> 47, tag -> 47, mass -> hc, charge -> 0.053, flags ->
+      0b1000000000, group -> {mol, 47, 0, 0, 0}, cluster -> 0, system -> main,
+      connects -> 46, p -> {0, 0, 0}}, 
+    {site -> 48, tag -> 48, mass -> o3e, charge -> -0.266, flags ->
+      0b101000000000, group -> {mol, 48, 0, 0, 0}, cluster -> 0, system ->
+      main, connects -> {46, 49}, p -> {0, 0, 0}}, 
+    {site -> 49, tag -> 49, mass -> c, charge -> 0.027, flags ->
+      0b1101000000000, group -> {mol, 49, 0, 0, 0}, cluster -> 0, system ->
+      main, connects -> {48, 46, 50, 51}, p -> {0, 0, 0}}, 
+    {site -> 50, tag -> 50, mass -> hc, charge -> 0.053, flags ->
+      0b1000000000, group -> {mol, 50, 0, 0, 0}, cluster -> 0, system -> main,
+      connects -> 49, p -> {0, 0, 0}}, 
+    {site -> 51, tag -> 51, mass -> hc, charge -> 0.053, flags ->
+      0b1000000000, group -> {mol, 51, 0, 0, 0}, cluster -> 0, system -> main,
+      connects -> 49, p -> {0, 0, 0}}, 
+    {site -> 52, tag -> 52, mass -> c, charge -> -0.106, flags ->
+      0b101000000000, group -> {mol, 52, 0, 0, 0}, cluster -> 0, system ->
+      main, connects -> {37, 55, 53, 54}, p -> {0, 0, 0}}, 
+    {site -> 53, tag -> 53, mass -> hc, charge -> 0.053, flags ->
+      0b1000000000, group -> {mol, 53, 0, 0, 0}, cluster -> 0, system -> main,
+      connects -> 52, p -> {0, 0, 0}}, 
+    {site -> 54, tag -> 54, mass -> hc, charge -> 0.053, flags ->
+      0b1000000000, group -> {mol, 54, 0, 0, 0}, cluster -> 0, system -> main,
+      connects -> 52, p -> {0, 0, 0}}, 
+    {site -> 55, tag -> 55, mass -> c, charge -> -0.106, flags ->
+      0b1101000000000, group -> {mol, 55, 0, 0, 0}, cluster -> 0, system ->
+      main, connects -> {52, 29, 56, 57}, p -> {0, 0, 0}}, 
+    {site -> 56, tag -> 56, mass -> hc, charge -> 0.053, flags ->
+      0b1000000000, group -> {mol, 56, 0, 0, 0}, cluster -> 0, system -> main,
+      connects -> 55, p -> {0, 0, 0}}, 
+    {site -> 57, tag -> 57, mass -> hc, charge -> 0.053, flags ->
+      0b1000000000, group -> {mol, 57, 0, 0, 0}, cluster -> 0, system -> main,
+      connects -> 55, p -> {0, 0, 0}}, 
+    {site -> 58, tag -> 58, mass -> oc, charge -> -0.266, flags ->
+      0b1000000000, group -> {mol, 58, 0, 0, 0}, cluster -> 0, system -> main,
+      connects -> {20, 59}, p -> {0, 0, 0}}, 
+    {site -> 59, tag -> 59, mass -> c, charge -> 0.027, flags -> 0b1000000000,
+      group -> {mol, 59, 0, 0, 0}, cluster -> 0, system -> main, connects ->
+      {58, 62, 60, 61}, p -> {0, 0, 0}}, 
+    {site -> 60, tag -> 60, mass -> hc, charge -> 0.053, flags ->
+      0b1000000000, group -> {mol, 60, 0, 0, 0}, cluster -> 0, system -> main,
+      connects -> 59, p -> {0, 0, 0}}, 
+    {site -> 61, tag -> 61, mass -> hc, charge -> 0.053, flags ->
+      0b1000000000, group -> {mol, 61, 0, 0, 0}, cluster -> 0, system -> main,
+      connects -> 59, p -> {0, 0, 0}}, 
+    {site -> 62, tag -> 62, mass -> c, charge -> -0.106, flags ->
+      0b1000000000, group -> {mol, 62, 0, 0, 0}, cluster -> 0, system -> main,
+      connects -> {59, 65, 63, 64}, p -> {0, 0, 0}}, 
+    {site -> 63, tag -> 63, mass -> hc, charge -> 0.053, flags ->
+      0b1000000000, group -> {mol, 63, 0, 0, 0}, cluster -> 0, system -> main,
+      connects -> 62, p -> {0, 0, 0}}, 
+    {site -> 64, tag -> 64, mass -> hc, charge -> 0.053, flags ->
+      0b1000000000, group -> {mol, 64, 0, 0, 0}, cluster -> 0, system -> main,
+      connects -> 62, p -> {0, 0, 0}}, 
+    {site -> 65, tag -> 65, mass -> c, charge -> 0.027, flags -> 0b1000000000,
+      group -> {mol, 65, 0, 0, 0}, cluster -> 0, system -> main, connects ->
+      {62, 68, 66, 67}, p -> {0, 0, 0}}, 
+    {site -> 66, tag -> 66, mass -> hc, charge -> 0.053, flags ->
+      0b1000000000, group -> {mol, 66, 0, 0, 0}, cluster -> 0, system -> main,
+      connects -> 65, p -> {0, 0, 0}}, 
+    {site -> 67, tag -> 67, mass -> hc, charge -> 0.053, flags ->
+      0b1000000000, group -> {mol, 67, 0, 0, 0}, cluster -> 0, system -> main,
+      connects -> 65, p -> {0, 0, 0}}, 
+    {site -> 68, tag -> 68, mass -> oc, charge -> -0.266, flags ->
+      0b1000000000, group -> {mol, 68, 0, 0, 0}, cluster -> 0, system -> main,
+      connects -> {65, 69}, p -> {0, 0, 0}}, 
+    {site -> 69, tag -> 69, mass -> c, charge -> 0.027, flags -> 0b1000000000,
+      group -> {mol, 69, 0, 0, 0}, cluster -> 0, system -> main, connects ->
+      {68, 72, 70, 71}, p -> {0, 0, 0}}, 
+    {site -> 70, tag -> 70, mass -> hc, charge -> 0.053, flags ->
+      0b1000000000, group -> {mol, 70, 0, 0, 0}, cluster -> 0, system -> main,
+      connects -> 69, p -> {0, 0, 0}}, 
+    {site -> 71, tag -> 71, mass -> hc, charge -> 0.053, flags ->
+      0b1000000000, group -> {mol, 71, 0, 0, 0}, cluster -> 0, system -> main,
+      connects -> 69, p -> {0, 0, 0}}, 
+    {site -> 72, tag -> 72, mass -> c1, charge -> -0.053, flags ->
+      0b1101000000000, group -> {mol, 72, 0, 0, 0}, cluster -> 0, system ->
+      main, connects -> {69, 74, 73, 98}, p -> {0, 0, 0}}, 
+    {site -> 73, tag -> 73, mass -> hc, charge -> 0.053, flags ->
+      0b1000000000, group -> {mol, 73, 0, 0, 0}, cluster -> 0, system -> main,
+      connects -> 72, p -> {0, 0, 0}}, 
+    {site -> 74, tag -> 74, mass -> c, charge -> -0.106, flags ->
+      0b101000000000, group -> {mol, 74, 0, 0, 0}, cluster -> 0, system ->
+      main, connects -> {72, 77, 75, 76}, p -> {0, 0, 0}}, 
+    {site -> 75, tag -> 75, mass -> hc, charge -> 0.053, flags ->
+      0b1000000000, group -> {mol, 75, 0, 0, 0}, cluster -> 0, system -> main,
+      connects -> 74, p -> {0, 0, 0}}, 
+    {site -> 76, tag -> 76, mass -> hc, charge -> 0.053, flags ->
+      0b1000000000, group -> {mol, 76, 0, 0, 0}, cluster -> 0, system -> main,
+      connects -> 74, p -> {0, 0, 0}}, 
+    {site -> 77, tag -> 77, mass -> c, charge -> -0.106, flags ->
+      0b101000000000, group -> {mol, 77, 0, 0, 0}, cluster -> 0, system ->
+      main, connects -> {74, 80, 78, 79}, p -> {0, 0, 0}}, 
+    {site -> 78, tag -> 78, mass -> hc, charge -> 0.053, flags ->
+      0b1000000000, group -> {mol, 78, 0, 0, 0}, cluster -> 0, system -> main,
+      connects -> 77, p -> {0, 0, 0}}, 
+    {site -> 79, tag -> 79, mass -> hc, charge -> 0.053, flags ->
+      0b1000000000, group -> {mol, 79, 0, 0, 0}, cluster -> 0, system -> main,
+      connects -> 77, p -> {0, 0, 0}}, 
+    {site -> 80, tag -> 80, mass -> c1, charge -> -0.053, flags ->
+      0b101000000000, group -> {mol, 80, 0, 0, 0}, cluster -> 0, system ->
+      main, connects -> {77, 95, 81, 82}, p -> {0, 0, 0}}, 
+    {site -> 81, tag -> 81, mass -> hc, charge -> 0.053, flags ->
+      0b1000000000, group -> {mol, 81, 0, 0, 0}, cluster -> 0, system -> main,
+      connects -> 80, p -> {0, 0, 0}}, 
+    {site -> 82, tag -> 82, mass -> c, charge -> 0.027, flags -> 0b1000000000,
+      group -> {mol, 82, 0, 0, 0}, cluster -> 0, system -> main, connects ->
+      {80, 85, 83, 84}, p -> {0, 0, 0}}, 
+    {site -> 83, tag -> 83, mass -> hc, charge -> 0.053, flags ->
+      0b1000000000, group -> {mol, 83, 0, 0, 0}, cluster -> 0, system -> main,
+      connects -> 82, p -> {0, 0, 0}}, 
+    {site -> 84, tag -> 84, mass -> hc, charge -> 0.053, flags ->
+      0b1000000000, group -> {mol, 84, 0, 0, 0}, cluster -> 0, system -> main,
+      connects -> 82, p -> {0, 0, 0}}, 
+    {site -> 85, tag -> 85, mass -> oc, charge -> -0.266, flags ->
+      0b1000000000, group -> {mol, 85, 0, 0, 0}, cluster -> 0, system -> main,
+      connects -> {82, 86}, p -> {0, 0, 0}}, 
+    {site -> 86, tag -> 86, mass -> c, charge -> 0.027, flags -> 0b1000000000,
+      group -> {mol, 86, 0, 0, 0}, cluster -> 0, system -> main, connects ->
+      {85, 89, 87, 88}, p -> {0, 0, 0}}, 
+    {site -> 87, tag -> 87, mass -> hc, charge -> 0.053, flags ->
+      0b1000000000, group -> {mol, 87, 0, 0, 0}, cluster -> 0, system -> main,
+      connects -> 86, p -> {0, 0, 0}}, 
+    {site -> 88, tag -> 88, mass -> hc, charge -> 0.053, flags ->
+      0b1000000000, group -> {mol, 88, 0, 0, 0}, cluster -> 0, system -> main,
+      connects -> 86, p -> {0, 0, 0}}, 
+    {site -> 89, tag -> 89, mass -> c3h, charge -> 0.08, flags ->
+      0b1101000000000, group -> {mol, 89, 0, 0, 0}, cluster -> 0, system ->
+      main, connects -> {86, 91, 90, 94}, p -> {0, 0, 0}}, 
+    {site -> 90, tag -> 90, mass -> hc, charge -> 0.053, flags ->
+      0b1000000000, group -> {mol, 90, 0, 0, 0}, cluster -> 0, system -> main,
+      connects -> 89, p -> {0, 0, 0}}, 
+    {site -> 91, tag -> 91, mass -> c, charge -> 0.027, flags ->
+      0b101000000000, group -> {mol, 91, 0, 0, 0}, cluster -> 0, system ->
+      main, connects -> {89, 94, 92, 93}, p -> {0, 0, 0}}, 
+    {site -> 92, tag -> 92, mass -> hc, charge -> 0.053, flags ->
+      0b1000000000, group -> {mol, 92, 0, 0, 0}, cluster -> 0, system -> main,
+      connects -> 91, p -> {0, 0, 0}}, 
+    {site -> 93, tag -> 93, mass -> hc, charge -> 0.053, flags ->
+      0b1000000000, group -> {mol, 93, 0, 0, 0}, cluster -> 0, system -> main,
+      connects -> 91, p -> {0, 0, 0}}, 
+    {site -> 94, tag -> 94, mass -> o3e, charge -> -0.266, flags ->
+      0b1101000000000, group -> {mol, 94, 0, 0, 0}, cluster -> 0, system ->
+      main, connects -> {91, 89}, p -> {0, 0, 0}}, 
+    {site -> 95, tag -> 95, mass -> c, charge -> -0.106, flags ->
+      0b101000000000, group -> {mol, 95, 0, 0, 0}, cluster -> 0, system ->
+      main, connects -> {80, 98, 96, 97}, p -> {0, 0, 0}}, 
+    {site -> 96, tag -> 96, mass -> hc, charge -> 0.053, flags ->
+      0b1000000000, group -> {mol, 96, 0, 0, 0}, cluster -> 0, system -> main,
+      connects -> 95, p -> {0, 0, 0}}, 
+    {site -> 97, tag -> 97, mass -> hc, charge -> 0.053, flags ->
+      0b1000000000, group -> {mol, 97, 0, 0, 0}, cluster -> 0, system -> main,
+      connects -> 95, p -> {0, 0, 0}}, 
+    {site -> 98, tag -> 98, mass -> c, charge -> -0.106, flags ->
+      0b1101000000000, group -> {mol, 98, 0, 0, 0}, cluster -> 0, system ->
+      main, connects -> {95, 72, 99, 100}, p -> {0, 0, 0}}, 
+    {site -> 99, tag -> 99, mass -> hc, charge -> 0.053, flags ->
+      0b1000000000, group -> {mol, 99, 0, 0, 0}, cluster -> 0, system -> main,
+      connects -> 98, p -> {0, 0, 0}}, 
+    {site -> 100, tag -> 100, mass -> hc, charge -> 0.053, flags ->
+      0b1000000000, group -> {mol, 100, 0, 0, 0}, cluster -> 0, system ->
+      main, connects -> 98, p -> {0, 0, 0}}, 
+    {site -> 101, tag -> 101, mass -> c, charge -> -0.106, flags ->
+      0b101000000000, group -> {mol, 101, 0, 0, 0}, cluster -> 0, system ->
+      main, connects -> {0, 104, 102, 103}, p -> {0, 0, 0}}, 
+    {site -> 102, tag -> 102, mass -> hc, charge -> 0.053, flags ->
+      0b1000000000, group -> {mol, 102, 0, 0, 0}, cluster -> 0, system ->
+      main, connects -> 101, p -> {0, 0, 0}}, 
+    {site -> 103, tag -> 103, mass -> hc, charge -> 0.053, flags ->
+      0b1000000000, group -> {mol, 103, 0, 0, 0}, cluster -> 0, system ->
+      main, connects -> 101, p -> {0, 0, 0}}, 
+    {site -> 104, tag -> 104, mass -> c, charge -> -0.106, flags ->
+      0b101000000000, group -> {mol, 104, 0, 0, 0}, cluster -> 0, system ->
+      main, connects -> {101, 107, 105, 106}, p -> {0, 0, 0}}, 
+    {site -> 105, tag -> 105, mass -> hc, charge -> 0.053, flags ->
+      0b1000000000, group -> {mol, 105, 0, 0, 0}, cluster -> 0, system ->
+      main, connects -> 104, p -> {0, 0, 0}}, 
+    {site -> 106, tag -> 106, mass -> hc, charge -> 0.053, flags ->
+      0b1000000000, group -> {mol, 106, 0, 0, 0}, cluster -> 0, system ->
+      main, connects -> 104, p -> {0, 0, 0}}, 
+    {site -> 107, tag -> 107, mass -> c1, charge -> -0.053, flags ->
+      0b101000000000, group -> {mol, 107, 0, 0, 0}, cluster -> 0, system ->
+      main, connects -> {104, 122, 108, 109}, p -> {0, 0, 0}}, 
+    {site -> 108, tag -> 108, mass -> hc, charge -> 0.053, flags ->
+      0b1000000000, group -> {mol, 108, 0, 0, 0}, cluster -> 0, system ->
+      main, connects -> 107, p -> {0, 0, 0}}, 
+    {site -> 109, tag -> 109, mass -> c, charge -> 0.027, flags ->
+      0b1000000000, group -> {mol, 109, 0, 0, 0}, cluster -> 0, system ->
+      main, connects -> {107, 112, 110, 111}, p -> {0, 0, 0}}, 
+    {site -> 110, tag -> 110, mass -> hc, charge -> 0.053, flags ->
+      0b1000000000, group -> {mol, 110, 0, 0, 0}, cluster -> 0, system ->
+      main, connects -> 109, p -> {0, 0, 0}}, 
+    {site -> 111, tag -> 111, mass -> hc, charge -> 0.053, flags ->
+      0b1000000000, group -> {mol, 111, 0, 0, 0}, cluster -> 0, system ->
+      main, connects -> 109, p -> {0, 0, 0}}, 
+    {site -> 112, tag -> 112, mass -> oc, charge -> -0.266, flags ->
+      0b1000000000, group -> {mol, 112, 0, 0, 0}, cluster -> 0, system ->
+      main, connects -> {109, 113}, p -> {0, 0, 0}}, 
+    {site -> 113, tag -> 113, mass -> c, charge -> 0.027, flags ->
+      0b1000000000, group -> {mol, 113, 0, 0, 0}, cluster -> 0, system ->
+      main, connects -> {112, 116, 114, 115}, p -> {0, 0, 0}}, 
+    {site -> 114, tag -> 114, mass -> hc, charge -> 0.053, flags ->
+      0b1000000000, group -> {mol, 114, 0, 0, 0}, cluster -> 0, system ->
+      main, connects -> 113, p -> {0, 0, 0}}, 
+    {site -> 115, tag -> 115, mass -> hc, charge -> 0.053, flags ->
+      0b1000000000, group -> {mol, 115, 0, 0, 0}, cluster -> 0, system ->
+      main, connects -> 113, p -> {0, 0, 0}}, 
+    {site -> 116, tag -> 116, mass -> c3h, charge -> 0.08, flags ->
+      0b1101000000000, group -> {mol, 116, 0, 0, 0}, cluster -> 0, system ->
+      main, connects -> {113, 118, 117, 119}, p -> {0, 0, 0}}, 
+    {site -> 117, tag -> 117, mass -> hc, charge -> 0.053, flags ->
+      0b1000000000, group -> {mol, 117, 0, 0, 0}, cluster -> 0, system ->
+      main, connects -> 116, p -> {0, 0, 0}}, 
+    {site -> 118, tag -> 118, mass -> o3e, charge -> -0.266, flags ->
+      0b101000000000, group -> {mol, 118, 0, 0, 0}, cluster -> 0, system ->
+      main, connects -> {116, 119}, p -> {0, 0, 0}}, 
+    {site -> 119, tag -> 119, mass -> c, charge -> 0.027, flags ->
+      0b1101000000000, group -> {mol, 119, 0, 0, 0}, cluster -> 0, system ->
+      main, connects -> {118, 116, 120, 121}, p -> {0, 0, 0}}, 
+    {site -> 120, tag -> 120, mass -> hc, charge -> 0.053, flags ->
+      0b1000000000, group -> {mol, 120, 0, 0, 0}, cluster -> 0, system ->
+      main, connects -> 119, p -> {0, 0, 0}}, 
+    {site -> 121, tag -> 121, mass -> hc, charge -> 0.053, flags ->
+      0b1000000000, group -> {mol, 121, 0, 0, 0}, cluster -> 0, system ->
+      main, connects -> 119, p -> {0, 0, 0}}, 
+    {site -> 122, tag -> 122, mass -> c, charge -> -0.106, flags ->
+      0b101000000000, group -> {mol, 122, 0, 0, 0}, cluster -> 0, system ->
+      main, connects -> {107, 125, 123, 124}, p -> {0, 0, 0}}, 
+    {site -> 123, tag -> 123, mass -> hc, charge -> 0.053, flags ->
+      0b1000000000, group -> {mol, 123, 0, 0, 0}, cluster -> 0, system ->
+      main, connects -> 122, p -> {0, 0, 0}}, 
+    {site -> 124, tag -> 124, mass -> hc, charge -> 0.053, flags ->
+      0b1000000000, group -> {mol, 124, 0, 0, 0}, cluster -> 0, system ->
+      main, connects -> 122, p -> {0, 0, 0}}, 
+    {site -> 125, tag -> 125, mass -> c, charge -> -0.106, flags ->
+      0b1101000000000, group -> {mol, 125, 0, 0, 0}, cluster -> 0, system ->
+      main, connects -> {122, 0, 126, 127}, p -> {0, 0, 0}}, 
+    {site -> 126, tag -> 126, mass -> hc, charge -> 0.053, flags ->
+      0b1000000000, group -> {mol, 126, 0, 0, 0}, cluster -> 0, system ->
+      main, connects -> 125, p -> {0, 0, 0}}, 
+    {site -> 127, tag -> 127, mass -> hc, charge -> 0.053, flags ->
+      0b1000001000, group -> {mol, 127, 0, 0, 0}, cluster -> 0, system ->
+      main, connects -> 125, p -> {0, 0, 0}}}};
+
