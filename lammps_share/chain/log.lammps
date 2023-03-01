@@ -1,0 +1,13 @@
+LAMMPS (22 Dec 2022)
+ # Polymer simulation with LAMMPS.
+ # Dr. Mark A. Tschopp, 2010.
+ # Variables
+ variable            fname index tes.data
+ variable            simname index PE_cl100
+
+ # Initialization
+ units               real
+ boundary            p p p
+ atom_style          molecular
+ log                 log.${simname}.txt
+ log                 log.PE_cl100.txt

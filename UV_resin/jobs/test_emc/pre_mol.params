@@ -1,0 +1,155 @@
+# LAMMPS parameters created by EMC v9.4.4, build Jul 27 2022 18:02:20
+
+# Variables
+
+variable	seed		index	-1
+variable	ntotal		index	105
+variable	fshape		index	1
+variable	output		index	pre_mol
+variable	field		index	opls/2012/opls-ua
+variable	location1	index	../field/
+variable	nav		index	0.6022141179
+variable	temperature	index	300
+variable	radius		index	5
+variable	nrelax		index	100
+variable	weight_nonbond	index	0.0001
+variable	weight_bond	index	0.0001
+variable	weight_focus	index	1
+variable	cutoff		index	9.5
+variable	charge_cutoff	index	9.5
+variable	kappa		index	4
+variable	density1	index	0.1
+variable	lprevious	index	0
+variable	lphase		index	28.8361682285
+variable	f_mol		index	1
+variable	chem_mol	index	CCC1(COCC2=CC=CC=C2)COC1
+variable	lg_mol		index	15
+variable	l_mol		index	15
+variable	norm_mol	index	1
+variable	mg_mol		index	206.284
+variable	m_mol		index	206.284
+variable	norm		index	7.27152857226
+variable	n_mol		index	7
+variable	mtotal		index	1443.988
+variable	nphase1		index	105
+variable	mphase1		index	1443.988
+variable	vphase1		index	23977.983197
+variable	lbox		index	28.8361682285
+variable	lphase1		index	28.8361682285
+variable	lxx		index	28.8361682285
+variable	lyy		index	28.8361682285
+variable	lzz		index	28.8361682285
+variable	lzy		index	0
+variable	lzx		index	0
+variable	lyx		index	0
+variable	vtotal		index	23977.983197
+
+# Types
+
+variable	type_c2		index	1
+variable	type_c21	index	2
+variable	type_c32	index	3
+variable	type_ca		index	4
+variable	type_cd		index	5
+variable	type_ct		index	6
+variable	type_os		index	7
+
+variable	type_bond_c2_c32 index	1
+variable	type_bond_c2_ct	index	2
+variable	type_bond_c21_ca index	3
+variable	type_bond_c21_ct index	4
+variable	type_bond_c21_os index	5
+variable	type_bond_ca_cd	index	6
+variable	type_bond_cd_cd	index	7
+
+variable	type_angle_c2_ct_c21 index	1
+variable	type_angle_c21_ca_cd index	2
+variable	type_angle_c21_ct_c21 index	3
+variable	type_angle_c21_os_c21 index	4
+variable	type_angle_c32_c2_ct index	5
+variable	type_angle_ca_c21_os index	6
+variable	type_angle_ca_cd_cd index	7
+variable	type_angle_cd_ca_cd index	8
+variable	type_angle_cd_cd_cd index	9
+variable	type_angle_ct_c21_os index	10
+
+# Clusters
+
+variable	n0_mol		index	1
+variable	n1_mol		index	7
+variable	nl_mol		index	7
+
+# Flags
+
+variable	flag_charged	index	1
+
+# Masses
+
+mass		1    14.02680  # c2
+mass		2    14.02680  # c21
+mass		3    15.03470  # c32
+mass		4    12.01100  # ca
+mass		5    13.01890  # cd
+mass		6    12.01100  # ct
+mass		7    15.99940  # os
+
+# Potentials
+
+pair_style	lj/cut/coul/long ${cutoff} ${charge_cutoff}  # 9.5
+bond_style	harmonic
+angle_style	harmonic
+dihedral_style	multi/harmonic
+improper_style	harmonic
+pair_modify	mix geometric tail yes
+special_bonds	lj/coul 0 0 0.5
+
+# Pair Coeffs
+
+pair_coeff	 1  1    0.11800    3.90500  # c2,c2
+pair_coeff	 2  2    0.11800    3.90500  # c21,c21
+pair_coeff	 3  3    0.16000    3.91000  # c32,c32
+pair_coeff	 4  4    0.07000    3.55000  # ca,ca
+pair_coeff	 5  5    0.11000    3.75000  # cd,cd
+pair_coeff	 6  6    0.05000    3.80000  # ct,ct
+pair_coeff	 7  7    0.17000    3.00000  # os,os
+
+# Bond Coeffs
+
+bond_coeff	1  260.00000    1.52600  # c2,c32
+bond_coeff	2  260.00000    1.52600  # c2,ct
+bond_coeff	3  317.00000    1.51000  # c21,ca
+bond_coeff	4  260.00000    1.52600  # c21,ct
+bond_coeff	5  320.00000    1.42500  # c21,os
+bond_coeff	6  469.00000    1.40000  # ca,cd
+bond_coeff	7  469.00000    1.40000  # cd,cd
+
+# Angle Coeffs
+
+angle_coeff	 1   40.00000  109.50000  # c2,ct,c21
+angle_coeff	 2   70.00000  120.00000  # c21,ca,cd
+angle_coeff	 3   40.00000  109.50000  # c21,ct,c21
+angle_coeff	 4  100.00000  111.80000  # c21,os,c21
+angle_coeff	 5   63.00000  112.40000  # c32,c2,ct
+angle_coeff	 6   50.00000  109.50000  # ca,c21,os
+angle_coeff	 7   63.00000  120.00000  # ca,cd,cd
+angle_coeff	 8   63.00000  120.00000  # cd,ca,cd
+angle_coeff	 9   63.00000  120.00000  # cd,cd,cd
+angle_coeff	10   50.00000  109.50000  # ct,c21,os
+
+# Dihedral Coeffs
+
+dihedral_coeff	 1    0.68700   -0.13900    0.50000    1.32600    0.00000  # c2,ct,c21,os
+dihedral_coeff	 2    7.25000    0.00000   -7.25000    0.00000    0.00000  # c21,ca,cd,cd
+dihedral_coeff	 3    0.70000    0.35000    0.05000    0.40000    0.00000  # c21,ct,c2,c32
+dihedral_coeff	 4    0.68700   -0.13900    0.50000    1.32600    0.00000  # c21,ct,c21,os
+dihedral_coeff	 5    0.41000   -0.68000    0.25000    1.34000    0.00000  # c21,os,c21,ca
+dihedral_coeff	 6    0.41000   -0.68000    0.25000    1.34000    0.00000  # c21,os,c21,ct
+dihedral_coeff	 7    7.25000    0.00000   -7.25000    0.00000    0.00000  # ca,cd,cd,cd
+dihedral_coeff	 8    0.00000    0.00000    0.00000    0.00000    0.00000  # cd,ca,c21,os
+dihedral_coeff	 9    7.25000    0.00000   -7.25000    0.00000    0.00000  # cd,ca,cd,cd
+dihedral_coeff	10    7.25000    0.00000   -7.25000    0.00000    0.00000  # cd,cd,cd,cd
+
+# Improper Coeffs
+
+improper_coeff	1    2.20000    0.00000  # ca,c21,cd,cd
+
