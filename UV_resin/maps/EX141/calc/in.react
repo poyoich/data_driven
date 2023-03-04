@@ -1,0 +1,78 @@
+# PREREQUISITES:
+#
+#     You must use moltemplate.sh to create 3 files:
+#        system.data  system.in.init  system.in.settings
+#     (Follow the instructions in README_setup.sh, 
+#      or run the file as a script using ./README_setup.sh)
+
+# ------------------------------- Initialization Section --------------------
+
+units real
+atom_style full
+boundary p p p
+
+pair_style lj/class2/coul/cut/long 10.0
+kspace_style pppm 1.0e-4
+bond_style class2
+angle_style class2
+dihedral_style class2
+improper_style class2
+
+
+# ------------------------------- Atom Definition Section -------------------
+
+read_data       "pack_mol.data" extra/bond/per/atom 1 extra/angle/per/atom 12 extra/dihedral/per/atom 12 extra/improper/per/atom 12 extra/special/per/atom 12
+
+include calc.pram
+
+# ------------------------------- OPT Section -------------------------------
+minimize 1.0e-5 1.0e-7 100000 400000
+# ------------------------------- Run Section -------------------------------
+#
+
+thermo_style custom step temp pe evdwl ecoul ebond eangle edihed eimp density vol
+thermo          100
+
+neigh_modify delay 0 every 1 check yes
+
+fix Langevin  all langevin 300 300 100.0 482432
+fix moveLimit all nve/limit 0.1
+run 10000
+unfix Langevin
+unfix moveLimit
+
+
+fix 		relax all npt temp 300.0 300.0 100 iso 1.0 1.0 1000
+run 20000
+unfix relax
+
+molecule 	pre1 cleaned_pre-mol
+molecule	post1 cleaned_post-mol
+
+fix		fxrct all bond/react stabilization yes statted_grp .03 &
+		 react rxn1 all 100 0.0 4.0 pre1 post1 semi.map stabilize_steps 100 molecule inter &
+
+fix 		npt statted_grp_REACT npt temp 500.0 500.0 100 iso 1.0 1.0 1000
+fix 		reacted bond_react_MASTER_group temp/rescale 1 300.0 300.0 1 1
+
+
+thermo_style custom step temp pe evdwl ecoul ebond eangle edihed eimp density vol f_fxrct[*]
+thermo     100
+
+
+compute 1 all property/local btype batom1 batom2
+
+dump DumpPos all custom 100 dump.pos id type x y z mol
+dump DumpBond all local 100 bonds.dump index c_1[*]
+
+run 200000
+
+write_data reaxed.data nocoeff nofix
+unfix reacted
+unfix npt
+unfix fxrct
+
+
+thermo_style custom step temp pe evdwl ecoul ebond eangle edihed eimp density vol
+fix 		relax all npt temp 600.0 600.0 100 iso 1.0 1.0 1000
+run 1000

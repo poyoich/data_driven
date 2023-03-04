@@ -1,0 +1,246 @@
+OPLS conversion v0.6beta, April 22, 2015, (c) Pieter J. in 't Veld
+
+Info: opening "opls-aa.define" for reading
+Info: opening "src/oplsaa.par" for reading
+Info: opening "src/oplsaa.sb" for reading
+Info: opening "opls-aa.prm" for writing
+Info: opening "opls-aa.top" for writing
+Info: reading defines
+Info: reading references
+Info: reading masses
+Info: reading redefinitions
+Info: reading repairs
+Info: reading precedences
+Info: reading extra types
+Info: reading equivalences
+Info: reading extra nonbonds
+Info: reading extra bonds
+Info: reading extra angles
+Info: reading extra torsions
+Info: reading extra impropers
+Info: reading rules
+Info: reading pairs
+Info: reading bonds and angles
+Info: reading torsions and impropers
+
+TORSION DOUBLES
+
+c	ct	ct	c	101	3316	dicarboxylic acid
+c	ct	ct	c	140	3374	1,2-diacid monoanion
+c	ct	ct	ct	116	3342	aldehyde & ketone & acyl halide
+c	ct	ct	ct	71	3283	butanamide
+c	ct	ct	ct	93	3306	carboxylate ion
+c	ct	ct	hc	104	3320	dicarboxylic acid
+c	ct	ct	hc	70	3282	all carbonyls
+c	n	ct	ct	38	3206	Phi' peptides AA
+c	n	ct	ct	62	3268	N-ethylformamide
+c	n	ct	ct	75	3287	first (theta) torsion for beta-3-pept
+c	n	ct	hc	40	3208	Phi" peptides AA
+c	n	ct	hc	60	3265	N-methylformamide
+ct	c	oh	ho	103	3318	carboxylic acid - aliphatic
+ct	c	oh	ho	138	3372	1,2-diacid monoanion
+ct	ct	c	n	39	3207	Psi' peptides AA
+ct	ct	c	n	68	3280	propanamide
+ct	ct	c	n	77	3289	lastl (psi) torsion for beta-3-peptid
+ct	ct	c	o	105	3321	dicarboxylic acid
+ct	ct	c	o	114	3340	aldehyde & ketone & acyl halide
+ct	ct	c	o	139	3373	1,2-diacid monoanion
+ct	ct	c	o	43.1	3219	peptides
+ct	ct	c	o	69	3281	propanamide
+ct	ct	c	o	95	3309	RCOOH acid
+ct	ct	c	oh	106	3322	dicarboxylic acid
+ct	ct	c	oh	96	3311	RCOOH acid
+ct	ct	ct	ct	156	3395	perfluoroalkane
+ct	ct	ct	ct	3	3112	hydrocarbon *new* 11/99
+ct	ct	ct	n	35	3201	Chi-1 peptides AA
+ct	ct	ct	n	65	3271	N-propylformamide
+ct	ct	n	ct	108	3324	" CD-N-CA-CB JT-R 2/10/97
+ct	ct	n	ct	109	3325	" chi4 CG-CD-N-CA
+ct	ct	n	h	42.1	3216	peptides
+ct	ct	n	h	63	3269	N-ethylformamide
+ct	ct	nt	ct	194	3594	exocyclic amines
+ct	ct	nt	ct	195	3595	exocyclic 1,4-diamines
+ct	ct	nt	ct	199	3593	amine (repeated here so taken first b
+ct	ct	nt	ct	199.1	3599	amine all-atom
+ct	ct	nt	h	192	3591	azetidine - 4 membered cyclic amines
+ct	ct	nt	h	193	3592	pyrrolidine 5 membered cyclic amines
+ct	ct	nt	h	196	3596	cyclic amines
+ct	ct	nt	h	197	3597	cyclic 1,4-diamines
+ct	ct	nt	h	32	3195	amine all-atom See 197.
+ct	ct	oh	ho	134	3368	trifluoroethanol
+ct	ct	oh	ho	151	3389	hexopyranoses
+ct	ct	oh	ho	9	3124	alcohols AA
+ct	os	c	o	182	3581	esters
+ct	os	c	o	210.1	3649	benzoic esters
+ct	os	p	o2	123	3351	phosphonates
+ct	os	p	o2	128	3360	dimethyl phosphate
+f	ct	ct	hc	136	3370	trifluoroethanol
+f	ct	ct	hc	147	3385	alkyl fluoride
+hc	c	c	hc	1.1	3104
+hc	c	c	hc	323	3878	dicarbonyls "
+hc	c	c	o	321	3876	dicarbonyls BMC 8,1881(2000)
+hc	c	c	o	67.1	3278
+hc	ct	ct	sy	239	3759	sulfone
+hc	ct	ct	sy	28.1	3189
+hc	ct	oh	ho	135	3369	trifluoroethanol
+hc	ct	oh	ho	8	3123	alcohols AA 5/02 modified from 0.45
+hc	ct	oh	ho	98	3313	axial cyclohexanol
+ho	oh	c	o	102	3317	carboxylic acid - aliphatic
+ho	oh	c	o	210	3648	benzoic acids
+oh	ct	ct	oh	10	3125	diols only AA
+oh	ct	ct	oh	11	3126	triols only AA
+oh	ct	ct	oh	152	3390	hexopyranoses
+
+
+REMAINING TORSION DOUBLES
+
+c	n	ct	ct	38	3206	Phi' peptides AA
+c	n	ct	ct	75	3287	first (theta) torsion for beta-3-pept
+ct	ct	c	n	39	3207	Psi' peptides AA
+ct	ct	c	n	77	3289	lastl (psi) torsion for beta-3-peptid
+ct	ct	ct	ct	156	3395	perfluoroalkane
+ct	ct	ct	ct	3	3112	hydrocarbon *new* 11/99
+ct	ct	n	ct	108	3324	" CD-N-CA-CB JT-R 2/10/97
+ct	ct	n	ct	109	3325	" chi4 CG-CD-N-CA
+ct	ct	nt	ct	194	3594	exocyclic amines
+ct	ct	nt	ct	195	3595	exocyclic 1,4-diamines
+ct	ct	nt	ct	199	3593	amine (repeated here so taken first b
+ct	ct	nt	ct	199.1	3599	amine all-atom
+ct	ct	nt	h	192	3591	azetidine - 4 membered cyclic amines
+ct	ct	nt	h	193	3592	pyrrolidine 5 membered cyclic amines
+ct	ct	nt	h	196	3596	cyclic amines
+ct	ct	nt	h	197	3597	cyclic 1,4-diamines
+ct	os	p	o2	123	3351	phosphonates
+ct	os	p	o2	128	3360	dimethyl phosphate
+hc	c	c	hc	1.1	3104
+hc	c	c	hc	323	3878	dicarbonyls "
+hc	ct	ct	sy	239	3759	sulfone
+hc	ct	ct	sy	28.1	3189
+oh	ct	ct	oh	10	3125	diols only AA
+oh	ct	ct	oh	11	3126	triols only AA
+oh	ct	ct	oh	152	3390	hexopyranoses
+
+Warning: torsion doubles exist (reduced from 40 to 18)
+Info: writing headers
+Info: writing references
+Info: writing masses
+Info: writing equivalences
+Info: writing nonbonded
+Info: writing bonded
+Info: writing precedences
+Info: writing rules
+Info: writing comments
+
+OPLS conversion v0.6beta, April 22, 2015, (c) Pieter J. in 't Veld
+
+Info: opening "opls-ua.define" for reading
+Info: opening "src/oplsaa.par" for reading
+Info: opening "src/oplsaa.sb" for reading
+Info: opening "opls-ua.prm" for writing
+Info: opening "opls-ua.top" for writing
+Info: reading defines
+Info: reading references
+Info: reading masses
+Info: reading redefinitions
+Info: reading repairs
+Info: reading precedences
+Info: reading extra types
+Info: reading rules
+Info: reading equivalences
+Info: reading extra nonbonds
+Info: reading extra bonds
+Info: reading extra angles
+Info: reading extra torsions
+Info: reading extra impropers
+Info: reading pairs
+Info: reading bonds and angles
+Info: reading torsions and impropers
+
+TORSION DOUBLES
+
+c	ct	ct	c	101	3316	dicarboxylic acid
+c	ct	ct	c	140	3374	1,2-diacid monoanion
+c	ct	ct	ct	116	3342	aldehyde & ketone & acyl halide
+c	ct	ct	ct	71	3283	butanamide
+c	ct	ct	ct	93	3306	carboxylate ion
+c	n	ct	ct	38	3206	Phi' peptides AA
+c	n	ct	ct	62	3268	N-ethylformamide
+c	n	ct	ct	75	3287	first (theta) torsion for beta-3-pept
+ct	c	oh	ho	103	3318	carboxylic acid - aliphatic
+ct	c	oh	ho	138	3372	1,2-diacid monoanion
+ct	ct	c	n	39	3207	Psi' peptides AA
+ct	ct	c	n	68	3280	propanamide
+ct	ct	c	n	77	3289	lastl (psi) torsion for beta-3-peptid
+ct	ct	c	o	105	3321	dicarboxylic acid
+ct	ct	c	o	114	3340	aldehyde & ketone & acyl halide
+ct	ct	c	o	139	3373	1,2-diacid monoanion
+ct	ct	c	o	43.1	3219	peptides
+ct	ct	c	o	69	3281	propanamide
+ct	ct	c	o	95	3309	RCOOH acid
+ct	ct	c	oh	106	3322	dicarboxylic acid
+ct	ct	c	oh	96	3311	RCOOH acid
+ct	ct	ct	ct	156	3395	perfluoroalkane
+ct	ct	ct	ct	3	3112	hydrocarbon *new* 11/99
+ct	ct	ct	n	35	3201	Chi-1 peptides AA
+ct	ct	ct	n	65	3271	N-propylformamide
+ct	ct	n	ct	108	3324	" CD-N-CA-CB JT-R 2/10/97
+ct	ct	n	ct	109	3325	" chi4 CG-CD-N-CA
+ct	ct	n	h	42.1	3216	peptides
+ct	ct	n	h	63	3269	N-ethylformamide
+ct	ct	nt	ct	194	3594	exocyclic amines
+ct	ct	nt	ct	195	3595	exocyclic 1,4-diamines
+ct	ct	nt	ct	199	3593	amine (repeated here so taken first b
+ct	ct	nt	ct	199.1	3599	amine all-atom
+ct	ct	nt	h	192	3591	azetidine - 4 membered cyclic amines
+ct	ct	nt	h	193	3592	pyrrolidine 5 membered cyclic amines
+ct	ct	nt	h	196	3596	cyclic amines
+ct	ct	nt	h	197	3597	cyclic 1,4-diamines
+ct	ct	nt	h	32	3195	amine all-atom See 197.
+ct	ct	oh	ho	134	3368	trifluoroethanol
+ct	ct	oh	ho	151	3389	hexopyranoses
+ct	ct	oh	ho	9	3124	alcohols AA
+ct	os	c	o	182	3581	esters
+ct	os	c	o	210.1	3649	benzoic esters
+ho	oh	c	o	102	3317	carboxylic acid - aliphatic
+ho	oh	c	o	210	3648	benzoic acids
+oh	ct	ct	oh	10	3125	diols only AA
+oh	ct	ct	oh	11	3126	triols only AA
+oh	ct	ct	oh	152	3390	hexopyranoses
+
+
+REMAINING TORSION DOUBLES
+
+c	ct	ct	ct	116	3342	aldehyde & ketone & acyl halide
+c	ct	ct	ct	93	3306	carboxylate ion
+ct	ct	c	o	114	3340	aldehyde & ketone & acyl halide
+ct	ct	c	o	139	3373	1,2-diacid monoanion
+ct	ct	c	o	43.1	3219	peptides
+ct	ct	c	o	69	3281	propanamide
+ct	ct	c	o	95	3309	RCOOH acid
+ct	ct	ct	ct	156	3395	perfluoroalkane
+ct	ct	ct	ct	3	3112	hydrocarbon *new* 11/99
+ct	ct	nt	ct	194	3594	exocyclic amines
+ct	ct	nt	ct	195	3595	exocyclic 1,4-diamines
+ct	ct	nt	ct	199	3593	amine (repeated here so taken first b
+ct	ct	nt	ct	199.1	3599	amine all-atom
+ct	ct	nt	h	192	3591	azetidine - 4 membered cyclic amines
+ct	ct	nt	h	193	3592	pyrrolidine 5 membered cyclic amines
+ct	ct	nt	h	196	3596	cyclic amines
+ct	ct	nt	h	197	3597	cyclic 1,4-diamines
+ct	ct	oh	ho	134	3368	trifluoroethanol
+ct	ct	oh	ho	151	3389	hexopyranoses
+oh	ct	ct	oh	10	3125	diols only AA
+oh	ct	ct	oh	11	3126	triols only AA
+oh	ct	ct	oh	152	3390	hexopyranoses
+
+Warning: torsion doubles exist (reduced from 31 to 16)
+Info: writing headers
+Info: writing references
+Info: writing masses
+Info: writing equivalences
+Info: writing nonbonded
+Info: writing bonded
+Info: writing precedences
+Info: writing rules
+Info: writing comments
+

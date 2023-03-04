@@ -1,0 +1,50 @@
+# PREREQUISITES:
+#
+#     You must use moltemplate.sh to create 3 files:
+#        system.data  system.in.init  system.in.settings
+#     (Follow the instructions in README_setup.sh, 
+#      or run the file as a script using ./README_setup.sh)
+
+# ------------------------------- Initialization Section --------------------
+
+units real
+atom_style full
+pair_style lj/class2/coul/long 10.0 10.0
+kspace_style pppm 1.0e-4
+bond_style class2
+angle_style class2
+dihedral_style class2
+improper_style class2
+
+
+# ------------------------------- Atom Definition Section -------------------
+
+read_data       "reaxed.data" extra/bond/per/atom 1
+
+include calc.pram
+
+# ------------------------------- OPT Section -------------------------------
+minimize 1.0e-5 1.0e-7 100000 400000
+# ------------------------------- Run Section -------------------------------
+#
+fix 		relax all npt temp 600.0 600.0 100 iso 1.0 1.0 1000
+run 50000
+unfix relax
+
+reset_timestep 0
+
+thermo_style custom step temp pe evdwl ecoul ebond eangle edihed eimp density vol
+thermo          100
+
+neigh_modify delay 0 every 1 check yes
+
+fix 		relax all npt temp 600.0 100.0 100 iso 1.0 1.0 1000
+
+variable Rho equal density
+dump DumpPos all custom 1000 dump.pos id type x y z mol
+
+run 5000000
+
+
+unfix relax
+

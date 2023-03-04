@@ -1,0 +1,49 @@
+# PREREQUISITES:
+#
+#     You must use moltemplate.sh to create 3 files:
+#        system.data  system.in.init  system.in.settings
+#     (Follow the instructions in README_setup.sh, 
+#      or run the file as a script using ./README_setup.sh)
+
+# ------------------------------- Initialization Section --------------------
+
+units real
+atom_style full
+pair_style lj/class2/coul/cut 10.0
+bond_style class2
+angle_style class2
+dihedral_style class2
+improper_style class2
+
+
+# ------------------------------- Atom Definition Section -------------------
+
+read_data       "pack_mol.data" extra/bond/per/atom 1 extra/angle/per/atom 12 extra/dihedral/per/atom 12 extra/improper/per/atom 12 extra/special/per/atom 12
+
+include calc.pram
+
+# ------------------------------- OPT Section -------------------------------
+minimize 1.0e-5 1.0e-7 100000 400000
+# ------------------------------- Run Section -------------------------------
+#
+
+thermo_style custom step temp pe evdwl ecoul ebond eangle edihed eimp density vol
+thermo          100
+
+neigh_modify delay 0 every 1 check yes
+
+fix Langevin  all langevin 300 300 100.0 482432
+fix moveLimit all nve/limit 0.1
+run 2000
+unfix Langevin
+unfix moveLimit
+
+
+compute 1 all property/local btype batom1 batom2
+
+dump DumpPos all custom 100 dump.pos id type x y z mol
+dump DumpBond all local 100 bonds.dump index c_1[*]
+
+fix 		relax all npt temp 300.0 300.0 100 iso 1.0 1.0 1000
+run 1000
+

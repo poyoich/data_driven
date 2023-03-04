@@ -1,0 +1,26 @@
+#!/usr/bin/env emc_setup.pl
+#
+ITEM		OPTIONS
+
+replace		true
+mass		true
+ntotal		58
+density		0.1
+field		pcff
+build_dir	.
+field_location ../../field
+field_debug reduced
+pdb_compress fales
+pdb_connect true
+
+
+ITEM		END
+
+
+ITEM		SHORTHAND
+
+mol		OCC(OCCCOC1=CC=CC=C1)COC2=CC=CC=C2.C3(OCC4CO4)=CC=CC=C3,100
+
+ITEM		END
+
+

@@ -1,0 +1,23 @@
+#!/usr/bin/env emc_setup.pl
+#
+ITEM		OPTIONS
+
+replace		true
+mass		true
+ntotal		3000
+density		0.45
+field		pcff
+build_dir	.
+field_location ../../../field
+
+ITEM		END
+
+
+ITEM		SHORTHAND
+
+mol1 C1(OCC2CO2)=CC=CC=C1,90
+pre  OCC(OCCCOC1=CC=CC=C1)COC2=CC=CC=C2,10
+
+ITEM		END
+
+
