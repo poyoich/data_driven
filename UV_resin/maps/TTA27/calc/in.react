@@ -9,7 +9,8 @@
 
 units real
 atom_style full
-pair_style lj/class2/coul/cut 10.0
+pair_style lj/class2/coul/long 10.0
+kspace_style pppm 1.0e-4
 bond_style class2
 angle_style class2
 dihedral_style class2
@@ -38,9 +39,8 @@ run 10000
 unfix Langevin
 unfix moveLimit
 
-
 fix 		relax all npt temp 300.0 300.0 100 iso 1.0 1.0 1000
-run 50000
+run 25000
 unfix relax
 
 molecule 	pre1 pre1
@@ -53,15 +53,14 @@ molecule 	pre4 pre4
 molecule	post4 post4
 
 fix		fxrct all bond/react stabilization yes statted_grp .03 &
-		 react rxn1 all 100 0.0 4.0 pre1 post1 semi.map1 stabilize_steps 10 molecule inter &
-		 react rxn2 all 100 0.0 4.0 pre2 post2 semi.map2 stabilize_steps 10 molecule inter &
-		 react rxn2 all 100 0.0 4.0 pre3 post3 semi.map3 stabilize_steps 10 molecule inter &
-		 react rxn2 all 100 0.0 4.0 pre4 post4 semi.map4 stabilize_steps 10 molecule inter &
+		 react rxn1 all 100 0.0 5.0 pre1 post1 semi.map1 stabilize_steps 100 molecule inter &
+		 react rxn2 all 100 0.0 5.0 pre2 post2 semi.map2 stabilize_steps 100 molecule inter &
+		 react rxn2 all 100 0.0 5.0 pre3 post3 semi.map3 stabilize_steps 100 molecule inter &
+		 react rxn2 all 100 0.0 5.0 pre4 post4 semi.map4 stabilize_steps 100 molecule inter &
 
 fix 		npt statted_grp_REACT npt temp 500.0 500.0 100 iso 1.0 1.0 1000
 fix 		reacted bond_react_MASTER_group temp/rescale 1 300.0 300.0 1 1
 
-fix 		moveLimit all nve/limit 0.1
 
 thermo_style custom step temp pe evdwl ecoul ebond eangle edihed eimp density vol f_fxrct[*]
 thermo     100
@@ -72,15 +71,12 @@ compute 1 all property/local btype batom1 batom2
 dump DumpPos all custom 1000 dump.pos id type x y z mol
 dump DumpBond all local 1000 bonds.dump index c_1[*]
 
-run 500000
 
-unfix moveLimit
+run 400000
+
 unfix reacted
 unfix npt
 unfix fxrct
 
 write_data nofoeff reaxed.data
 
-thermo_style custom step temp pe evdwl ecoul ebond eangle edihed eimp density vol
-fix 		relax all npt temp 600.0 600.0 100 iso 1.0 1.0 1000
-run 100000
