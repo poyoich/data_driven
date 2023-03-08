@@ -1,0 +1,2 @@
+/SCL/sharetask/stask/dispat.sh [2023年  3月  7日 火曜日 17:17:58 JST] - started. host = x58-0148
+/SCL/sharetask/stask/dispat.sh - /SCL/sharetask/stask/shell.sh -np 24 ./mylammps.sh

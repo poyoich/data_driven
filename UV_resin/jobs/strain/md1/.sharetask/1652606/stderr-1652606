@@ -1,0 +1,2 @@
+chmod: `./mylammps.sh' にアクセスできません: そのようなファイルやディレクトリはありません
+/SCL/sharetask/stask/shell.sh: 行 8: ./mylammps.sh: そのようなファイルやディレクトリはありません

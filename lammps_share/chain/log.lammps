@@ -1,4 +1,5 @@
 LAMMPS (22 Dec 2022)
+WARNING: Using I/O redirection is unreliable with parallel runs. Better to use the -in switch to read input files. (../lammps.cpp:531)
  # Polymer simulation with LAMMPS.
  # Dr. Mark A. Tschopp, 2010.
  # Variables

@@ -1,0 +1,56 @@
+# PREREQUISITES:
+#
+#     You must use moltemplate.sh to create 3 files:
+#        system.data  system.in.init  system.in.settings
+#     (Follow the instructions in README_setup.sh, 
+#      or run the file as a script using ./README_setup.sh)
+
+# ------------------------------- Initialization Section --------------------
+
+units real
+atom_style full
+pair_style lj/class2/coul/long 10.0 10.0
+bond_style class2
+angle_style class2
+dihedral_style class2
+improper_style class2
+kspace_style pppm/cg 0.001
+
+pair_modify     mix sixthpower tail yes
+
+special_bonds   lj/coul 0 0 0
+
+# ------------------------------- Atom Definition Section -------------------
+
+read_data       "reacted_lmp.data" 
+
+include calc.pram
+
+# ------------------------------- OPT Section -------------------------------
+minimize 1.0e-5 1.0e-7 100000 400000
+# ------------------------------- Run Section -------------------------------
+#
+
+timestep 2.5
+neighbor        2.0 bin
+neigh_modify    delay 0 every 1 check no
+
+thermo_style custom step temp pe evdwl ecoul ebond eangle edihed eimp density vol
+thermo 10
+
+variable        Rho equal density
+variable        Temp equal temp
+variable        Volume equal vol
+fix             fDENS all ave/time 100 100 300000 v_Temp v_Rho v_Volume file temp_vs_density.txt
+fix def1 all print 100 "${Temp} ${Rho} ${Volume} " file press.dat screen no
+
+label           loop
+variable        a loop 26
+variable        b equal 600-20*($a-1)
+fix             fMOM all momentum 100 linear 1 1 1 angular
+fix             fNPT all npt temp $b $b $(100.0*dt) iso 1 1 $(100.0*dt)
+run             1200000
+unfix           fNPT
+unfix           fMOM
+next            a
+jump            SELF loop

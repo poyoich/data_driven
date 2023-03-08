@@ -1,0 +1,69 @@
+# PREREQUISITES:
+#
+#     You must use moltemplate.sh to create 3 files:
+#        system.data  system.in.init  system.in.settings
+#     (Follow the instructions in README_setup.sh, 
+#      or run the file as a script using ./README_setup.sh)
+
+# ------------------------------- Initialization Section --------------------
+
+units real
+atom_style full
+pair_style lj/class2/coul/long 10.0 10.0
+#bond_style class2
+bond_style hybrid class2 morse
+angle_style class2
+dihedral_style class2
+improper_style class2
+kspace_style pppm/cg 0.001
+
+#special_bonds   lj/coul 1 1 1
+
+# ------------------------------- Atom Definition Section -------------------
+
+read_data       "reacted_lmp.data" 
+
+include calc.pram
+
+
+fix		1 all npt temp 300 300 1 y 0 0 100 z 0 0 100 drag 1
+variable srate equal 1.0e8
+variable srate1 equal "v_srate / 1.0e12"
+fix		2 all deform 1 x erate ${srate1} units box remap x
+
+variable tmp equal "lx"
+variable L0 equal ${tmp}
+
+variable strain equal "(lx - v_L0)/v_L0"
+variable p1 equal "v_strain"
+variable p2 equal "-pxx/10000"
+variable p3 equal "-pyy/10000"
+variable p4 equal "-pzz/10000"
+fix def1 all print 100 "${p1} ${p2} ${p3} ${p4}" file Al_SC_100.def1.txt screen no
+
+fix b1 all bond/break 10 1 3.0
+fix b2 all bond/break 10 2 3.0
+fix b3 all bond/break 10 3 3.0
+fix b4 all bond/break 10 4 3.0
+fix b5 all bond/break 10 5 3.0
+fix b6 all bond/break 10 6 3.0
+fix b7 all bond/break 10 7 3.0
+fix b8 all bond/break 10 8 3.0
+fix b9 all bond/break 10 9 3.0
+fix b10 all bond/break 10 10 3.0
+fix b11 all bond/break 10 11 3.0
+fix b12 all bond/break 10 12 3.0
+fix b12 all bond/break 10 13 3.0
+
+variable bb equal (f_b1[1]+f_b2[1]+f_b3[1]+f_b4[1]+f_b5[1]+f_b6[1]+f_b7[1]+f_b9[1]+f_b8[1]+f_b10[1]+f_b11[1]+f_b12[1])
+
+variable tmp equal "step"
+
+
+variable x equal (v_bb)
+thermo_style	custom step v_strain temp v_p2 v_p3 v_p4 ke pe press vol v_x
+thermo 1
+
+dump 4a all custom 100 dump.pos id type x y z vx vy vz mol 
+
+run 100000
