@@ -591,33 +591,40 @@ improper_coeff	 8    0.00000    0.00000  # c1,c,c,c1
 improper_coeff	 9    0.00000    0.00000  # c1,c,c,hc
 improper_coeff	10    0.00000    0.00000  # c1,c,c1,c1
 improper_coeff	11    0.00000    0.00000  # c1,c,c1,hc
-improper_coeff	12    0.00000    0.00000  # c1,c,c1,oc
-improper_coeff	13    0.00000    0.00000  # c1,c,hc,c1
-improper_coeff	14    0.00000    0.00000  # c1,c,hc,oc
-improper_coeff	15    0.00000    0.00000  # c1,c,o3e,c1
-improper_coeff	16    0.00000    0.00000  # c1,c,o3e,hc
-improper_coeff	17    0.00000    0.00000  # c1,c,oc,c1
-improper_coeff	18    0.00000    0.00000  # c1,c,oc,hc
-improper_coeff	19    0.00000    0.00000  # c1,c1,c1,c1
-improper_coeff	20    0.00000    0.00000  # c1,c1,c1,c3h
-improper_coeff	21    0.00000    0.00000  # c1,c1,c1,hc
-improper_coeff	22    0.00000    0.00000  # c1,c1,c1,o3e
-improper_coeff	23    0.00000    0.00000  # c1,c1,c1,oc
-improper_coeff	24    0.00000    0.00000  # c1,c1,c1,oh
-improper_coeff	25    0.00000    0.00000  # c1,c1,c3h,hc
-improper_coeff	26    0.00000    0.00000  # c1,c1,hc,c3h
-improper_coeff	27    0.00000    0.00000  # c1,c1,hc,o3e
-improper_coeff	28    0.00000    0.00000  # c1,c1,hc,oc
-improper_coeff	29    0.00000    0.00000  # c1,c1,hc,oh
-improper_coeff	30    0.00000    0.00000  # c1,c1,o3e,hc
-improper_coeff	31    0.00000    0.00000  # c1,c1,oc,hc
-improper_coeff	32    0.00000    0.00000  # c3h,c,hc,c3h
-improper_coeff	33    0.00000    0.00000  # c3h,c,o3e,c3h
-improper_coeff	34    0.00000    0.00000  # c3h,c,o3e,hc
-improper_coeff	35    0.00000    0.00000  # c3h,c1,c3h,hc
-improper_coeff	36    0.00000    0.00000  # c3h,c1,c3h,o3e
-improper_coeff	37    0.00000    0.00000  # c3h,c1,o3e,hc
-improper_coeff	38    0.00000    0.00000  # c3h,c3h,o3e,hc
+improper_coeff	12    0.00000    0.00000  # c1,c,c1,o3e
+improper_coeff	13    0.00000    0.00000  # c1,c,c1,oc
+improper_coeff	14    0.00000    0.00000  # c1,c,hc,c1
+improper_coeff	15    0.00000    0.00000  # c1,c,hc,o3e
+improper_coeff	16    0.00000    0.00000  # c1,c,hc,oc
+improper_coeff	17    0.00000    0.00000  # c1,c,o3e,c1
+improper_coeff	18    0.00000    0.00000  # c1,c,o3e,hc
+improper_coeff	19    0.00000    0.00000  # c1,c,oc,c1
+improper_coeff	20    0.00000    0.00000  # c1,c,oc,hc
+improper_coeff	21    0.00000    0.00000  # c1,c1,c1,c1
+improper_coeff	22    0.00000    0.00000  # c1,c1,c1,c3h
+improper_coeff	23    0.00000    0.00000  # c1,c1,c1,hc
+improper_coeff	24    0.00000    0.00000  # c1,c1,c1,o3e
+improper_coeff	25    0.00000    0.00000  # c1,c1,c1,oc
+improper_coeff	26    0.00000    0.00000  # c1,c1,c1,oh
+improper_coeff	27    0.00000    0.00000  # c1,c1,c3h,hc
+improper_coeff	28    0.00000    0.00000  # c1,c1,hc,c3h
+improper_coeff	29    0.00000    0.00000  # c1,c1,hc,o3e
+improper_coeff	30    0.00000    0.00000  # c1,c1,hc,oc
+improper_coeff	31    0.00000    0.00000  # c1,c1,hc,oh
+improper_coeff	32    0.00000    0.00000  # c1,c1,o3e,hc
+improper_coeff	33    0.00000    0.00000  # c1,c1,oc,hc
+improper_coeff	34    0.00000    0.00000  # c3h,c,c3h,hc
+improper_coeff	35    0.00000    0.00000  # c3h,c,c3h,o3e
+improper_coeff	36    0.00000    0.00000  # c3h,c,hc,c3h
+improper_coeff	37    0.00000    0.00000  # c3h,c,hc,o3e
+improper_coeff	38    0.00000    0.00000  # c3h,c,o3e,c3h
+improper_coeff	39    0.00000    0.00000  # c3h,c,o3e,hc
+improper_coeff	40    0.00000    0.00000  # c3h,c1,c3h,hc
+improper_coeff	41    0.00000    0.00000  # c3h,c1,c3h,o3e
+improper_coeff	42    0.00000    0.00000  # c3h,c1,o3e,c3h
+improper_coeff	43    0.00000    0.00000  # c3h,c1,o3e,hc
+improper_coeff	44    0.00000    0.00000  # c3h,c3h,hc,o3e
+improper_coeff	45    0.00000    0.00000  # c3h,c3h,o3e,hc
 
 # AngleAngle Coeffs
 
@@ -632,30 +639,37 @@ improper_coeff	 8 aa    0.00000    0.00000   -0.17290  112.67000  112.67000  112
 improper_coeff	 9 aa    0.00000    0.00000    0.11840  112.67000  110.77000  110.77000  # c1,c,c,hc
 improper_coeff	10 aa    0.00000   -0.17290    0.00000  112.67000  112.67000  112.67000  # c1,c,c1,c1
 improper_coeff	11 aa    0.00000   -1.31990    0.00000  112.67000  110.77000  110.77000  # c1,c,c1,hc
-improper_coeff	12 aa    0.00000   -0.83300    0.00000  112.67000  111.27000  111.27000  # c1,c,c1,oc
-improper_coeff	13 aa    0.00000   -1.31990    0.00000  110.77000  112.67000  110.77000  # c1,c,hc,c1
-improper_coeff	14 aa    0.00000    2.59260    0.00000  110.77000  111.27000  108.72800  # c1,c,hc,oc
-improper_coeff	15 aa    0.00000   -0.83300   -0.83300  111.27000  112.67000  111.27000  # c1,c,o3e,c1
-improper_coeff	16 aa    0.00000    2.59260    3.91770  111.27000  110.77000  108.72800  # c1,c,o3e,hc
-improper_coeff	17 aa    0.00000   -0.83300    0.00000  111.27000  112.67000  111.27000  # c1,c,oc,c1
-improper_coeff	18 aa    0.00000    2.59260    0.00000  111.27000  110.77000  108.72800  # c1,c,oc,hc
-improper_coeff	19 aa   -0.17290   -0.17290   -0.17290  112.67000  112.67000  112.67000  # c1,c1,c1,c1
-improper_coeff	20 aa   -0.17290   -0.17290   -0.17290  112.67000  112.67000  112.67000  # c1,c1,c1,c3h
-improper_coeff	21 aa   -1.31990   -1.31990    0.11840  112.67000  110.77000  110.77000  # c1,c1,c1,hc
-improper_coeff	22 aa   -0.83300   -0.83300   -3.57440  112.67000  111.27000  111.27000  # c1,c1,c1,o3e
-improper_coeff	23 aa   -0.83300   -0.83300   -3.57440  112.67000  111.27000  111.27000  # c1,c1,c1,oc
-improper_coeff	24 aa    0.00000    0.00000   -3.57440  112.67000  111.27000  111.27000  # c1,c1,c1,oh
-improper_coeff	25 aa   -1.31990    0.00000    0.11840  112.67000  110.77000  110.77000  # c1,c1,c3h,hc
-improper_coeff	26 aa    0.11840    0.00000   -1.31990  110.77000  112.67000  110.77000  # c1,c1,hc,c3h
-improper_coeff	27 aa    3.91770    2.59260    0.16890  110.77000  111.27000  108.72800  # c1,c1,hc,o3e
-improper_coeff	28 aa    3.91770    2.59260    0.16890  110.77000  111.27000  108.72800  # c1,c1,hc,oc
-improper_coeff	29 aa    0.00000    0.00000    0.16890  110.77000  111.27000  108.72800  # c1,c1,hc,oh
-improper_coeff	30 aa    0.16890    2.59260    3.91770  111.27000  110.77000  108.72800  # c1,c1,o3e,hc
-improper_coeff	31 aa    0.16890    2.59260    3.91770  111.27000  110.77000  108.72800  # c1,c1,oc,hc
-improper_coeff	32 aa    0.11840    0.00000    0.00000  110.77000  112.67000  110.77000  # c3h,c,hc,c3h
-improper_coeff	33 aa   -3.57440    0.00000   -0.83300  111.27000  112.67000  111.27000  # c3h,c,o3e,c3h
-improper_coeff	34 aa    0.00000    2.59260    3.91770  111.27000  110.77000  108.72800  # c3h,c,o3e,hc
-improper_coeff	35 aa   -1.31990    0.00000    0.11840  112.67000  110.77000  110.77000  # c3h,c1,c3h,hc
-improper_coeff	36 aa   -0.83300    0.00000   -3.57440  112.67000  111.27000  111.27000  # c3h,c1,c3h,o3e
-improper_coeff	37 aa    0.16890    2.59260    3.91770  111.27000  110.77000  108.72800  # c3h,c1,o3e,hc
-improper_coeff	38 aa    0.00000    2.59260    0.00000  111.27000  110.77000  108.72800  # c3h,c3h,o3e,hc
+improper_coeff	12 aa   -0.83300   -0.83300    0.00000  112.67000  111.27000  111.27000  # c1,c,c1,o3e
+improper_coeff	13 aa    0.00000   -0.83300    0.00000  112.67000  111.27000  111.27000  # c1,c,c1,oc
+improper_coeff	14 aa    0.00000   -1.31990    0.00000  110.77000  112.67000  110.77000  # c1,c,hc,c1
+improper_coeff	15 aa    3.91770    2.59260    0.00000  110.77000  111.27000  108.72800  # c1,c,hc,o3e
+improper_coeff	16 aa    0.00000    2.59260    0.00000  110.77000  111.27000  108.72800  # c1,c,hc,oc
+improper_coeff	17 aa    0.00000   -0.83300   -0.83300  111.27000  112.67000  111.27000  # c1,c,o3e,c1
+improper_coeff	18 aa    0.00000    2.59260    3.91770  111.27000  110.77000  108.72800  # c1,c,o3e,hc
+improper_coeff	19 aa    0.00000   -0.83300    0.00000  111.27000  112.67000  111.27000  # c1,c,oc,c1
+improper_coeff	20 aa    0.00000    2.59260    0.00000  111.27000  110.77000  108.72800  # c1,c,oc,hc
+improper_coeff	21 aa   -0.17290   -0.17290   -0.17290  112.67000  112.67000  112.67000  # c1,c1,c1,c1
+improper_coeff	22 aa   -0.17290   -0.17290   -0.17290  112.67000  112.67000  112.67000  # c1,c1,c1,c3h
+improper_coeff	23 aa   -1.31990   -1.31990    0.11840  112.67000  110.77000  110.77000  # c1,c1,c1,hc
+improper_coeff	24 aa   -0.83300   -0.83300   -3.57440  112.67000  111.27000  111.27000  # c1,c1,c1,o3e
+improper_coeff	25 aa   -0.83300   -0.83300   -3.57440  112.67000  111.27000  111.27000  # c1,c1,c1,oc
+improper_coeff	26 aa    0.00000    0.00000   -3.57440  112.67000  111.27000  111.27000  # c1,c1,c1,oh
+improper_coeff	27 aa   -1.31990    0.00000    0.11840  112.67000  110.77000  110.77000  # c1,c1,c3h,hc
+improper_coeff	28 aa    0.11840    0.00000   -1.31990  110.77000  112.67000  110.77000  # c1,c1,hc,c3h
+improper_coeff	29 aa    3.91770    2.59260    0.16890  110.77000  111.27000  108.72800  # c1,c1,hc,o3e
+improper_coeff	30 aa    3.91770    2.59260    0.16890  110.77000  111.27000  108.72800  # c1,c1,hc,oc
+improper_coeff	31 aa    0.00000    0.00000    0.16890  110.77000  111.27000  108.72800  # c1,c1,hc,oh
+improper_coeff	32 aa    0.16890    2.59260    3.91770  111.27000  110.77000  108.72800  # c1,c1,o3e,hc
+improper_coeff	33 aa    0.16890    2.59260    3.91770  111.27000  110.77000  108.72800  # c1,c1,oc,hc
+improper_coeff	34 aa    0.00000    0.00000    0.11840  112.67000  110.77000  110.77000  # c3h,c,c3h,hc
+improper_coeff	35 aa   -0.83300    0.00000   -3.57440  112.67000  111.27000  111.27000  # c3h,c,c3h,o3e
+improper_coeff	36 aa    0.11840    0.00000    0.00000  110.77000  112.67000  110.77000  # c3h,c,hc,c3h
+improper_coeff	37 aa    3.91770    2.59260    0.00000  110.77000  111.27000  108.72800  # c3h,c,hc,o3e
+improper_coeff	38 aa   -3.57440    0.00000   -0.83300  111.27000  112.67000  111.27000  # c3h,c,o3e,c3h
+improper_coeff	39 aa    0.00000    2.59260    3.91770  111.27000  110.77000  108.72800  # c3h,c,o3e,hc
+improper_coeff	40 aa   -1.31990    0.00000    0.11840  112.67000  110.77000  110.77000  # c3h,c1,c3h,hc
+improper_coeff	41 aa   -0.83300    0.00000   -3.57440  112.67000  111.27000  111.27000  # c3h,c1,c3h,o3e
+improper_coeff	42 aa   -3.57440    0.00000   -0.83300  111.27000  112.67000  111.27000  # c3h,c1,o3e,c3h
+improper_coeff	43 aa    0.16890    2.59260    3.91770  111.27000  110.77000  108.72800  # c3h,c1,o3e,hc
+improper_coeff	44 aa    0.00000    2.59260    0.00000  110.77000  111.27000  108.72800  # c3h,c3h,hc,o3e
+improper_coeff	45 aa    0.00000    2.59260    0.00000  111.27000  110.77000  108.72800  # c3h,c3h,o3e,hc

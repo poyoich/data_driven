@@ -51,12 +51,24 @@ molecule 	pre3 pre3
 molecule	post3 post3
 molecule 	pre4 pre4
 molecule	post4 post4
+molecule	post5 post5
+molecule	post6 post6
+molecule	post7 post7
+molecule	post8 post8
+molecule 	pre5 pre5
+molecule 	pre6 pre6
+molecule 	pre7 pre7
+molecule 	pre8 pre8
 
 fix		fxrct all bond/react stabilization yes statted_grp .03 &
-		 react rxn1 all 100 0.0 5.0 pre1 post1 semi.map1 stabilize_steps 100 molecule inter &
-		 react rxn2 all 100 0.0 5.0 pre2 post2 semi.map2 stabilize_steps 100 molecule inter &
-		 react rxn2 all 100 0.0 5.0 pre3 post3 semi.map3 stabilize_steps 100 molecule inter &
-		 react rxn2 all 100 0.0 5.0 pre4 post4 semi.map4 stabilize_steps 100 molecule inter &
+		 react rxn1 all 100 0.0 5.0 pre1 post1 semi.map1 stabilize_steps 100 &
+		 react rxn2 all 100 0.0 5.0 pre2 post2 semi.map2 stabilize_steps 100 &
+		 react rxn2 all 100 0.0 5.0 pre3 post3 semi.map3 stabilize_steps 100 &
+		 react rxn2 all 100 0.0 5.0 pre4 post4 semi.map4 stabilize_steps 100 &
+#		 react rxn2 all 100 0.0 5.0 pre5 post5 semi.map5 stabilize_steps 100 &
+		 react rxn2 all 100 0.0 5.0 pre6 post6 semi.map6 stabilize_steps 100 &
+		 react rxn2 all 100 0.0 5.0 pre7 post7 semi.map7 stabilize_steps 100 &
+		 react rxn2 all 100 0.0 5.0 pre8 post8 semi.map8 stabilize_steps 100 &
 
 fix 		npt statted_grp_REACT npt temp 500.0 500.0 100 iso 1.0 1.0 1000
 fix 		reacted bond_react_MASTER_group temp/rescale 1 300.0 300.0 1 1

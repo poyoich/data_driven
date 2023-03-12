@@ -1,0 +1,161 @@
+REMARK
+REMARK created by EMC v9.4.4, build Jul 27 2022 18:02:20
+REMARK created on Sat Mar 11 16:42:47 2023
+REMARK
+CRYST1  20.1764  20.1764  20.1764     90     90     90 P 1          1
+ATOM      1 O    mol A   1     13.5965 14.7287  19.755  1.00  0.00      mol  O
+ATOM      2 H1   mol A   1     12.6767 14.8086 19.4683  1.00  0.00      mol  H
+ATOM      3 C    mol A   1      14.437 14.1449 18.7629  1.00  0.00      mol  C
+ATOM      4 H1   mol A   1     14.1808 14.6238 17.8116  1.00  0.00      mol  H
+ATOM      5 C1   mol A   1     14.3115 12.6202 18.5087  1.00  0.00      mol  C
+ATOM      6 H11  mol A   1     14.6368  12.056  19.351  1.00  0.00      mol  H
+ATOM      7 O1   mol A   1     12.9309 12.0599 18.3616  1.00  0.00      mol  O
+ATOM      8 C2   mol A   1     12.4976  10.914 19.0598  1.00  0.00      mol  C
+ATOM      9 H21  mol A   1     11.4381 11.1111 19.0793  1.00  0.00      mol  H
+ATOM     10 C3   mol A   1     12.8909 9.66608 18.1608  1.00  0.00      mol  C
+ATOM     11 H31  mol A   1     12.8711 9.90829 17.0956  1.00  0.00      mol  H
+ATOM     12 O2   mol A   1     11.8077 8.77544 18.4759  1.00  0.00      mol  O
+ATOM     13 C4   mol A   1     11.9806 7.44787 18.1003  1.00  0.00      mol  C
+ATOM     14 H41  mol A   1     13.0132 7.06015 18.3722  1.00  0.00      mol  H
+ATOM     15 C5   mol A   1     10.9719 6.59921 18.8689  1.00  0.00      mol  C
+ATOM     16 H51  mol A   1     9.98434 7.10181 19.0832  1.00  0.00      mol  H
+ATOM     17 H52  mol A   1     11.4196    6.19 19.8141  1.00  0.00      mol  H
+ATOM     18 C6   mol A   1     10.6784 5.55292 17.8918  1.00  0.00      mol  C
+ATOM     19 H61  mol A   1     9.93322 4.89842 18.2738  1.00  0.00      mol  H
+ATOM     20 C7   mol A   1     12.0148 4.79736 17.4896  1.00  0.00      mol  C
+ATOM     21 H71  mol A   1     12.6645 4.77531 18.3431  1.00  0.00      mol  H
+ATOM     22 C8   mol A   1      12.052 3.42898 16.7789  1.00  0.00      mol  C
+ATOM     23 H81  mol A   1     12.4326 2.62336 17.3715  1.00  0.00      mol  H
+ATOM     24 O3   mol A   1     11.0819 3.10515 15.7819  1.00  0.00      mol  O
+ATOM     25 C9   mol A   1     12.3897 3.57621 15.3841  1.00  0.00      mol  C
+ATOM     26 H91  mol A   1     12.9248 2.82078 14.7773  1.00  0.00      mol  H
+ATOM     27 CA   mol A   1     12.4501 5.04315 15.0316  1.00  0.00      mol  C
+ATOM     28 HA1  mol A   1      11.587 5.41874 14.4668  1.00  0.00      mol  H
+ATOM     29 HA2  mol A   1     13.3327 5.29903 14.4321  1.00  0.00      mol  H
+ATOM     30 CB   mol A   1     12.5893 5.76299 16.4212  1.00  0.00      mol  C
+ATOM     31 HB1  mol A   1     13.6719 5.86677 16.6035  1.00  0.00      mol  H
+ATOM     32 CC   mol A   1     11.7578  6.9898  16.619  1.00  0.00      mol  C
+ATOM     33 HC1  mol A   1     11.9383 7.86634 15.9042  1.00  0.00      mol  H
+ATOM     34 CD   mol A   1     10.3358  6.3845 16.6662  1.00  0.00      mol  C
+ATOM     35 HD1  mol A   1      9.5508 7.11778 16.9334  1.00  0.00      mol  H
+ATOM     36 HD2  mol A   1     10.0099 5.74341 15.8141  1.00  0.00      mol  H
+ATOM     37 CE   mol A   1     14.3078 9.33792 18.6945  1.00  0.00      mol  C
+ATOM     38 HE1  mol A   1     14.6404  8.3238  18.386  1.00  0.00      mol  H
+ATOM     39 HE2  mol A   1      14.976 10.0843  18.313  1.00  0.00      mol  H
+ATOM     40 CF   mol A   1     14.2248 9.55316 20.1892  1.00  0.00      mol  C
+ATOM     41 HF1  mol A   1     14.2785 8.50427 20.5651  1.00  0.00      mol  H
+ATOM     42 CG   mol A   1     15.1855 10.2966 21.1392  1.00  0.00      mol  C
+ATOM     43 HG1  mol A   1     16.1767 9.93959 21.1868  1.00  0.00      mol  H
+ATOM     44 CH   mol A   1     14.4892 9.90656 22.4441  1.00  0.00      mol  C
+ATOM     45 HH1  mol A   1     15.0602 10.2437 23.3547  1.00  0.00      mol  H
+ATOM     46 HH2  mol A   1     14.2524 8.91879 22.7098  1.00  0.00      mol  H
+ATOM     47 CI   mol A   1     13.2023 10.8427 21.9925  1.00  0.00      mol  C
+ATOM     48 HI1  mol A   1     12.2211 10.8433 22.6033  1.00  0.00      mol  H
+ATOM     49 CJ   mol A   1     13.8606 12.2996 21.7906  1.00  0.00      mol  C
+ATOM     50 HJ1  mol A   1     13.2141 13.1343 21.5469  1.00  0.00      mol  H
+ATOM     51 CK   mol A   1     15.2532 11.9775 21.4886  1.00  0.00      mol  C
+ATOM     52 HK1  mol A   1      16.176 12.0027 22.0488  1.00  0.00      mol  H
+ATOM     53 O4   mol A   1     14.6929 12.4632 22.8829  1.00  0.00      mol  O
+ATOM     54 CL   mol A   1     12.8858 10.3037 20.5536  1.00  0.00      mol  C
+ATOM     55 HL1  mol A   1     12.1379 9.52072 20.6565  1.00  0.00      mol  H
+ATOM     56 CM   mol A   1     15.4631 12.3652  17.527  1.00  0.00      mol  C
+ATOM     57 HM1  mol A   1     15.7034 11.4454  17.043  1.00  0.00      mol  H
+ATOM     58 HM2  mol A   1      15.274 12.9664 16.6644  1.00  0.00      mol  H
+ATOM     59 CN   mol A   1     16.6114  12.927 18.4166  1.00  0.00      mol  C
+ATOM     60 HN1  mol A   1     16.8518 12.1571 19.1771  1.00  0.00      mol  H
+ATOM     61 CO   mol A   1     17.9324 13.4347 17.9522  1.00  0.00      mol  C
+ATOM     62 HO1  mol A   1     18.4211 12.7147  17.313  1.00  0.00      mol  H
+ATOM     63 CP   mol A   1     17.6189 14.8515 17.3392  1.00  0.00      mol  C
+ATOM     64 HP1  mol A   1     18.6043 15.3295 16.9573  1.00  0.00      mol  H
+ATOM     65 HP2  mol A   1      16.882 14.7723 16.5018  1.00  0.00      mol  H
+ATOM     66 CQ   mol A   1     17.0133 15.3194 18.6509  1.00  0.00      mol  C
+ATOM     67 HQ1  mol A   1     16.5063 16.2842 18.5027  1.00  0.00      mol  H
+ATOM     68 CR   mol A   1     18.4234 15.2288 19.4505  1.00  0.00      mol  C
+ATOM     69 HR1  mol A   1     18.9419  16.168 19.4863  1.00  0.00      mol  H
+ATOM     70 CS   mol A   1      18.849 13.8952  19.087  1.00  0.00      mol  C
+ATOM     71 HS1  mol A   1     19.8735 13.4675 19.0494  1.00  0.00      mol  H
+ATOM     72 O5   mol A   1      18.369 14.1786 20.4058  1.00  0.00      mol  O
+ATOM     73 CT   mol A   1      15.968 14.1887 19.0985  1.00  0.00      mol  C
+ATOM     74 HT1  mol A   1      16.087 14.2031 20.1875  1.00  0.00      mol  H
+REMARK !      ATOMID ATOMID:bond[:tacticity] [...]
+REMARK CONECT      1      3:1          2:1    
+REMARK CONECT      2      1:1    
+REMARK CONECT      3      1:1          5:1         73:1          4:1    
+REMARK CONECT      4      3:1    
+REMARK CONECT      5      3:1         56:1          7:1          6:1    
+REMARK CONECT      6      5:1    
+REMARK CONECT      7      5:1          8:1    
+REMARK CONECT      8      7:1         10:1         54:1          9:1    
+REMARK CONECT      9      8:1    
+REMARK CONECT     10      8:1         37:1         12:1         11:1    
+REMARK CONECT     11     10:1    
+REMARK CONECT     12     10:1         13:1    
+REMARK CONECT     13     12:1         15:1         32:1         14:1    
+REMARK CONECT     14     13:1    
+REMARK CONECT     15     13:1         18:1         16:1         17:1    
+REMARK CONECT     16     15:1    
+REMARK CONECT     17     15:1    
+REMARK CONECT     18     15:1         20:1         34:1         19:1    
+REMARK CONECT     19     18:1    
+REMARK CONECT     20     18:1         22:1         30:1         21:1    
+REMARK CONECT     21     20:1    
+REMARK CONECT     22     20:1         25:1         24:1         23:1    
+REMARK CONECT     23     22:1    
+REMARK CONECT     24     22:1         25:1    
+REMARK CONECT     25     22:1         27:1         24:1         26:1    
+REMARK CONECT     26     25:1    
+REMARK CONECT     27     25:1         30:1         28:1         29:1    
+REMARK CONECT     28     27:1    
+REMARK CONECT     29     27:1    
+REMARK CONECT     30     27:1         32:1         20:1         31:1    
+REMARK CONECT     31     30:1    
+REMARK CONECT     32     30:1         34:1         13:1         33:1    
+REMARK CONECT     33     32:1    
+REMARK CONECT     34     32:1         18:1         35:1         36:1    
+REMARK CONECT     35     34:1    
+REMARK CONECT     36     34:1    
+REMARK CONECT     37     10:1         40:1         38:1         39:1    
+REMARK CONECT     38     37:1    
+REMARK CONECT     39     37:1    
+REMARK CONECT     40     37:1         42:1         54:1         41:1    
+REMARK CONECT     41     40:1    
+REMARK CONECT     42     40:1         44:1         51:1         43:1    
+REMARK CONECT     43     42:1    
+REMARK CONECT     44     42:1         47:1         45:1         46:1    
+REMARK CONECT     45     44:1    
+REMARK CONECT     46     44:1    
+REMARK CONECT     47     44:1         54:1         49:1         48:1    
+REMARK CONECT     48     47:1    
+REMARK CONECT     49     47:1         51:1         53:1         50:1    
+REMARK CONECT     50     49:1    
+REMARK CONECT     51     49:1         53:1         42:1         52:1    
+REMARK CONECT     52     51:1    
+REMARK CONECT     53     51:1         49:1    
+REMARK CONECT     54     47:1          8:1         40:1         55:1    
+REMARK CONECT     55     54:1    
+REMARK CONECT     56      5:1         59:1         57:1         58:1    
+REMARK CONECT     57     56:1    
+REMARK CONECT     58     56:1    
+REMARK CONECT     59     56:1         61:1         73:1         60:1    
+REMARK CONECT     60     59:1    
+REMARK CONECT     61     59:1         63:1         70:1         62:1    
+REMARK CONECT     62     61:1    
+REMARK CONECT     63     61:1         66:1         64:1         65:1    
+REMARK CONECT     64     63:1    
+REMARK CONECT     65     63:1    
+REMARK CONECT     66     63:1         73:1         68:1         67:1    
+REMARK CONECT     67     66:1    
+REMARK CONECT     68     66:1         70:1         72:1         69:1    
+REMARK CONECT     69     68:1    
+REMARK CONECT     70     68:1         72:1         61:1         71:1    
+REMARK CONECT     71     70:1    
+REMARK CONECT     72     70:1         68:1    
+REMARK CONECT     73     66:1          3:1         59:1         74:1    
+REMARK CONECT     74     73:1    
+REMARK END
+REMARK !      SEGID RESI  RESID [...]
+REMARK RESCON     1 mol       1
+REMARK END
+REMARK !      SEGID ATOMID ATOMID
+REMARK END
+END

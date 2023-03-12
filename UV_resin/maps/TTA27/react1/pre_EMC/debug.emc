@@ -1,7 +1,7 @@
 (* EMC: Enhanced Monte Carlo simulations *)
 
 identity = {
-  name -> "debug", machine -> "", date -> "Sat Mar 04 09:23:31 2023", version
+  name -> "debug", machine -> "", date -> "Fri Mar 10 22:57:15 2023", version
   -> "9.4.4", build -> "Jul 27 2022 18:02:20"};
 
 (* Output *)
@@ -14,7 +14,7 @@ output = {
 (* Timing *)
 
 timing = {
-  total -> {wall -> 16.42, cpu -> 16.43}, 
+  total -> {wall -> 15.2, cpu -> 15.21}, 
   pairs -> {wall -> 0, cpu -> 0}, 
   bonds -> {wall -> 0, cpu -> 0}, 
   messages -> {wall -> 0, cpu -> 0}};

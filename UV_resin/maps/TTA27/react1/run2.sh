@@ -1,10 +1,12 @@
 cd pre_EMC
+rm pre_mol.data
 emc_setup.pl pre_mol.esh
 emc_win32.exe build.emc
 
 cd ../
 
 cd post_EMC
+rm post_mol.data
 emc_setup.pl post_mol.esh
 emc_win32.exe build.emc
 
